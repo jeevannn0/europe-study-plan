@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Europe master's plan · max 1.5 years · ₹15–25 lakh</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<meta name="theme-color" content="#080808">
+<script>try{var m=(location.search.match(/theme=(light|dark)/)||[])[1]||localStorage.getItem("europe-plan-theme");document.documentElement.setAttribute("data-theme",m==="light"?"light":"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
+<style>
+:root {
+  color-scheme: dark;
+  --page: #080808; --surface: #0e0e0e; --surface-2: #1a1a1a; --surface-3: #242424;
+  --ink-1: #fafafa; --ink-2: #e0e0e0; --ink-3: #b8b8b8;
+  --grid: #262626; --axis: #3b3b3b; --ring: #3b3b3b; --ring-2: #6b6b6b;
+  --signal: #c999ff; --signal-soft: rgba(201,153,255,0.14); --focus: #b152ff; --on-signal: #080808;
+  --volt: #00e682; --volt-2: #00a35c; --volt-px: #aaffd6; --volt-ink: #080808;
+  --btn-bg: #ffffff; --btn-fg: #080808; --btn-hover: #e0e0e0;
+  --band: rgba(201,153,255,0.10); --band-edge: #7a5aa8;
+  --c-es: #3987e5; --c-lt: #d95926; --c-de: #199e70; --c-ie: #c98500;
+  --ok-ink: #8af971; --bad: #ff5c5c;
+  --radius: 0px; --shadow: none;
+  --hh: 72px; --side: 264px;
+  --font: "Inter", "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --ease-out-quart: cubic-bezier(.25,1,.5,1); --ease-out-quint: cubic-bezier(.22,1,.36,1);
+  --dur-fast: .15s; --dur-base: .2s; --dur-slow: .32s;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page: #ffffff; --surface: #ffffff; --surface-2: #f5f5f5; --surface-3: #ebebeb;
+  --ink-1: #080808; --ink-2: #333333; --ink-3: #545454;
+  --grid: #ebebeb; --axis: #b8b8b8; --ring: #e0e0e0; --ring-2: #b8b8b8;
+  --signal: #7700bd; --signal-soft: #f3e3ff; --focus: #8f00e6; --on-signal: #ffffff;
+  --btn-bg: #000000; --btn-fg: #ffffff; --btn-hover: #3b3b3b;
+  --band: rgba(119,0,189,0.06); --band-edge: #cfa6ee;
+  --c-es: #2a78d6; --c-lt: #eb6834; --c-de: #1baf7a; --c-ie: #eda100;
+  --ok-ink: #0d732f; --bad: #c21f1f;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--page); color: var(--ink-1); font: 15px/1.55 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-underline-offset: 3px; text-decoration-color: var(--axis); }
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--c-es); outline-offset: 2px; border-radius: 6px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* top bar */
+.topbar { position: sticky; top: 0; z-index: 1000; backdrop-filter: saturate(1.4) blur(10px); background: color-mix(in srgb, var(--page) 82%, transparent); border-bottom: 1px solid var(--ring); }
+.topbar .wrap { display: flex; align-items: center; gap: 18px; height: 56px; }
+.brand { font-weight: 650; letter-spacing: -0.01em; white-space: nowrap; }
+.nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; }
+.nav a { text-decoration: none; color: var(--ink-2); font-size: 13.5px; padding: 6px 10px; border-radius: 999px; white-space: nowrap; }
+.nav a:hover { background: var(--surface-2); color: var(--ink-1); }
+.theme-btn { border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2); font: 13px var(--font); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.theme-btn:hover { color: var(--ink-1); }
+
+/* hero */
+header.hero { padding: 56px 0 28px; }
+.eyebrow { color: var(--ink-3); font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.05; letter-spacing: -0.025em; margin: 10px 0 14px; font-weight: 700; }
+.lede { font-size: 18px; color: var(--ink-2); max-width: 760px; margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--ring); font-size: 13.5px; color: var(--ink-2); }
+.chip b { color: var(--ink-1); font-weight: 600; }
+
+/* verdict */
+.verdict { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 8px; }
+.vcard { position: relative; background: var(--surface); border: 1px solid var(--ring); border-radius: var(--radius); padding: 22px 22px 20px; box-shadow: var(--shadow); overflow: hidden; }
+.vcard::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--key); }
+.vrank { font-size: 12.5px; color: var(--ink-3); letter-spacing: 0.04em; text-transform: uppercase; }
+.vtitle { font-size: 22px; font-weight: 650; letter-spacing: -0.015em; margin: 6px 0 6px; display: flex; align-items: center; gap: 10px; }
+.vcard p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+.vcard .vmeta { margin-top: 12px; font-size: 13px; color: var(--ink-3); }
+
+/* sections */
+section { padding: 48px 0 8px; scroll-margin-top: 64px; }
+h2 { font-size: 26px; letter-spacing: -0.02em; margin: 0 0 6px; font-weight: 680; }
+.sub { color: var(--ink-2); margin: 0 0 20px; max-width: 820px; }
+.panel { background: var(--surface); border: 1px solid var(--ring); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+/* legend keys */
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13.5px; color: var(--ink-2); margin: 0 0 14px; }
+.key { display: inline-flex; align-items: center; gap: 7px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--k); box-shadow: 0 0 0 2px var(--surface); flex: none; }
+.dot.hollow { background: transparent; border: 2px solid var(--k); }
+
+/* map */
+.map-shell { display: grid; grid-template-columns: 1fr 340px; gap: 0; overflow: hidden; }
+#map { height: 560px; background: var(--surface-2); }
+.map-side { border-left: 1px solid var(--ring); max-height: 560px; overflow: auto; }
+.loc { display: grid; grid-template-columns: 14px 1fr; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--ring); cursor: pointer; background: none; border-left: 0; border-right: 0; border-top: 0; width: 100%; text-align: left; color: inherit; font: inherit; }
+.loc:hover, .loc[aria-current="true"] { background: var(--surface-2); }
+.loc .dot { margin-top: 6px; }
+.loc .t { font-weight: 600; font-size: 14px; }
+.loc .s { color: var(--ink-2); font-size: 13px; }
+.loc .a { color: var(--ink-3); font-size: 12.5px; }
+.map-fallback { display: none; padding: 24px; color: var(--ink-2); }
+.leaflet-container { font: 13px/1.45 var(--font); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--ink-1); box-shadow: var(--shadow); }
+.leaflet-popup-content { margin: 14px 16px; min-width: 230px; }
+.pop h4 { margin: 0 0 2px; font-size: 14.5px; }
+.pop .u { color: var(--ink-2); font-size: 12.5px; margin-bottom: 8px; }
+.pop dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; margin: 0; font-size: 12.5px; }
+.pop dt { color: var(--ink-3); }
+.pop dd { margin: 0; color: var(--ink-1); }
+.leaflet-tooltip { background: var(--surface); color: var(--ink-1); border: 1px solid var(--ring); box-shadow: var(--shadow); font-weight: 600; }
+
+/* course cards */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.fbtn { border: 1px solid var(--ring); background: var(--surface); color: var(--ink-2); font: 13.5px var(--font); padding: 7px 14px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.fbtn[aria-pressed="true"] { background: var(--ink-1); color: var(--page); border-color: var(--ink-1); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+.card { position: relative; background: var(--surface); border: 1px solid var(--ring); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+.card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--key); }
+.card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.rank { font-size: 12px; font-weight: 650; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-1); background: var(--surface-2); border: 1px solid var(--ring); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.country { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--ink-2); }
+.card h3 { margin: 0; font-size: 18px; line-height: 1.25; letter-spacing: -0.01em; }
+.card .uni { color: var(--ink-2); font-size: 14px; margin-top: 2px; }
+.area { display: grid; grid-template-columns: 18px 1fr; gap: 8px; background: var(--surface-2); border-radius: 10px; padding: 10px 12px; font-size: 13.5px; }
+.area svg { margin-top: 2px; color: var(--ink-3); }
+.area .city { font-weight: 600; }
+.area .addr { color: var(--ink-2); }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.fact { border: 1px solid var(--ring); border-radius: 10px; padding: 8px 10px; }
+.fact .l { font-size: 11.5px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; }
+.fact .v { font-size: 15px; font-weight: 650; margin-top: 1px; }
+.fact .v small { font-weight: 400; color: var(--ink-2); font-size: 12px; }
+.rows { margin: 0; display: grid; grid-template-columns: 96px 1fr; gap: 6px 12px; font-size: 13.5px; }
+.rows dt { color: var(--ink-3); }
+.rows dd { margin: 0; color: var(--ink-1); }
+.catch { font-size: 13.5px; color: var(--ink-2); border-left: 2px solid var(--axis); padding: 2px 0 2px 10px; }
+.catch b { color: var(--ink-1); }
+blockquote { margin: 0; font-size: 13.5px; color: var(--ink-2); font-style: italic; }
+blockquote cite { display: block; font-style: normal; color: var(--ink-3); font-size: 12px; margin-top: 2px; }
+.card-foot { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 4px; }
+.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink-1); font: 600 13px var(--font); padding: 7px 12px; border-radius: 9px; cursor: pointer; text-decoration: none; }
+.btn:hover { background: var(--surface-2); }
+
+/* cost chart */
+.chart { padding: 22px 22px 14px; position: relative; }
+.chart-grid { display: grid; grid-template-columns: 230px 1fr 92px; align-items: center; row-gap: 10px; column-gap: 14px; }
+.ax-row { display: contents; }
+.c-label { font-size: 13.5px; }
+.c-label .n { font-weight: 600; }
+.c-label .m { color: var(--ink-3); font-size: 12px; }
+.track { position: relative; height: 34px; }
+.band { position: absolute; top: -6px; bottom: -6px; background: var(--band); border-left: 1px solid var(--band-edge); border-right: 1px solid var(--band-edge); pointer-events: none; }
+.gridline { position: absolute; top: -6px; bottom: -6px; width: 1px; background: var(--grid); pointer-events: none; }
+.rbar { position: absolute; top: 10px; height: 14px; border-radius: 4px; background: var(--key); cursor: default; }
+.rbar::after { content: ""; position: absolute; inset: -10px -6px; } /* bigger hit target */
+.rbar.dim { opacity: 0.55; }
+.c-val { font-size: 13.5px; font-variant-numeric: tabular-nums; color: var(--ink-1); white-space: nowrap; }
+.axis { display: grid; grid-template-columns: 230px 1fr 92px; column-gap: 14px; margin-top: 6px; }
+.ticks { position: relative; height: 20px; border-top: 1px solid var(--axis); }
+.tick { position: absolute; top: 4px; transform: translateX(-50%); font-size: 11.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.band-label { position: absolute; top: -26px; font-size: 12px; color: var(--ink-2); transform: translateX(-50%); white-space: nowrap; }
+.tip { position: fixed; z-index: 2000; pointer-events: none; background: var(--surface); border: 1px solid var(--ring); box-shadow: var(--shadow); border-radius: 10px; padding: 9px 12px; font-size: 13px; opacity: 0; transition: opacity .12s; max-width: 280px; }
+.tip .tv { font-size: 16px; font-weight: 700; }
+.tip .tl { color: var(--ink-2); display: flex; align-items: center; gap: 7px; }
+.tip .tl i { width: 14px; height: 2px; background: var(--key); display: inline-block; border-radius: 2px; }
+details.tableview { margin-top: 14px; border-top: 1px solid var(--ring); padding-top: 12px; }
+details.tableview summary { cursor: pointer; color: var(--ink-2); font-size: 13.5px; }
+.note { color: var(--ink-3); font-size: 12.5px; margin-top: 10px; }
+
+/* tables */
+.tbl-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+thead th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); font-weight: 600; background: var(--surface); position: sticky; top: 0; }
+tbody th { font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+td.num { font-variant-numeric: tabular-nums; }
+.th-key { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-1); text-transform: none; letter-spacing: 0; font-size: 13.5px; }
+
+/* timeline */
+.timeline { padding: 8px 22px; }
+.tl-item { display: grid; grid-template-columns: 150px 22px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--grid); }
+.tl-item:last-child { border-bottom: 0; }
+.tl-date { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tl-date small { display: block; color: var(--ink-3); font-weight: 400; font-size: 12px; }
+.tl-rail { position: relative; }
+.tl-rail .dot { position: absolute; top: 6px; left: 4px; }
+.tl-what { color: var(--ink-1); }
+.tl-what .w { color: var(--ink-2); font-size: 13.5px; }
+.tl-what .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tag { font-size: 12px; color: var(--ink-2); background: var(--surface-2); border-radius: 999px; padding: 2px 9px; display: inline-flex; gap: 6px; align-items: center; }
+
+/* ruled out */
+.ruled { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.rcard { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 14px 16px; }
+.rcard .rt { font-weight: 650; display: flex; align-items: center; gap: 8px; }
+.rcard .rt svg { color: var(--ink-3); flex: none; }
+.rcard p { margin: 4px 0 0; color: var(--ink-2); font-size: 13.5px; }
+
+/* checklist */
+.check { padding: 6px 22px; }
+.check label { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--grid); cursor: pointer; }
+.check label:last-child { border-bottom: 0; }
+.check input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--c-es); }
+.check .when { color: var(--ink-3); font-size: 12.5px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.check input:checked + span { color: var(--ink-3); text-decoration: line-through; }
+.progress { height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin: 4px 22px 14px; }
+.progress i { display: block; height: 100%; width: 0; background: var(--c-es); border-radius: 999px; transition: width .25s; }
+
+/* stats + footer */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 16px 18px; }
+.stat .sl { font-size: 12.5px; color: var(--ink-3); }
+.stat .sv { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+footer { padding: 40px 0 60px; color: var(--ink-3); font-size: 13px; }
+footer ul { padding-left: 18px; margin: 8px 0 0; columns: 2; column-gap: 32px; }
+footer li { margin-bottom: 4px; break-inside: avoid; }
+
+.fit-key { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 12px; }
+.fit { display: inline-flex; align-items: center; gap: 4px; font-size: 12.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--ring); white-space: nowrap; }
+.fit.yes { background: var(--surface-2); color: var(--ink-1); border-color: var(--ink-3); }
+.fit.partly { background: transparent; color: var(--ink-2); }
+.fit.no { background: transparent; color: var(--ink-3); border-style: dashed; }
+.csum { padding: 16px 18px 6px; color: var(--ink-2); font-size: 14px; }
+.csum b { color: var(--ink-1); }
+.h3 { font-size: 19px; margin: 34px 0 4px; letter-spacing: -0.01em; }
+.rbar-s { height: 10px; border-radius: 4px; background: var(--c-es); display: inline-block; vertical-align: middle; }
+#ctable td:nth-child(5), #rtable td.num { font-variant-numeric: tabular-nums; }
+#ctable a { font-weight: 600; }
+/* free & near-free section */
+.answer { padding: 18px 22px 8px; margin-bottom: 16px; }
+.answer h3 { margin: 0 0 8px; font-size: 17px; }
+.alist { margin: 0; padding-left: 20px; color: var(--ink-2); font-size: 14.5px; }
+.alist li { margin: 0 0 10px; }
+.alist b { color: var(--ink-1); }
+.routes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0 0 8px; }
+.route { background: var(--surface); border: 1px solid var(--ring); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+.route .rk { font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; }
+.route h4 { margin: 4px 0 8px; font-size: 16px; }
+.route ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-2); }
+.route li { margin-bottom: 5px; }
+.route li b { color: var(--ink-1); }
+#freeChart .rbar { background: var(--ink-2); }
+#freeChart .rbar.dim { background: transparent; border: 2px solid var(--ink-3); top: 9px; height: 12px; opacity: 1; }
+#ftable td:nth-child(5) { font-variant-numeric: tabular-nums; min-width: 120px; }
+#ftable td:nth-child(7) { min-width: 110px; }
+#ftable a { font-weight: 600; }
+.srcs { columns: 2; column-gap: 28px; padding-left: 18px; margin: 6px 0 0; font-size: 13px; color: var(--ink-3); }
+.srcs li { break-inside: avoid; margin-bottom: 3px; }
+@media (max-width: 960px) {
+  .routes { grid-template-columns: 1fr; }
+  .srcs { columns: 1; }
+  .verdict { grid-template-columns: 1fr; }
+  .map-shell { grid-template-columns: 1fr; }
+  .map-side { border-left: 0; border-top: 1px solid var(--ring); max-height: 360px; }
+  #map { height: 440px; }
+  .chart-grid, .axis { grid-template-columns: 140px 1fr 70px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  footer ul { columns: 1; }
+  .tl-item { grid-template-columns: 110px 22px 1fr; }
+}
+@media print { .topbar, .filters, .card-foot, #map, .map-side .btn { display: none; } body { background: #fff; } }
+
+/* ===================== Builder skin (AWS Builder Center UI language) ===================== */
+*, *::before, *::after { border-radius: 0 !important; }
+[hidden] { display: none !important; }
+.dot, .leaflet-interactive { border-radius: 50% !important; }
+html { scroll-padding-top: calc(var(--hh) + 16px); background: var(--page); }
+body { font: 400 15px/1.6 var(--font); font-variant-numeric: tabular-nums; }
+a { text-decoration-color: var(--ring-2); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+::selection { background: var(--signal); color: var(--on-signal); }
+.mono, .kick, .side-h, .sg-t, .snav a, .stat .sv, .kpi dd, .chip, .rank, .fit, .tick, .tl-date, thead th, .qw, .logo { font-family: var(--font-mono); font-feature-settings: "liga" 0, "calt" 0, "zero"; }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; gap: 20px; height: var(--hh); padding: 0 24px; background: var(--page); border-bottom: 1px solid var(--ring); }
+.logo { display: inline-flex; flex: none; align-items: center; gap: 12px; width: calc(var(--side) - 44px); font-weight: 700; font-size: 18px; line-height: 1; color: var(--ink-1); text-decoration: none; letter-spacing: -0.2px; }
+.logo b { color: var(--signal); font-weight: 700; }
+.lpx { display: grid; grid-template-columns: repeat(4, 6px); gap: 2px; }
+.lpx i { width: 6px; height: 6px; background: var(--signal); }
+.lpx i.o { background: transparent; }
+.top-c { position: relative; flex: 1 1 auto; min-width: 0; max-width: 560px; }
+.qbox { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px 0 12px; border: 1px solid var(--ring-2); background: var(--page); transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease; }
+.qbox:hover { border-color: var(--ink-3); }
+.qbox:focus-within { border-color: var(--focus); box-shadow: inset 0 0 0 1px var(--focus); }
+.qbox svg { flex: none; width: 16px; height: 16px; color: var(--ink-3); }
+#q { flex: 1 1 auto; min-width: 0; height: 38px; padding: 0; border: 0; background: transparent; color: var(--ink-1); font: 400 15px/24px var(--font); caret-color: var(--signal); outline: none; }
+#q::placeholder { color: var(--ink-3); font-style: italic; opacity: 1; }
+#q::-webkit-search-cancel-button { filter: grayscale(1); }
+.qk { flex: none; padding: 0 6px; border: 1px solid var(--ring); font: 12px/18px var(--font-mono); color: var(--ink-3); }
+.qres { position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 1100; max-height: min(60vh, 520px); overflow-y: auto; background: var(--surface); border: 1px solid var(--ring-2); animation: settle .25s cubic-bezier(.3,0,.2,1) both; }
+.qres button { display: grid; grid-template-columns: 10px minmax(0,1fr) auto; gap: 4px 12px; width: 100%; padding: 10px 14px; border: 0; border-bottom: 1px solid var(--ring); background: none; color: var(--ink-1); font: 14px/20px var(--font); text-align: left; cursor: pointer; }
+.qres button:last-child { border-bottom: 0; }
+.qres button .dot { margin-top: 5px; }
+.qres button:hover, .qres button[aria-selected="true"] { background: var(--surface-2); }
+.qres .qt { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qres .qs { grid-column: 2; color: var(--ink-3); font-size: 12.5px; line-height: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qres .qw { grid-column: 3; grid-row: 1 / span 2; align-self: center; font-size: 11.5px; color: var(--ink-3); white-space: nowrap; }
+.qres .qe { padding: 14px; color: var(--ink-3); font-size: 14px; }
+.qres mark { background: none; color: var(--signal); }
+.top-r { display: flex; flex: none; align-items: center; gap: 4px; margin-left: auto; }
+.hic { position: relative; display: grid; place-items: center; width: 48px; height: 40px; padding: 0; border: 0; background: none; color: var(--ink-3); cursor: pointer; transition: color var(--dur-fast) ease; }
+.hic:hover { color: var(--signal); }
+.hic svg { width: 20px; height: 20px; }
+#navBtn { display: none; }
+.top-r .btn-p { margin-left: 12px; }
+.gl { font: 700 13px/1 var(--font-mono); }
+
+/* buttons + links */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 36px; padding: 6px 14px; border: 1px solid var(--ink-1); background: transparent; color: var(--ink-1); font: 500 14px/20px var(--font); letter-spacing: .08px; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease, color var(--dur-fast) ease; }
+.btn:hover { background: transparent; border-color: var(--signal); color: var(--signal); }
+.btn-p { border-color: var(--btn-bg); background: var(--btn-bg); color: var(--btn-fg); }
+.btn-p:hover { border-color: var(--btn-hover); background: var(--btn-hover); color: var(--btn-fg); }
+.lnk { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font: 500 15px/24px var(--font); color: var(--ink-1); text-decoration: none; transition: color var(--dur-fast) ease; }
+.lnk:hover { color: var(--signal); text-decoration: underline; text-underline-offset: 4px; }
+.arw { display: inline-block; transition: transform var(--dur-fast) var(--ease-out-quart); }
+.lnk:hover .arw, .btn:hover .arw { transform: translateX(3px); }
+
+/* shell: side menu + content column */
+.shell { display: grid; grid-template-columns: var(--side) minmax(0, 1fr); }
+.snav { position: sticky; top: var(--hh); align-self: start; height: calc(100dvh - var(--hh)); overflow-y: auto; padding: 28px 16px 40px; border-right: 1px solid var(--ring); background: var(--page); scrollbar-width: thin; scrollbar-color: var(--ring-2) transparent; }
+.side-h { margin: 0 0 22px; padding: 0 8px; font-size: 20px; line-height: 26px; font-weight: 700; letter-spacing: -0.3px; color: var(--ink-1); }
+.sg { margin: 0 0 18px; }
+.sg-t { margin: 0 0 4px; padding: 0 12px; font-size: 11.5px; line-height: 16px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.snav a { display: flex; align-items: center; gap: 10px; min-height: 38px; padding: 8px 12px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink-1); text-decoration: none; transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease; }
+.snav a svg { flex: none; width: 16px; height: 16px; }
+.snav a:hover { color: var(--signal); }
+.snav a[aria-current="true"] { background: var(--signal); color: var(--on-signal); }
+:root[data-theme="light"] .snav a[aria-current="true"] { background: var(--signal-soft); color: var(--ink-1); box-shadow: inset 3px 0 var(--signal); }
+.side-box { margin: 26px 8px 0; padding: 14px 14px 10px; border: 1px solid var(--ring); }
+.side-box h3 { margin: 0 0 8px; font: 700 14px/20px var(--font-mono); color: var(--ink-1); }
+.side-box ul { margin: 0; padding: 0; list-style: none; }
+.side-box li { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-top: 1px solid var(--ring); font-size: 13px; line-height: 18px; color: var(--ink-2); }
+.side-box li:first-child { border-top: 0; }
+.side-box li b { flex: none; min-width: 78px; font: 500 12px/18px var(--font-mono); color: var(--ink-1); }
+.side-chk { display: flex; align-items: center; gap: 8px; margin: 16px 8px 0; font-size: 12.5px; color: var(--ink-3); }
+.led { display: inline-block; flex: none; width: 8px; height: 8px; background: var(--ok-ink); }
+.col { min-width: 0; }
+main.main { max-width: 1160px; margin: 0 auto; padding: 0 48px 24px; }
+.scrim { position: fixed; inset: var(--hh) 0 0 0; z-index: 1040; background: rgba(0,0,0,.55); }
+
+/* hero */
+header.hero { padding: 48px 0 8px; }
+.kick { margin: 0; font-size: 12px; line-height: 16px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+h1.code { margin: 12px 0 18px; font: 400 clamp(26px, 3.2vw, 40px)/1.25 var(--font-mono); letter-spacing: -0.8px; color: var(--ink-1); }
+h1.code .tx { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; max-width: 0; animation: type-in 1.1s steps(34, end) .2s forwards; }
+.kw { color: var(--signal); }
+.hc { display: inline-block; width: .55em; height: .95em; margin-left: 4px; vertical-align: -0.08em; background: var(--signal); animation: blink 1.05s steps(1) 1.4s infinite; }
+.lede { font-size: 17px; line-height: 27px; color: var(--ink-2); max-width: 780px; margin: 0; }
+.lede b { color: var(--ink-1); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); margin: 32px 0 0; border: 1px solid var(--ring); }
+.kpi { margin: 0; padding: 18px 20px; border-left: 1px solid var(--ring); }
+.kpi:first-child { border-left: 0; }
+.kpi dt { font-size: 13px; color: var(--ink-3); }
+.kpi dd { margin: 4px 0 0; font-size: 30px; line-height: 38px; color: var(--ink-1); }
+.chips { gap: 8px; margin-top: 18px; }
+.chip { gap: 8px; padding: 4px 10px; border: 1px solid var(--ring-2); background: none; font-size: 12.5px; line-height: 18px; color: var(--ink-2); }
+.chip::before { content: ""; flex: none; width: 6px; height: 6px; background: var(--signal); }
+.chip b { color: var(--ink-1); font-weight: 500; }
+.verdict { margin: 28px 0 0; }
+.vcard { border-color: var(--ring); transition: border-color var(--dur-fast) ease; }
+.vcard:hover { border-color: var(--ring-2); }
+.vrank { font: 12px/16px var(--font-mono); letter-spacing: .06em; }
+.vtitle { font-weight: 600; }
+.volt { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 24px; margin: 28px 0 0; padding: 32px 36px; background: var(--volt); color: var(--volt-ink); overflow: hidden; }
+.volt .vk { font: 500 13px/18px var(--font-mono); }
+.volt h3 { margin: 6px 0 10px; font: 400 clamp(22px, 2.6vw, 32px)/1.2 var(--font-mono); letter-spacing: -0.5px; }
+.volt p { max-width: 600px; margin: 0 0 18px; font-size: 15px; line-height: 24px; }
+.volt .btn-v { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 6px 16px; border: 1px solid var(--volt-ink); background: var(--volt-ink); color: var(--volt); font: 500 15px/22px var(--font); text-decoration: none; transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease; }
+.volt .btn-v:hover { background: transparent; color: var(--volt-ink); }
+.vpx { display: grid; grid-template-columns: repeat(9, 14px); gap: 0; margin-right: 12px; }
+.vpx i { width: 14px; height: 14px; }
+.vpx i.a { background: var(--volt-px); } .vpx i.b { background: var(--volt-2); }
+
+/* sections */
+main.main > section { margin-top: 56px; padding: 48px 0 8px; border-top: 1px solid var(--ring); scroll-margin-top: calc(var(--hh) + 8px); }
+h2 { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; font: 400 26px/32px var(--font-mono); letter-spacing: -0.4px; color: var(--ink-1); }
+h2::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--signal); }
+.h3 { font: 400 19px/26px var(--font-mono); letter-spacing: -0.2px; margin: 36px 0 6px; }
+.sub { color: var(--ink-2); max-width: 820px; }
+.panel { border-color: var(--ring); }
+.legend { font-size: 13px; }
+.note { font-size: 12.5px; }
+
+/* map */
+.map-wrap { position: relative; }
+.map-hint { position: absolute; left: 12px; bottom: 26px; z-index: 600; padding: 5px 10px; border: 1px solid var(--ring-2); background: var(--page); font: 12px/16px var(--font-mono); color: var(--ink-2); pointer-events: none; transition: opacity .5s ease; }
+.map-hint.off { opacity: 0; }
+.map-reset { position: absolute; top: 10px; right: 10px; z-index: 600; min-height: 32px; padding: 4px 12px; background: var(--page); font-size: 13px; }
+.map-side { border-left-color: var(--ring); }
+.loc { border-bottom-color: var(--ring); transition: background-color var(--dur-fast) ease; }
+.loc[aria-current="true"] { box-shadow: inset 3px 0 var(--signal); }
+.loc .t { font-family: var(--font-mono); font-weight: 500; }
+.leaflet-container { font: 13px/1.45 var(--font); background: var(--surface-2); }
+.leaflet-popup-content-wrapper { border: 1px solid var(--ring-2); box-shadow: none; animation: settle .25s cubic-bezier(.3,0,.2,1) both; }
+.leaflet-popup-tip { border: 1px solid var(--ring-2); box-shadow: none; }
+.pop h4 { font: 600 14.5px/20px var(--font); }
+.leaflet-tooltip { border: 1px solid var(--ring-2); box-shadow: none; font: 500 12.5px/18px var(--font); }
+.leaflet-bar { border: 1px solid var(--ring-2) !important; box-shadow: none !important; }
+.leaflet-bar a { background: var(--page) !important; color: var(--ink-1) !important; border-bottom-color: var(--ring) !important; transition: color var(--dur-fast) ease; }
+.leaflet-bar a:hover { color: var(--signal) !important; }
+.leaflet-control-attribution { background: color-mix(in srgb, var(--page) 80%, transparent) !important; color: var(--ink-3) !important; }
+.leaflet-control-attribution a { color: var(--ink-2) !important; }
+
+/* cards, filters, badges */
+.filters { gap: 8px; }
+.fbtn { min-height: 36px; padding: 6px 14px; border: 1px solid var(--ring-2); background: none; color: var(--ink-1); font: 500 14px/20px var(--font); transition: color var(--dur-fast) ease, border-color var(--dur-fast) ease, background-color var(--dur-fast) ease; }
+.fbtn:hover { border-color: var(--signal); color: var(--signal); }
+.fbtn[aria-pressed="true"] { background: var(--ink-1); color: var(--page); border-color: var(--ink-1); }
+.card, .route, .rcard, .stat { border-color: var(--ring); transition: border-color var(--dur-fast) ease; }
+.card:hover, .route:hover, .rcard:hover { border-color: var(--ring-2); }
+.card h3 { font-weight: 600; }
+.rank { padding: 2px 8px; border: 1px solid var(--ring-2); background: none; font-size: 11px; line-height: 16px; letter-spacing: .06em; font-weight: 500; }
+.area { background: var(--surface-2); }
+.fact { border-color: var(--ring); }
+.fact .l { font: 11px/16px var(--font-mono); letter-spacing: .06em; }
+.catch { border-left: 2px solid var(--signal); }
+.fit { gap: 6px; padding: 2px 8px; font-size: 11.5px; line-height: 18px; font-weight: 500; }
+.fit.yes { border-color: var(--ok-ink); color: var(--ok-ink); background: none; }
+.fit.partly { border-color: var(--ring-2); color: var(--ink-2); }
+.fit.no { border-color: var(--ring-2); color: var(--ink-3); }
+.tag { padding: 2px 8px; background: none; border: 1px solid var(--ring); font-family: var(--font-mono); font-size: 11.5px; }
+
+/* tables */
+table { font-size: 13.5px; }
+th, td { border-bottom-color: var(--ring); }
+thead th { font-size: 11px; line-height: 16px; letter-spacing: .08em; font-weight: 500; color: var(--ink-3); border-bottom: 1px solid var(--ring-2); }
+tbody tr { transition: background-color var(--dur-fast) ease; }
+tbody tr:hover { background: var(--surface-2); }
+tr.flash { animation: flash 2.2s ease-out; }
+
+/* charts, timeline, checklist, stats */
+.rbar, .rbar-s { border-radius: 0 !important; }
+.tick { font-size: 11px; }
+.c-label .n { font-weight: 600; }
+.tip { border: 1px solid var(--ring-2); box-shadow: none; animation: settle .2s cubic-bezier(.3,0,.2,1) both; }
+.tl-date { font-weight: 500; }
+.check input { accent-color: var(--signal); }
+.progress { height: 6px; background: var(--surface-3); }
+.progress i { background: var(--signal); }
+.stat .sl { font-size: 12.5px; }
+.stat .sv { font-weight: 400; font-size: 30px; }
+footer.foot { max-width: 1160px; margin: 56px auto 0; padding: 32px 48px 64px; border-top: 1px solid var(--ring); color: var(--ink-3); font-size: 13px; }
+footer.foot a { color: var(--ink-2); }
+
+/* motion (Builder: content-show, settle-down, type-in, caret blink) */
+.rv { opacity: 0; transform: translateY(.5rem); }
+.rv.in { opacity: 1; transform: none; transition: opacity .45s var(--ease-out-quint), transform .45s var(--ease-out-quint); }
+@keyframes type-in { to { max-width: 37ch; } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes settle { 0% { opacity: 0; transform: translateY(-6px); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+@keyframes flash { 0%, 30% { background: var(--signal-soft); } to { background: transparent; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  h1.code .tx { max-width: none; }
+  .rv { opacity: 1; transform: none; }
+}
+
+/* responsive: side menu becomes a drawer below 1024px */
+@media (max-width: 1023px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .snav { position: fixed; top: var(--hh); left: 0; bottom: 0; z-index: 1050; width: min(300px, 86vw); height: auto; transform: translateX(-100%); visibility: hidden; transition: transform .25s var(--ease-out-quint), visibility 0s linear .25s; }
+  .snav.open { transform: none; visibility: visible; transition: transform .25s var(--ease-out-quint); }
+  #navBtn { display: grid; margin-left: -10px; }
+  .logo { width: auto; }
+  main.main { padding: 0 24px 24px; }
+  footer.foot { padding: 32px 24px 56px; }
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .kpi:nth-child(3) { border-left: 0; }
+  .kpi:nth-child(n+3) { border-top: 1px solid var(--ring); }
+}
+@media (max-width: 700px) {
+  :root { --hh: 64px; }
+  .top { gap: 8px; padding: 0 12px; }
+  .logo .lt { display: none; }
+  .top-r .btn-p, .qk { display: none; }
+  main.main { padding: 0 16px 24px; }
+  h1.code .tx { display: inline; white-space: normal; max-width: none; animation: none; }
+  .volt { grid-template-columns: 1fr; padding: 24px; }
+  .vpx { display: none; }
+}
+@media print { .top, .snav, .filters, .card-foot, #map, .map-side .btn, .map-hint, .map-reset { display: none !important; } .shell { display: block; } body { background: #fff; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <button class="hic" id="navBtn" type="button" aria-label="Open the section menu" aria-expanded="false" aria-controls="snav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="logo" href="#verdict" target="_self" aria-label="Europe plan, back to top"><span class="lpx" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i></span><span class="lt">EU<b>//</b>PLAN</span></a>
+  <div class="top-c">
+    <label class="qbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search</span><input id="q" type="search" placeholder="Search university, course or city" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="qres"><kbd class="qk" aria-hidden="true">/</kbd></label>
+    <div class="qres" id="qres" role="listbox" aria-label="Search results" hidden></div>
+  </div>
+  <div class="top-r">
+    <button class="hic" id="themeBtn" type="button" aria-label="Switch to light theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
+    <a class="btn btn-p" href="#todo" target="_self"><span class="gl">&gt;_</span> To-do</a>
+  </div>
+</header>
+
+<div class="shell">
+<nav class="snav" id="snav" aria-label="Sections">
+  <div class="side-h">Europe plan</div>
+  <div class="sg"><div class="sg-t">Plan</div>
+    <a href="#verdict" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Verdict</a>
+    <a href="#map-sec" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Map</a>
+    <a href="#courses" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>Courses</a>
+    <a href="#cost" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Cost</a>
+    <a href="#countries" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>Life after</a>
+  </div>
+  <div class="sg"><div class="sg-t">Explore</div>
+    <a href="#all" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>All 20 countries</a>
+    <a href="#free" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7S10 2 7 3.5 9 7 12 7zM12 7s2-5 5-3.5S15 7 12 7z"/></svg>Free &amp; near-free</a>
+    <a href="#money" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6M12 3v18"/></svg>Scholarships</a>
+    <a href="#ruled" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Ruled out</a>
+  </div>
+  <div class="sg"><div class="sg-t">Act</div>
+    <a href="#deadlines" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Deadlines</a>
+    <a href="#todo" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>To-do</a>
+  </div>
+  <div class="side-box">
+    <h3>Your rules</h3>
+    <ul>
+      <li><b>Degree</b>BCA, 3 years, ~89%</li>
+      <li><b>Length</b>≤ 1.5 years per course</li>
+      <li><b>Budget</b>₹15–25 lakh in total</li>
+      <li><b>Family</b>Brother in Lithuania</li>
+      <li><b>Rate</b>€1 ≈ ₹103</li>
+    </ul>
+  </div>
+  <div class="side-chk"><span class="led" aria-hidden="true"></span>Checked 23–24 Nov 2026</div>
+</nav>
+<div class="scrim" id="scrim" hidden></div>
+<div class="col">
+<main class="main" id="main">
+  <header class="hero" id="verdict">
+    <p class="kick">EUROPE://PLAN · master's 2027 · start Sept 2027</p>
+    <h1 class="code" aria-label="europe.plan(max_years = 1.5, budget = 25 lakh)"><span class="tx" aria-hidden="true"><span class="kw">europe</span>.plan(max=<span class="kw">1.5y</span>, budget=<span class="kw">₹25L</span>)</span><i class="hc" aria-hidden="true"></i></h1>
+    <p class="lede"><b>Spain first. Lithuania as the safe backup. Germany only with German.</b> Every realistic English-taught master's in Europe that fits your rules: a 3-year BCA, no course longer than 1.5 years, and a total budget of ₹15–25 lakh.</p>
+    <div class="cta"><a class="btn btn-p" href="#courses" target="_self">Browse courses</a><a class="lnk" href="#map-sec" target="_self">Open the map <span class="arw" aria-hidden="true">→</span></a><a class="lnk" href="#free" target="_self">Free &amp; near-free <span class="arw" aria-hidden="true">→</span></a></div>
+    <dl class="kpis">
+      <div class="kpi"><dt>Courses compared</dt><dd>180</dd></div>
+      <div class="kpi"><dt>Countries</dt><dd>20</dd></div>
+      <div class="kpi"><dt>Web searches</dt><dd>1,255</dd></div>
+      <div class="kpi"><dt>Reddit threads</dt><dd>322</dd></div>
+    </dl>
+    <div class="chips">
+      <span class="chip"><b>BCA</b> 3-year · ~89%</span>
+      <span class="chip"><b>≤ 1.5 years</b> per course</span>
+      <span class="chip"><b>₹15–25 lakh</b> total budget</span>
+      <span class="chip"><b>Brother</b> in Lithuania</span>
+      <span class="chip"><b>€1 ≈ ₹103</b> used for costs</span>
+    </div>
+    <div class="verdict" id="verdictCards"></div>
+    <div class="volt">
+      <div>
+        <div class="vk">Fresh find · free &amp; near-free pass</div>
+        <h3>Greece: English master's from €2,700</h3>
+        <p>NKUA Athens runs a 3-semester MSc in Data Science &amp; IT for €2,700 in total. UCD Dublin pays 100% of tuition if you win its scholarship (apply by 28 Feb 2027).</p>
+        <a class="btn-v" href="#free" target="_self">See free options <span class="arw" aria-hidden="true">→</span></a>
+      </div>
+      <div class="vpx" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i></i><i></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i class="a"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="a"></i><i></i><i></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i></i><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="a"></i></div>
+    </div>
+  </header>
+
+  <section id="map-sec" aria-labelledby="h-map">
+    <h2 id="h-map">Where each college is</h2>
+    <p class="sub">Scroll over the map to zoom in and out, drag to move, and click a place on the list or a dot for the campus, address and key facts. Big dots are the main picks; small hollow dots are other campuses of the same university.</p>
+    <div class="legend" id="mapLegend"></div>
+    <div class="panel map-shell">
+      <div class="map-wrap">
+        <div id="map" role="region" aria-label="Map of the shortlisted universities. Scroll to zoom, drag to move."></div>
+        <div class="map-hint" id="mapHint" aria-hidden="true">Scroll to zoom · drag to move</div>
+        <button class="btn map-reset" id="mapReset" type="button" hidden>Reset view</button>
+        <div class="map-fallback" id="mapFallback">The map needs an internet connection (it loads Esri map tiles). Every location is listed on the right.</div>
+      </div>
+      <div class="map-side" id="locList" aria-label="Locations"></div>
+    </div>
+  </section>
+
+  <section id="courses" aria-labelledby="h-courses">
+    <h2 id="h-courses">The courses, in detail</h2>
+    <p class="sub">Tuition, fees and deadlines are taken from the universities' own pages. Living costs are estimates, marked “≈”.</p>
+    <div class="filters" id="filters" role="group" aria-label="Filter by country"></div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="cost" aria-labelledby="h-cost">
+    <h2 id="h-cost">Total cost against your budget</h2>
+    <p class="sub">Estimated total for the whole course (tuition + living + visa, tests and flights), in ₹ lakh. The shaded band is your ₹15–25 lakh budget.</p>
+    <div class="panel chart">
+      <div class="legend" id="costLegend"></div>
+      <div class="chart-grid" id="costChart" aria-label="Range chart of total cost per course"></div>
+      <div class="axis"><span></span><div class="ticks" id="costTicks"></div><span></span></div>
+      <details class="tableview">
+        <summary>Show as a table</summary>
+        <div class="tbl-wrap"><table id="costTable"><thead><tr><th>Course</th><th>Country</th><th>Length</th><th>Tuition</th><th>Total (₹ lakh)</th></tr></thead><tbody></tbody></table></div>
+      </details>
+      <p class="note">How the totals are estimated: ₹103 per € (₹101.2 mid-market on 23 Nov 2026 plus bank margin). Living costs per month: Lithuania ≈ €350 (rent-free with your brother), Madrid ≈ €1,000 (UC3M says €600–1,200), Barcelona ≈ €1,100, Granada ≈ €850, Kiel ≈ €1,000 with health insurance, Cork ≈ €1,000–1,200, Dublin ≈ €1,300–1,500. Irish cards with a scholarship show the total if you win it. One-time costs (visa, tests, flights, documents) ≈ ₹1.3–1.5 lakh. Vilnius University with a full fee waiver drops to ≈ ₹8 lakh.</p>
+    </div>
+  </section>
+
+  <section id="countries" aria-labelledby="h-countries">
+    <h2 id="h-countries">Life after the course, country by country</h2>
+    <p class="sub">What decides whether you can stay: work hours while you study, time allowed to find a job, and the salary floor for a work permit.</p>
+    <div class="panel tbl-wrap"><table id="countryTable"></table></div>
+  </section>
+
+  <section id="all" aria-labelledby="h-all">
+    <h2 id="h-all">Every country: at least 5 universities each</h2>
+    <p class="sub">The same research for every country: about 50 web searches each, Reddit threads and the official course pages. Pick a country to see its universities, cities, course length, non-EU fees and whether each course fits your rules (≤ 1.5 years, English, accepts a 3-year BCA, within ₹15–25 lakh).</p>
+    <div class="fit-key"><span class="fit yes">✓ Fits your rules</span><span class="fit partly">~ Partly fits</span><span class="fit no">✕ Doesn't fit</span></div>
+    <div class="filters" id="cpick" role="tablist" aria-label="Choose a country"></div>
+    <div class="panel">
+      <div class="csum" id="csum"></div>
+      <div class="tbl-wrap"><table id="ctable"><thead><tr><th>University</th><th>Course</th><th>City / area</th><th>Length</th><th>Tuition (non-EU)</th><th>Language</th><th>Fits?</th><th>Why</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <h3 class="h3">Research done per country</h3>
+    <p class="sub">Web searches, Reddit threads read, and official or guide pages read in full.</p>
+    <div class="panel tbl-wrap"><table id="rtable"><thead><tr><th>Country</th><th>Web searches</th><th></th><th>Reddit threads</th><th>Pages read</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section id="free" aria-labelledby="h-free">
+    <h2 id="h-free">Free &amp; near-free universities (Germany left out)</h2>
+    <p class="sub">A separate deep pass only on free tuition: 251 web searches (45 of them on Ireland), 67 Reddit threads (369 comments), 152 official or guide pages and the official Erasmus Mundus catalogue. Fees are for the whole course for an Indian (non-EU) student.</p>
+    <div class="panel answer">
+      <h3>The honest answer</h3>
+      <ol class="alist">
+        <li><b>Outside Germany, "free + English + ≤ 1.5 years + open to Indians" barely exists.</b> Most free master's are taught in the local language, or last 2 years, or both.</li>
+        <li><b>The closest thing is Greece.</b> Public universities run English master's of 3 semesters for <b>€2,700–3,700 in total</b> (NKUA, UniWA, Crete, IHU). You can work 20 h/week and get a 1-year job-search permit. The weak point is the small, low-paid IT job market.</li>
+        <li><b>Near-free if you learn Spanish:</b> Andalusia charges everyone €13.68 per credit, about <b>€821 for a 1-year master's</b>. The University of Seville states in writing that foreigners pay the same. Most of these courses are taught in Spanish (B2 needed).</li>
+        <li><b>Free by winning:</b> Vilnius University (5 full waivers, apply by 1 Apr 2027), KTU (automatic waivers by entry score), UC3M (4 full grants), <b>UCD Dublin (100% or 50% tuition, India eligible, apply by 28 Feb 2027)</b>, Government of Ireland (60 awards, fee + €10,000) and Erasmus Mundus GeoTech (18 months, €1,400 a month).</li>
+        <li><b>Ireland has no free master's for non-EU students.</b> Free Fees and Springboard+ are only for EU or Irish residents. Apart from UCD and the Government of Ireland award, Irish scholarships are €2,000–7,500 discounts (see the Ireland tab).</li>
+        <li><b>Free, but it breaks your rules:</b> Czech-, Polish- and Slovak-taught degrees (you need B2–C1 and usually a prep year), Austria (€727 a semester, 2 years), Stipendium Hungaricum and Italy's DSU grants (generous, but 2-year master's).</li>
+      </ol>
+    </div>
+    <div class="routes" id="freeRoutes"></div>
+
+    <h3 class="h3">Cheapest courses that fit your rules</h3>
+    <p class="sub">Tuition for the whole course, non-EU rate, courses of 1.5 years or less. Living costs are extra: Athens ≈ €650–950 a month, Heraklion and Granada a little less. A hollow bar means Spanish-taught.</p>
+    <div class="panel chart" id="freeChart" role="img" aria-label="Bar chart of whole-course tuition for the cheapest courses that fit; the table below lists the same numbers"></div>
+
+    <h3 class="h3">Country by country</h3>
+    <div class="fit-key"><span class="fit yes">✓ Fits your rules</span><span class="fit partly">~ Partly fits</span><span class="fit no">✕ Doesn't fit</span></div>
+    <div class="filters" id="fpick" role="tablist" aria-label="Choose a country or route"></div>
+    <div class="panel">
+      <div class="csum" id="fsum"></div>
+      <div class="tbl-wrap"><table id="ftable"><thead><tr><th>University</th><th>Course</th><th>City / area</th><th>Length</th><th>Tuition (total, non-EU)</th><th>Language</th><th>Why cheap</th><th>Fits?</th><th>Catch</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <p class="note">Every course in this list is also on the map above as a small filled grey dot.</p>
+
+    <h3 class="h3">Checked: not free any more, or not open to Indians</h3>
+    <p class="sub">These come up in every "free education in Europe" list. Here is what the official pages say now.</p>
+    <div class="ruled" id="freeRuled"></div>
+
+    <h3 class="h3">Official sources for this section</h3>
+    <ul class="srcs" id="freeSrc"></ul>
+  </section>
+
+  <section id="deadlines" aria-labelledby="h-deadlines">
+    <h2 id="h-deadlines">Deadlines, Dec 2026 – Sept 2027</h2>
+    <p class="sub">Apply early: UC3M closes programmes when seats fill, and KTU caps how many applications it takes from each country.</p>
+    <div class="panel timeline" id="timeline"></div>
+  </section>
+
+  <section id="money" aria-labelledby="h-money">
+    <h2 id="h-money">Free tuition, waivers and stipends</h2>
+    <p class="sub">Which free money actually fits a ≤1.5-year course, and which does not.</p>
+    <div class="panel tbl-wrap"><table id="moneyTable"></table></div>
+  </section>
+
+  <section id="ruled" aria-labelledby="h-ruled">
+    <h2 id="h-ruled">Checked and ruled out</h2>
+    <p class="sub">Each was researched; here is why it does not fit.</p>
+    <div class="ruled" id="ruledList"></div>
+  </section>
+
+  <section id="todo" aria-labelledby="h-todo">
+    <h2 id="h-todo">Your to-do list</h2>
+    <p class="sub">Ticks are saved in this browser.</p>
+    <div class="panel">
+      <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+      <div class="check" id="checklist"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-research">
+    <h2 id="h-research">How much research is behind this</h2>
+    <div class="stats">
+      <div class="stat"><div class="sl">Web searches (≥ 50 per country + free-uni pass)</div><div class="sv">1,255</div></div>
+      <div class="stat"><div class="sl">Reddit threads read</div><div class="sv">322</div></div>
+      <div class="stat"><div class="sl">Reddit comments</div><div class="sv">1,765</div></div>
+      <div class="stat"><div class="sl">Courses compared (incl. free list)</div><div class="sv">180</div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div>Rules and fees change every year. Check each official page before you pay anything. X (Twitter) could not be searched without a login, so it is not included.</div>
+  <ul id="sources"></ul>
+</footer>
+</div>
+</div>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) { if (k === "text") n.textContent = attrs[k]; else if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  var FIT = { yes: "✓ Fits", partly: "~ Partly", no: "✕ No" };
+  /* [university, course, city, length, non-EU tuition, language, fit, why, link] */
+  var ALL = [
+    { c: "Ireland", v: "1-year English master's, 12 + 12 months to find a job, but every option is ≈ ₹26 lakh+ once rent is added. Only a scholarship makes it fit.", ll: [53.35, -7.7], z: 6, p: [
+      ["Munster Technological University (MTU)", "MSc Artificial Intelligence", "Cork · Bishopstown", "1 year", "€12,000 (after auto €3,000 off)", "English", "partly", "Cheapest in Ireland, but total ≈ ₹26–28 L", "https://www.mtu.ie/international/non-eu/fees/", [51.885, -8.533]],
+      ["National College of Ireland", "MSc in Data Analytics", "Dublin · IFSC", "1 year (3 semesters + practicum)", "€17,000", "English (IELTS 6.0)", "partly", "Over budget once Dublin rent is added", "https://www.ncirl.ie/Courses/NCI-Course-Details/course/MSCDAD", [53.349, -6.243]],
+      ["Technological University of the Shannon (TUS)", "MSc in Data Analytics", "Athlone / Limerick", "1 year", "€18,500 (2027/28)", "English", "partly", "Over budget", "https://tus.ie/global/international-admissions/fees-and-scholarships/", [53.424, -7.941]],
+      ["University of Limerick", "MSc Artificial Intelligence and Machine Learning", "Limerick", "1 year", "€21,500", "English", "no", "Over budget; closes 12 March", "https://www.ul.ie/study/postgraduate/artificial-intelligence-and-machine-learning-msc/apply", [52.674, -8.572]],
+      ["TU Dublin", "MSc Computer Science (Data Science)", "Dublin · Grangegorman", "1 or 1.5 years", "€21,750 total", "English (IELTS 6.5)", "no", "Needs a 2.1, or a 2.2 + 2 yrs software experience; over budget", "https://www.tudublin.ie/study/postgraduate/courses/computing-data-science/", [53.355, -6.279]],
+      ["University of Galway", "MSc Computer Science (Data Analytics)", "Galway", "1 year (90 ECTS)", "check (EU fee €9,150)", "English", "partly", "Second Class Honours may be enough; non-EU fee not published on the page", "https://www.universityofgalway.ie/courses/taught-postgraduate-courses/msc-in-computer-science-data-analytics.html", [53.278, -9.06]],
+      ["University College Cork", "MSc Data Science and Artificial Intelligence", "Cork", "1 year", "€29,614", "English", "no", "Needs a 2.1 in CS/maths; closes 8 Feb 2027", "https://www.ucc.ie/en/ckr49/", [51.893, -8.492]],
+      ["Maynooth University", "MSc Data Science and Analytics", "Maynooth (Co. Kildare)", "1 year", "check", "English", "no", "Asks for a 4-year honours degree", "https://www.courses.maynoothuniversity.ie/msc-data-science-and-analytics-ft-mhr64/", [53.381, -6.599]],
+      ["Atlantic Technological University", "MSc Computing in Big Data Analytics", "Letterkenny (online)", "1–2 years", "€7,560", "English", "no", "Delivered online, so no student visa", "https://www.atu.ie/courses/master-of-science-computing-in-big-data-analytics", [54.956, -7.734]]
+    ]},
+    { c: "Spain", v: "True 1-year master's at low public prices, 30 h/week work, 12 months to job-hunt and the easiest switch to a work permit. Your #1.", ll: [40.2, -3.0], z: 6, p: [
+      ["Universidad Carlos III de Madrid (UC3M)", "Master in Big Data Analytics", "Madrid · Puerta de Toledo", "1 year", "≈ €7,200 (€120/ECTS)", "English", "yes", "Round 1 closes 31 Jan 2027; 4 full grants", "https://www.uc3m.es/master/big-data-analytics", [40.407, -3.712]],
+      ["Universidad Carlos III de Madrid (UC3M)", "Master in Statistics for Data Science", "Madrid · Getafe", "1 year (60 ECTS)", "check (UC3M non-EU rate)", "English", "yes", "Maths/statistics heavy", "https://www.uc3m.es/master/statistics-data-science", [40.317, -3.727]],
+      ["Universitat Politècnica de Catalunya (UPC)", "Master's in Artificial Intelligence", "Barcelona · Campus Nord", "1.5 years", "≈ €2,700 total", "English", "yes", "Selective; Barcelona rent high", "https://www.upc.edu/en/masters/artificial-intelligence", [41.389, 2.113]],
+      ["Universitat Politècnica de Catalunya (UPC)", "Master's in Technology and Engineering Management", "Terrassa", "1.5 years", "≈ €4,050 total", "English", "yes", "Business + tech; 20 places", "https://www.upc.edu/en/masters/technology-and-engineering-management", [41.563, 2.023]],
+      ["Universitat Politècnica de Catalunya (UPC)", "Master's in Cybersecurity", "Barcelona · Campus Nord", "1 year", "≈ €2,700 total", "English", "partly", "Telecom background preferred", "https://www.upc.edu/en/masters/cybersecurity", [41.388, 2.116]],
+      ["Universidad de Granada (UGR)", "Máster en Ciencia de Datos e Ingeniería de Computadores", "Granada", "1 year", "≈ €821 (same for non-EU)", "Spanish (B2)", "partly", "Cheapest anywhere, but Spanish-taught", "https://www.ugr.es/en/study/masters-degree/masters-degree-data-science-and-computer-engineering", [37.197, -3.624]],
+      ["Universitat Politècnica de València (UPV)", "Master's in Data Analytics Engineering", "Valencia", "1 year (60 ECTS)", "from ≈ €4,241 (non-EU rate)", "Spanish", "partly", "Spanish-taught", "https://www.upv.es/estudios/master/muiadmptd/", [39.481, -0.341]],
+      ["Universitat Autònoma de Barcelona (UAB)", "Master in Computer Vision (joint UAB/UPC/UPF/UOC)", "Barcelona · Bellaterra", "1 year (60 ECTS)", "check", "English", "partly", "Computer-vision specialised", "https://mcv.uab.cat/", [41.501, 2.104]]
+    ]},
+    { c: "Lithuania", v: "Cheapest English option near your brother: 1.5-year master's, up to 40 h/week work, 12 months to job-hunt. Rules are tightening.", ll: [55.2, 24.0], z: 7, p: [
+      ["Vilnius University", "MSc Data Science", "Vilnius · Naugarduko g. 24", "1.5 years", "€6,000 / yr", "English", "yes", "Maths test (OMPT-E ≥ 70%); 5 full waivers", "https://apply.vu.lt/courses/course/36-data-science", [54.678, 25.273]],
+      ["Vilnius University", "Strategic Management of Information Systems", "Vilnius · Saulėtekis", "1.5 years", "€5,460 / yr", "English", "yes", "No maths test; 3 yrs work experience accepted", "https://apply.vu.lt/courses/course/214-strategic-management-information-systems", [54.723, 25.337]],
+      ["Vilnius University", "Business Process Management", "Vilnius", "1.5 years", "€5,460 / yr", "English", "yes", "Business-side analyst course", "https://apply.vu.lt/courses/course/178-business-process-management", [54.725, 25.333]],
+      ["Kaunas University of Technology (KTU)", "MSc Data Science and Artificial Intelligence", "Kaunas · Studentų g. 50", "1.5 years", "€5,641 / yr", "English", "yes", "Needs 30 maths credits; automatic waivers", "https://apply.ktu.edu/courses/course/214-msc-data-science-and-artificial-intelligence", [54.904, 23.958]],
+      ["Kaunas University of Technology (KTU)", "MSc Artificial Intelligence in Computer Science", "Kaunas", "2 years", "€5,641 / yr", "English", "no", "2 years", "https://apply.ktu.edu/courses/course/19-msc-artificial-intelligence-computer-science", [54.902, 23.96]],
+      ["VILNIUS TECH", "Information Systems Software Engineering", "Vilnius", "2 years", "€6,450 / yr", "English", "no", "2 years; deadline 15 Jun 2027", "https://apply.vilniustech.lt/courses/course/111-master-information-systems-software-engineering", [54.722, 25.338]],
+      ["Vytautas Magnus University (VMU)", "Applied Informatics", "Kaunas", "2 years", "€6,000 / yr", "English", "no", "2 years; deadline 1 May 2027", "https://vytautasmagnus.dreamapply.com/courses/course/27-master-degree-applied-informatics", [54.899, 23.912]],
+      ["ISM University of Management and Economics", "Business master's (e.g. Financial Economics)", "Vilnius", "check", "check", "English", "partly", "Private business school; check data options", "https://www.ism.lt/en/master-studies/", [54.687, 25.28]]
+    ]},
+    { c: "Germany", v: "Free tuition and 18 months to job-hunt, but most 1.5-year master's want 210 credits, and data jobs usually need German.", ll: [51.2, 10.0], z: 6, p: [
+      ["Kiel University of Applied Sciences", "MSc Computer Science", "Kiel · Grenzstraße 3", "1.5 years (3 sem)", "€0 (+ ≈ €398 / sem)", "English", "yes", "Accepts 180 credits; GRE quant ≥ 55th percentile", "https://www.haw-kiel.de/en/degree-courses/courses/computer-science/", [54.332, 10.182]],
+      ["Kiel University of Applied Sciences", "MSc Data Science", "Kiel", "1.5 years (3 sem)", "€0", "English", "partly", "GRE ≥ 65% in all parts; missing credits must be made up", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/8285/", [54.33, 10.185]],
+      ["Hof University of Applied Sciences", "MSc Applied Research in Computer Science", "Hof (Bavaria)", "1.5 years (3 sem)", "€0", "English (German A1 needed)", "partly", "Good OOP/databases grades; apply 15 Apr – 31 May", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/6236/", [50.325, 11.94]],
+      ["University of Applied Sciences Erfurt", "MSc Software Engineering", "Erfurt", "1.5 years (3 sem)", "€0", "English (German A2 recommended)", "partly", "Needs a software-engineering-type degree; apply 15 May – 15 Sep", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/11093/", [50.985, 11.03]],
+      ["TH Köln", "MSc Digital Sciences", "Gummersbach (Cologne)", "1.5–2 years (3–4 sem)", "€0", "English", "partly", "Needs 80+ ECTS in computer science", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/8353/", [51.027, 7.565]],
+      ["Rhine-Waal University of Applied Sciences", "MSc Information Engineering and Computer Science", "Kamp-Lintfort", "1.5 years (3 sem)", "€0", "English", "partly", "Also wants engineering basics; apply by 15 Jul", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/4490/", [51.504, 6.547]],
+      ["Fulda University of Applied Sciences", "MSc Global Software Development", "Fulda", "2 years for a 3-year degree", "€0", "English", "no", "180 credits → +30 ECTS (4 semesters)", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/3686/", [50.565, 9.686]],
+      ["Neu-Ulm University of Applied Sciences", "MSc Artificial Intelligence and Data Analytics", "Neu-Ulm", "2 years for a 3-year degree", "€0", "English", "no", "180 credits → 4-semester version", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/4734/", [48.392, 10.011]]
+    ]},
+    { c: "Latvia", v: "Two 1.5-year English options at low fees and students may work about 20 h/week, but no dedicated job-search permit after graduating was found: you need a job offer and a work permit.", ll: [56.9, 24.1], z: 7, p: [
+      ["Transport and Telecommunication Institute (TSI)", "MSc Computer Science – Software Engineering", "Riga", "1.5 years (90 ECTS)", "€4,500 / yr", "English / Latvian", "yes", "Confirm the English track", "https://tsi.lv/study_programmes/computer-sciences-master/", [56.955, 24.13]],
+      ["RISEBA University", "Big Data Analytics (master)", "Riga", "1.5 years (90 ECTS)", "€6,200 / yr", "English (evening)", "yes", "Apply by 5 Aug 2027", "https://riseba.lv/en/program/big-data-analytics/", [56.95, 24.1]],
+      ["Riga Technical University (RTU)", "MSc Computer Systems", "Riga", "2 years", "€6,150 / yr", "English", "no", "2 years", "https://apply.rtu.lv/courses/course/16-msc-computer-systems", [56.951, 24.075]],
+      ["Riga Technical University (RTU)", "MSc Information Technology", "Riga", "2 years (132 ECTS)", "€4,800 / yr", "English", "no", "2 years", "https://apply.rtu.lv/courses/course/304-msc-information-technology", [56.953, 24.08]],
+      ["University of Latvia", "Mathematics and Data Science", "Riga", "2 years", "€5,400 / yr", "English", "no", "2 years", "https://apply.lu.lv/courses/course/150-master-mathematics-and-data-science", [56.951, 24.116]],
+      ["Latvia University of Life Sciences and Technologies", "Information Technologies (master)", "Jelgava", "2 years", "€3,300 / yr", "English", "no", "2 years", "https://apply.llu.lv/courses/course/18-master-information-technologies", [56.651, 23.721]]
+    ]},
+    { c: "France", v: "Indians get 24 months after a French master's, but public master's take 2 years and the 1-year private MSc programmes cost €13–30k.", ll: [46.6, 2.5], z: 5, p: [
+      ["Grenoble Ecole de Management", "MSc Digital Marketing and Data Analytics", "Grenoble / Paris", "1–2 years", "from €13,250", "English", "partly", "Accepts 180 ECTS; deadline 31 Aug 2027", "https://www.grenoble-em.com/en/programs/msc-digital-marketing-and-data-analytics/", [45.19, 5.725]],
+      ["NEOMA Business School", "MSc Business Analytics", "Reims / Rouen / Paris", "1 year (60 ECTS) or 2", "€19,500 total", "English", "partly", "3-year bachelor + 1 yr experience; over budget with living costs", "https://neoma-bs.com/programmes/msc-business-analytics", [49.258, 4.032]],
+      ["EPITA", "MSc Artificial Intelligence", "Paris area", "1 year + 6-month internship", "check", "English", "partly", "Spring intake deadline 15 Jan 2027", "https://www.epita.fr/en/msc-artificial-intelligence-program-overview/", [48.815, 2.363]],
+      ["EDHEC Business School", "MSc in Data Analytics and Artificial Intelligence", "Lille / Nice", "≈ 1 year + work experience", "€29,900", "English", "no", "Over budget", "https://www.edhec.edu/en/programmes/masters-degree/business-degrees/msc-in-data-analytics-and-artificial-intelligence", [50.63, 3.07]],
+      ["SKEMA Business School", "MSc Artificial Intelligence for Business Transformation", "Sophia Antipolis / Paris", "check", "check", "English", "partly", "Page could not be read; check fees", "https://www.skema.edu/en/programmes/msc-artificial-intelligence-business-transformation", [43.616, 7.055]],
+      ["Université Paris-Saclay", "English-taught master's (M1 + M2)", "Saclay (Paris)", "2 years", "≈ €3,950 / yr (non-EU)", "English", "no", "2 years", "https://www.universite-paris-saclay.fr/en/education/masters-programmes-taught-english", [48.711, 2.171]]
+    ]},
+    { c: "Poland", v: "Cheap fees and big IT hubs, and graduates need no work permit, but most master's for a 3-year degree take 2 years.", ll: [51.9, 19.4], z: 6, p: [
+      ["Warsaw University of Technology", "MSc Data Science", "Warsaw", "1.5 years (Feb, 3 sem) or 2 years", "check", "English", "partly", "1.5-year route only if no extra preparation is needed", "https://www.students.pw.edu.pl/Studies-Offer/M.Sc.-offer/Data-Science", [52.22, 21.011]],
+      ["AGH University of Krakow", "Computer Science (master's in English)", "Kraków", "check", "€3,500 / semester", "English", "partly", "Check length for a 3-year degree", "https://www.international.agh.edu.pl/en/studies/fees", [50.065, 19.92]],
+      ["University of Silesia", "MSc Computer Science", "Katowice / Sosnowiec", "1.5 years (3 sem)", "3,450 PLN / semester", "English", "no", "For BEng (engineering) holders only", "https://us.edu.pl/wydzial/wnst/en/studia/kandydat/oferta-dydaktyczna/computer-science/", [50.29, 19.13]],
+      ["Kozminski University", "Master in Big Data Science", "Warsaw", "2 years", "check", "English (blended)", "no", "2 years", "https://www.kozminski.edu.pl/en/programs/graduate-programs-master/master-big-data-science", [52.297, 21.022]],
+      ["University of Warsaw", "Data Science and Business Analytics", "Warsaw", "2 years (4 sem)", "check", "English", "no", "2 years", "https://www.wne.uw.edu.pl/en/candidates/BA-and-MA-studies/oferta-studiow/data-science-and-business-analytics-MA", [52.24, 21.018]]
+    ]},
+    { c: "Malta", v: "English-speaking EU island; a few 1–1.5-year master's, but only 9 months to job-hunt (once) and a small job market.", ll: [35.9, 14.45], z: 10, p: [
+      ["MCAST", "MSc in Artificial Intelligence Technologies", "Paola", "1.5 years full-time (90 credits)", "check", "English", "partly", "Check fees and post-study rules", "https://mcast.edu.mt/prospectus-2025-26/ri7-o06-24p/", [35.873, 14.507]],
+      ["Global College Malta", "MSc Management", "Smart City / Kalkara", "1 year (90 ECTS)", "€10,000", "English", "partly", "Management, not tech", "https://gcm.edu.mt/course/master-of-science-management/", [35.886, 14.523]],
+      ["University of Malta", "MSc Artificial Intelligence", "Msida", "check", "check", "English", "partly", "Course page lists fees under 'Fees and funding'", "https://www.um.edu.mt/courses/overview/pmsciariftr8-2026-7-o/", [35.902, 14.484]],
+      ["University of Malta", "MSc Data Science", "Msida", "check", "check", "English", "partly", "Check length and fee", "https://www.um.edu.mt/courses/overview/pmsciiidtcpet2-2026-7-o/", [35.9, 14.486]],
+      ["MCAST", "MSc Computing and Emerging Technologies", "Paola", "3 years (part-time)", "check", "English", "no", "Part-time", "https://mcast.edu.mt/prospectus-2025-26/it7-o14-24p/", [35.871, 14.509]]
+    ]},
+    { c: "Netherlands", v: "Excellent 1-year master's, but Nuffic rates a BCA as only “3 years of HBO”, so Dutch master's do not accept it.", ll: [52.1, 5.3], z: 7, p: [
+      ["Utrecht University", "Applied Data Science", "Utrecht", "1 year", "€22,000 (2027-28)", "English", "no", "BCA not accepted (Nuffic); over budget", "https://www.uu.nl/en/masters/applied-data-science", [52.086, 5.172]],
+      ["Erasmus University Rotterdam", "Data Science and Marketing Analytics", "Rotterdam · Woudestein", "1 year (60 EC)", "check", "English", "no", "BCA not accepted (Nuffic)", "https://www.eur.nl/en/master/data-science-and-marketing-analytics", [51.918, 4.526]],
+      ["University of Amsterdam", "Information Studies: Data Science", "Amsterdam", "1 year", "check", "English", "no", "BCA not accepted (Nuffic)", "https://www.uva.nl/shared-content/programmas/en/masters/information-studies-data-science/data-science.html", [52.355, 4.955]],
+      ["Tilburg University", "Data Science and Society", "Tilburg", "1 year", "check", "English", "no", "BCA not accepted (Nuffic)", "https://www.tilburguniversity.edu/education/masters-programs/data-science-and-society", [51.563, 5.042]],
+      ["Leiden University", "ICT in Business and the Public Sector", "Leiden", "2 years", "check", "English", "no", "2 years", "https://www.universiteitleiden.nl/en/education/study-programmes/master/ict-in-business-and-the-public-sector", [52.157, 4.485]]
+    ]},
+    { c: "Belgium", v: "Cheap 1-year master's (KU Leuven ≈ €9.5k), but Flemish universities usually want a 4-year Indian degree.", ll: [50.8, 4.5], z: 7, p: [
+      ["KU Leuven", "Master of Artificial Intelligence", "Leuven", "1 year (60 ECTS)", "≈ €9,494 (check)", "English", "no", "Usually needs a 4-year degree", "https://www.kuleuven.be/programmes/master-artificial-intelligence/index.html", [50.864, 4.679]],
+      ["KU Leuven", "Master of Information Management", "Leuven", "1 year (60 ECTS)", "≈ €9,494 (check)", "English", "partly", "Ask KU Leuven whether a BCA qualifies", "https://www.kuleuven.be/programmes/master-information-management/", [50.877, 4.7]],
+      ["Ghent University", "Master of Statistical Data Analysis", "Ghent", "1 year (60 credits)", "check", "English", "partly", "Ask Ghent whether a BCA qualifies", "https://studiekiezer.ugent.be/master-of-science-in-statistical-data-analysis-en", [51.046, 3.728]],
+      ["Vrije Universiteit Brussel", "Master Applied Computer Science", "Brussels", "2 years (120 ECTS)", "check", "English", "no", "2 years", "https://www.vub.be/en/studying-vub/all-study-programmes-vub/bachelors-and-masters-programmes-vub/master-applied-sciences", [50.822, 4.395]],
+      ["UHasselt", "Master of Statistics and Data Science", "Hasselt / Diepenbeek", "2 years (120 ECTS)", "check", "English", "no", "2 years (accepts 180-ECTS academic bachelor)", "https://www.uhasselt.be/en/study/programmes/master-of-statistics-and-data-science", [50.93, 5.392]],
+      ["University of Antwerp", "Master Computer Science: Data Science & AI", "Antwerp", "2 years", "check", "English", "no", "2 years", "https://www.uantwerpen.be/en/study/programmes/all-programmes/master-data-science/", [51.184, 4.42]]
+    ]},
+    { c: "Hungary", v: "Cheap and fully funded through Stipendium Hungaricum, but IT master's take 2 years (4 semesters).", ll: [47.3, 19.3], z: 7, p: [
+      ["Eötvös Loránd University (ELTE)", "MSc Computer Science", "Budapest", "2 years (4 sem)", "€3,200 / semester", "English", "no", "2 years", "https://apply.elte.hu/courses/course/152-msc-computer-science", [47.473, 19.062]],
+      ["Eötvös Loránd University (ELTE)", "MSc Data Science", "Budapest", "2 years (4 sem)", "€3,200 / semester", "English", "no", "2 years; deadline 30 Apr 2027", "https://www.elte.hu/en/data-science-msc", [47.475, 19.06]],
+      ["Corvinus University of Budapest", "MSc Business Informatics", "Budapest", "2 years (4 sem)", "check", "English", "no", "2 years", "https://www.uni-corvinus.hu/post/landing-page/masters/msc-in-business-informatics/?lang=en", [47.486, 19.059]],
+      ["University of Debrecen", "MSc Computer Science", "Debrecen", "2 years", "check", "English", "no", "2 years; self-funded deadline 15 Jun", "https://edu.unideb.hu/p/computer-science-msc", [47.553, 21.621]],
+      ["Óbuda University", "MSc Computer Science Engineering", "Budapest", "2 years (4 sem)", "check", "English", "no", "2 years", "https://nik.uni-obuda.hu/en/computer-science-engineering-msc/", [47.533, 19.034]],
+      ["Budapest University of Technology and Economics", "MSc Computer Engineering", "Budapest", "2 years", "check", "English", "no", "2 years", "https://www.bme.hu/en/application_and_admission", [47.481, 19.056]]
+    ]},
+    { c: "Italy", v: "Low public fees and DSU / MAECI scholarships, but the Laurea Magistrale is always 2 years.", ll: [43.5, 11.5], z: 6, p: [
+      ["Politecnico di Milano", "Computer Science and Engineering", "Milan · Leonardo", "2 years", "check (income-based)", "English", "no", "2 years", "https://www.polimi.it/en/education/laurea-magistrale-programmes/programme-detail/computer-science-and-engineering", [45.478, 9.227]],
+      ["University of Bologna", "Artificial Intelligence", "Bologna", "2 years", "check (income-based)", "English", "no", "2 years", "https://corsi.unibo.it/2cycle/artificial-intelligence", [44.497, 11.354]],
+      ["University of Padova", "Data Science", "Padova", "2 years (120 ECTS)", "up to €2,950", "English", "no", "2 years; accepts a 3-year degree", "https://apply.unipd.it/courses/course/33-data-science", [45.407, 11.877]],
+      ["Sapienza University of Rome", "Data Science", "Rome", "2 years", "check (income-based)", "English", "no", "2 years", "https://corsidilaurea.uniroma1.it/en/course/33519", [41.903, 12.514]],
+      ["Politecnico di Torino", "Data Science and Engineering", "Turin", "2 years", "check (income-based)", "English", "no", "2 years", "https://www.polito.it/en/education/master-s-degree-programmes/data-science-and-engineering", [45.062, 7.662]]
+    ]},
+    { c: "Austria", v: "Very low fees (€726.72 / semester for non-EU), but every master's is 4 semesters.", ll: [47.6, 13.8], z: 7, p: [
+      ["TU Wien", "Data Science", "Vienna", "2 years (4 sem)", "€726.72 / semester", "English", "no", "2 years", "https://www.tuwien.at/en/studies/studies/master-programmes/informatics/data-science", [48.199, 16.37]],
+      ["University of Vienna", "Data Science", "Vienna", "2 years (4 sem)", "€726.72 / semester", "English", "no", "2 years", "https://studieren.univie.ac.at/en/find-your-degree-programme/masters-programmes/data-science-masters-programme", [48.213, 16.36]],
+      ["Johannes Kepler University Linz", "Artificial Intelligence", "Linz", "2 years (4 sem)", "€726.72 / semester", "English (B2)", "no", "2 years", "https://www.jku.at/en/degree-programs/types-of-degree-programs/masters-degree-programs/ma-artificial-intelligence/", [48.337, 14.32]],
+      ["TU Graz", "Computer Science", "Graz", "2 years (4 sem)", "€726.72 / semester", "English", "no", "2 years", "https://www.tugraz.at/en/studying-and-teaching/degree-and-certificate-programmes/masters-degree-programmes/computer-science", [47.058, 15.46]],
+      ["University of Innsbruck", "Computer Science", "Innsbruck", "2 years (4 sem)", "€726.72 / semester", "English", "no", "2 years", "https://www.uibk.ac.at/en/programmes/ma-computer-science/", [47.264, 11.344]]
+    ]},
+    { c: "Portugal", v: "Affordable and sunny, but master's take 2 years and the job-seeker route was narrowed in 2025–2026.", ll: [39.6, -8.3], z: 6, p: [
+      ["NOVA IMS (Lisbon)", "Master in Data Science and Advanced Analytics", "Lisbon", "2 years (120 ECTS)", "€6,200 (programme fee)", "English", "no", "2 years", "https://novaims.unl.pt/en/education/programs/postgraduate-programs-and-master-degree-programs/master-degree-program-in-data-science-and-advanced-analytics/", [38.732, -9.16]],
+      ["Instituto Superior Técnico", "Master in Data Science and Engineering", "Lisbon", "2 years", "check", "English", "no", "2 years", "https://tecnico.ulisboa.pt/en/education/courses/masters-programmes/data-science-and-engineering/", [38.737, -9.139]],
+      ["University of Porto (FEUP)", "Master in Data Science", "Porto", "2 years", "check", "English", "no", "2 years", "https://www.up.pt/feup/en/study/masters-degree/master-programmes/feup/20521/", [41.178, -8.598]],
+      ["University of Coimbra", "Master in Data Science", "Coimbra", "2 years", "check", "English", "no", "2 years", "https://apps.uc.pt/courses/EN/course/12661/2025-2026", [40.207, -8.426]],
+      ["University of Minho", "Master in Statistics for Data Science", "Braga / Guimarães", "2 years", "check", "English (blended)", "no", "2 years", "https://www.ecum.uminho.pt/en/Ensino/Pages/masters/Master-Degree-in-Statistics-for-Data-Science.aspx", [41.561, -8.397]]
+    ]},
+    { c: "Estonia", v: "Strong tech scene (Tallinn), but master's take 2 years and Tartu ended non-EU tuition waivers in 2026/27.", ll: [58.9, 25.5], z: 7, p: [
+      ["Tallinn University of Technology (TalTech)", "Computer Science and Artificial Intelligence", "Tallinn", "2 years", "€7,000 / yr", "English", "no", "2 years", "https://www.studyinestonia.ee/study/programmes/masters-programmes", [59.396, 24.671]],
+      ["Tallinn University of Technology (TalTech)", "Cybersecurity", "Tallinn", "2 years", "€7,000 / yr", "English", "no", "2 years", "https://www.studyinestonia.ee/study/programmes/masters-programmes", [59.395, 24.67]],
+      ["University of Tartu", "Computer Science", "Tartu", "2 years", "€7,200 / yr", "English", "no", "2 years; no non-EU waivers from 2026/27", "https://www.studyinestonia.ee/study/programmes/masters-programmes", [58.381, 26.72]],
+      ["University of Tartu", "Software Engineering", "Tartu", "2 years", "€7,200 / yr", "English", "no", "2 years", "https://www.studyinestonia.ee/study/programmes/masters-programmes", [58.379, 26.718]],
+      ["Tallinn University", "Artificial Intelligence for Sustainable Societies", "Tallinn", "2 years", "€4,000 / yr", "English", "no", "2 years", "https://www.studyinestonia.ee/study/programmes/masters-programmes", [59.438, 24.771]],
+      ["Tallinn University", "Human-Computer Interaction", "Tallinn (online, cyclical)", "2 years", "€9,600 whole programme", "English", "no", "Online, so no student visa", "https://www.tlu.ee/en/dt/hci", [59.437, 24.77]]
+    ]},
+    { c: "Czechia", v: "Free only in Czech; English IT master's cost €2–4k a year and take 2 years.", ll: [49.8, 15.5], z: 7, p: [
+      ["Brno University of Technology", "Master of Information Technology", "Brno", "2 years", "€3,000–4,000 / yr", "English", "no", "2 years", "https://www.study-in-brno.cz/p/master-of-information-technology", [49.226, 16.597]],
+      ["VSB – Technical University of Ostrava", "Computer Science (master's)", "Ostrava", "2 years", "50,000 CZK / semester", "English", "no", "2 years", "https://www.vsb.cz/en/study/degree-students/degree-studies/master-degree/master-degree-detail/?programmeId=110", [49.831, 18.161]],
+      ["Czech Technical University in Prague", "Open Informatics (Data Science)", "Prague", "2 years", "check", "English", "no", "2 years", "https://oi.fel.cvut.cz/en/master-program", [50.103, 14.392]],
+      ["Charles University", "Computer Science (master's)", "Prague", "2 years", "check", "English", "no", "2 years", "https://www.mff.cuni.cz/en/students/master-of-computer-science", [50.116, 14.448]],
+      ["Masaryk University", "Artificial Intelligence and Data Processing", "Brno", "2 years", "free (Czech-taught)", "Czech", "no", "Czech-taught", "https://www.muni.cz/en/bachelors-and-masters-study-programmes/22961-artificial-intelligence-and-data-processing", [49.21, 16.599]]
+    ]},
+    { c: "Slovenia", v: "Some English master's are free for EU and certain non-EU citizens, but all are 2 years. Check whether India is on the free list.", ll: [46.1, 14.8], z: 8, p: [
+      ["University of Ljubljana – School of Economics and Business", "Economics with Data Science", "Ljubljana", "2 years (120 ECTS)", "free for EU and some non-EU (check India)", "English", "no", "2 years; deadline 30 Jun", "https://www.ef.uni-lj.si/en/study/masters-programmes/economics-with-data-science", [46.073, 14.519]],
+      ["University of Ljubljana – School of Economics and Business", "Business Informatics", "Ljubljana", "2 years (120 ECTS)", "free for EU and some non-EU (check India)", "English", "no", "2 years", "https://www.ef.uni-lj.si/en/study/masters-programmes/business-informatics", [46.074, 14.52]],
+      ["University of Ljubljana – Faculty of Computer and Information Science", "Computer and Information Science (master's)", "Ljubljana", "2 years", "check", "English", "no", "2 years", "https://fri.uni-lj.si/en/study-programmes/masters-programmes", [46.05, 14.469]],
+      ["University of Maribor – FERI", "Informatics (master's)", "Maribor", "2 years", "check", "English / Slovene", "no", "2 years", "https://ii.feri.um.si/en/study-programmes/prostgraduate-programs/", [46.559, 15.639]],
+      ["University of Nova Gorica", "Second-level (master's) programmes", "Nova Gorica", "check", "check", "English", "no", "Deadline 30 Sept", "https://ung.si/en/admissions/second-level-admissions/", [45.957, 13.643]]
+    ]},
+    { c: "Croatia", v: "Few English data master's; the ones found take 2 years.", ll: [45.2, 16.0], z: 7, p: [
+      ["University of Zagreb – FER", "Computer Science (English master's)", "Zagreb", "2 years (120 ECTS)", "check", "English", "no", "2 years", "https://www.fer.unizg.hr/en/studies/master", [45.801, 15.971]],
+      ["University of Split – Faculty of Economics, Business and Tourism", "English master's (business)", "Split", "2 years (120 ECTS)", "check", "English", "no", "2 years; needs a 180-ECTS bachelor", "https://www.efst.unist.hr/en/study-at-febt/full-time-programmes-in-english", [43.511, 16.468]],
+      ["Algebra University", "Data Science (graduate)", "Zagreb", "check", "check", "English", "partly", "Page blocked; check length and fee", "https://www.algebra.hr/sveuciliste/en/graduate-study-programmes/data-science/", [45.793, 15.967]],
+      ["University of Rijeka", "English-taught courses", "Rijeka", "check", "check", "English", "no", "Mostly exchange courses", "https://uniri.hr/en/about-university/international-relations-and-erasmus/english-home-pages-and-courses/", [45.33, 14.441]],
+      ["University of Zagreb – Faculty of Economics", "English programmes", "Zagreb", "check", "check", "English", "no", "Business-focused", "https://www.efzg.unizg.hr/en", [45.8, 15.968]]
+    ]},
+    { c: "UK", v: "1-year master's, but tuition (£19–30k) plus living costs is far above ₹25 lakh.", ll: [53.5, -2.5], z: 6, p: [
+      ["Coventry University", "MSc Data Science and Computational Intelligence", "Coventry", "1 year (+ optional placement)", "≈ £19,500 (check)", "English", "no", "Over budget", "https://www.coventry.ac.uk/course-structure/pg/ees/data-science-and-computational-intelligence-msc/", [52.407, -1.505]],
+      ["Sheffield Hallam University", "MSc Big Data Analytics", "Sheffield · City Campus", "1 year", "£19,530", "English", "no", "Over budget", "https://www.shu.ac.uk/courses/computing/msc-big-data-analytics/full-time", [53.379, -1.466]],
+      ["Northumbria University", "MSc Computer Science with Advanced Practice", "Newcastle", "2 years (with placement)", "£24,500", "English", "no", "2 years; over budget", "https://www.northumbria.ac.uk/study-at-northumbria/courses/msc-computer-science-with-advanced-practice-dtscsm6/", [54.977, -1.607]],
+      ["University of Strathclyde", "MSc Data Analytics", "Glasgow", "12 months", "£29,350", "English", "no", "Over budget", "https://www.strath.ac.uk/courses/postgraduatetaught/dataanalytics/", [55.862, -4.243]],
+      ["University of Hertfordshire", "MSc Data Science", "Hatfield", "1 year", "check", "English", "no", "Page blocked; expected over budget", "https://www.herts.ac.uk/courses/postgraduate-masters/msc-data-science", [51.752, -0.24]]
+    ]},
+    { c: "Nordics", v: "Excellent quality, but fees are €12–17k+ a year and most master's take 2 years.", ll: [59.5, 16.0], z: 4, p: [
+      ["University of Helsinki", "Master's in Data Science", "Helsinki", "2 years", "€15,000 / yr", "English", "no", "2 years; apply 5–19 Jan 2027", "https://www.helsinki.fi/en/degree-programmes/data-science-masters-programme", [60.205, 24.962]],
+      ["Aalto University", "Computer Science (MSc Tech)", "Espoo", "2 years", "€17,000 / yr", "English", "no", "2 years; apply 7 Dec 2026 – 5 Jan 2027", "https://www.aalto.fi/en/study-options/computer-science-master-of-science-technology", [60.186, 24.828]],
+      ["University of Southern Denmark (SDU)", "1-year master's (selected subjects)", "Odense", "1 year (for matching degrees)", "€6,000–8,500 / semester", "English", "no", "Over budget", "https://www.sdu.dk/en/uddannelse/kandidat", [55.369, 10.428]],
+      ["Aalborg University", "Master's (e.g. engineering / IT)", "Aalborg", "2 years", "≈ €7,745 / semester", "English", "no", "2 years; deadline 20 April", "https://www.en.aau.dk/education/apply/master/finance-and-fees", [57.015, 9.986]],
+      ["Uppsala University", "Master's programmes (e.g. Data Science)", "Uppsala", "2 years", "49,500–90,000 SEK / semester", "English", "no", "2 years; expensive", "https://www.uu.se/en/study/masters-studies/fees", [59.858, 17.646]]
+    ]}
+  ];
+  var RESEARCH = {"Ireland":[50,16,13],"Spain":[53,24,18],"Lithuania":[50,22,31],"Germany":[51,38,40],"Hungary":[50,12,7],"Poland":[50,13,8],"Italy":[50,10,5],"France":[50,11,6],"Netherlands":[50,9,5],"Belgium":[50,7,7],"Portugal":[50,6,5],"Austria":[50,8,5],"Estonia":[50,8,3],"Latvia":[50,8,10],"Malta":[50,6,8],"Czechia":[50,7,5],"Slovenia":[50,3,8],"Croatia":[50,2,4],"UK":[50,9,4],"Nordics":[50,4,5]};
+
+  var pick = document.getElementById("cpick"), tbody = document.querySelector("#ctable tbody"), sum = document.getElementById("csum");
+  function render(i) {
+    var d = ALL[i];
+    pick.querySelectorAll(".fbtn").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    var unis = {}; d.p.forEach(function (r) { unis[r[0]] = 1; });
+    var fits = d.p.filter(function (r) { return r[6] === "yes"; }).length;
+    sum.textContent = "";
+    sum.appendChild(el("div", {}, [el("b", { text: d.c + ": " }), d.v]));
+    sum.appendChild(el("div", { class: "note", text: Object.keys(unis).length + " universities · " + d.p.length + " courses · " + fits + " fit all your rules" + (RESEARCH[d.c] ? " · research: " + RESEARCH[d.c][0] + " searches, " + RESEARCH[d.c][1] + " Reddit threads, " + RESEARCH[d.c][2] + " pages" : "") }));
+    tbody.textContent = "";
+    d.p.forEach(function (r) {
+      var a = el("a", { href: r[8], target: "_blank", rel: "noopener", text: r[1] + " ↗" });
+      tbody.appendChild(el("tr", {}, [el("td", { text: r[0] }), el("td", {}, [a]), el("td", { text: r[2] }), el("td", { text: r[3] }), el("td", { text: r[4] }), el("td", { text: r[5] }), el("td", {}, [el("span", { class: "fit " + r[6], text: FIT[r[6]] })]), el("td", { text: r[7] })]));
+    });
+    if (window.__euMap && window.L) window.__euMap.flyTo(d.ll, d.z, { duration: 0.9 });
+  }
+  window.__ALL = ALL; window.__showAll = render;
+  ALL.forEach(function (d, i) {
+    var n = d.p.filter(function (r) { return r[6] === "yes"; }).length;
+    var b = el("button", { class: "fbtn", type: "button", role: "tab", "aria-pressed": "false" }, [d.c + (n ? " · " + n + " ✓" : "")]);
+    b.addEventListener("click", function () { render(i); });
+    pick.appendChild(b);
+  });
+  render(0);
+
+  /* research table */
+  var rt = document.querySelector("#rtable tbody");
+  var maxW = Math.max.apply(null, Object.keys(RESEARCH).map(function (k) { return RESEARCH[k][0]; }));
+  Object.keys(RESEARCH).sort(function (a, b) { return RESEARCH[b][0] - RESEARCH[a][0]; }).forEach(function (k) {
+    var v = RESEARCH[k];
+    rt.appendChild(el("tr", {}, [el("th", { scope: "row", text: k }), el("td", { class: "num", text: String(v[0]) }), el("td", {}, [el("span", { class: "rbar-s", style: "width:" + Math.round(v[0] / maxW * 160) + "px", "aria-hidden": "true" })]), el("td", { class: "num", text: String(v[1]) }), el("td", { class: "num", text: String(v[2]) })]));
+  });
+
+  /* extra map layer: every listed university (small hollow grey dots) */
+  var allTries = 0;
+  (function addAllDots() {
+    if (!window.__euMap || !window.L) { if (++allTries < 40) setTimeout(addAllDots, 250); return; }
+    var grey = getComputedStyle(document.documentElement).getPropertyValue("--ink-3").trim() || "#898781";
+    var surf = getComputedStyle(document.documentElement).getPropertyValue("--surface").trim() || "#fff";
+    ALL.forEach(function (d) {
+      if (["Spain", "Lithuania", "Germany", "Ireland"].indexOf(d.c) >= 0 && false) return;
+      d.p.forEach(function (r) {
+        var box = el("div", { class: "pop" }, [el("h4", { text: r[0] }), el("div", { class: "u", text: r[2] + " · " + d.c }), el("div", { text: r[1] + " — " + r[3] + " — " + r[4] }), el("div", { class: "note", text: FIT[r[6]] + " · " + r[7] })]);
+        L.circleMarker(r[9], { radius: 4.5, weight: 2, color: grey, fillColor: surf, fillOpacity: 1 }).addTo(window.__euMap).bindPopup(box).bindTooltip(r[0] + " · " + r[1], { direction: "top" });
+      });
+    });
+  })();
+});
+</script>
+
+<script>
+/* Free & near-free universities (Germany left out) */
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) { if (k === "text") n.textContent = attrs[k]; else if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  var FIT = { yes: "✓ Fits", partly: "~ Partly", no: "✕ No" };
+  /* [university, course, city, length, whole-course tuition (non-EU), language, why it's cheap, fit, catch, link, [lat,lng] or null] */
+  var FREE = [
+    { c: "Greece", v: "Best new find. Public universities run English master's of 3 semesters for €2,700–3,700 in total. 20 h/week work (2026 rule), a 1-year H.11 job-search permit after graduation, and €650 a month proof of funds. Total with Athens living costs ≈ ₹17–21 lakh. The catch: Greece's IT job market is small and junior pay is low.", ll: [38.6, 23.6], z: 6, p: [
+      ["National and Kapodistrian University of Athens (NKUA)", "MSc Data Science & Information Technologies (Big Data & AI track)", "Athens · Ilissia campus", "3 semesters (90 ECTS)", "€2,700 (€900 / semester)", "English", "Low public fee", "yes", "Only 20 seats per track; applications usually mid-May to early June", "https://dsit.di.uoa.gr/applications/", [37.968, 23.767]],
+      ["University of West Attica (UniWA)", "MSc Artificial Intelligence & Deep Learning", "Athens · Egaleo (Ancient Olive Grove campus)", "3 semesters (90 ECTS)", "€3,000", "English option (material in English)", "Low public fee", "yes", "Next intake March 2027; NVIDIA Deep Learning Institute material; check that classes run in English that term", "https://aidl.uniwa.gr/", [38.003, 23.676]],
+      ["University of Crete", "MSc Data Analysis & Machine-Statistical Learning (DAMSL)", "Heraklion · Voutes campus", "3 semesters (90 ECTS)", "€3,500 (EU €2,000)", "English", "Low public fee", "yes", "Call opens every spring; starts September; cheaper city", "https://mscs.uoc.gr/damsl/", [35.305, 25.072]],
+      ["International Hellenic University (IHU)", "MSc in Data Science", "Thessaloniki · Thermi", "18 months (90 ECTS)", "€3,700", "English", "Low public fee", "yes", "Hybrid evening classes: confirm in-person attendance for the student visa; 2026 deadline was 26 Aug", "https://st.ihu.gr/studies/postgraduate/datascience", [40.537, 23.005]],
+      ["Athens University of Economics and Business (AUEB)", "MSc in Business Analytics", "Athens · Patission", "1 year full-time (+ project)", "€7,200", "English", "Public, mid fee", "yes", "Two rounds (April and June in 2026); strongest employer links in Greece", "https://www.dept.aueb.gr/en/dmst/content/msc-business-analytics", [37.994, 23.732]]
+    ]},
+    { c: "Spain", v: "Public prices are set by each region. Andalusia charges every student €13.68 per credit (≈ €821 for 60 ECTS plus €59 to open your file), and the University of Seville says in writing that foreigners pay the same. Most of these master's are taught in Spanish, so you would need B2 Spanish first. English options at low prices are in Catalonia (UPC) and Alicante.", ll: [39.0, -3.2], z: 6, p: [
+      ["Universidad de Sevilla", "Máster en Ingeniería del Software: Cloud, Datos y Gestión TI", "Seville · Reina Mercedes (ETSII)", "1 year (check)", "≈ €880 total", "Spanish", "Same public price for foreigners (official)", "partly", "Needs Spanish B2", "https://www.us.es/estudiar/que-estudiar/oferta-de-masteres/master-universitario-en-ingenieria-del-software-cloud/51790019", [37.358, -5.987]],
+      ["Universidad de Granada", "Máster en Ciencia de Datos e Ingeniería de Computadores (DATCOM)", "Granada · ETSIIT", "1 year (60 ECTS)", "≈ €880 total", "Spanish (check English share)", "Andalusian price €13.68 / credit", "partly", "Needs Spanish; Granada is cheap to live in", "https://www.ugr.es/en/study/masters-degree/masters-degree-data-science-and-computer-engineering", [37.197, -3.624]],
+      ["Universidad de Málaga", "Máster en Ingeniería del Software e Inteligencia Artificial", "Málaga · Teatinos", "1 year (check)", "≈ €880 total", "Spanish + English", "Andalusian price", "partly", "Blended (semipresencial): ask whether it qualifies for a student visa", "https://www.uma.es/master-en-ingenieria-del-software-e-inteligencia-artificial/", [36.715, -4.478]],
+      ["Universitat Politècnica de Catalunya (UPC)", "Master's in Artificial Intelligence", "Barcelona · Campus Nord", "1.5 years (90 ECTS)", "€2,700 (course page; UPC's fee table says up to €4,600)", "English", "Low public fee", "yes", "Already in your main plan; selective", "https://www.upc.edu/en/masters/artificial-intelligence", [41.389, 2.113]],
+      ["Universidad de Alicante", "Master's in Artificial Intelligence", "Alicante · San Vicente del Raspeig", "1 year (60 ECTS)", "€2,120 at the EU rate (€35.34 / credit); non-EU non-resident rate is higher", "English (B2)", "Low public fee", "partly", "Blended learning; 25 places; check the non-EU price", "https://web.ua.es/en/masteres/inteligencia-artificial/", [38.385, -0.514]],
+      ["Universidade de Santiago de Compostela (USC)", "Master's in Artificial Intelligence", "Santiago de Compostela", "90 ECTS spread over 2 years", "≈ €1,254 at the Galician rate; non-EU price set by the rector", "English", "Low public fee", "no", "Runs over 2 academic years; 20 seats", "https://www.usc.gal/en/studies/masters/engineering-and-architecture/masters-degree-artificial-intelligence", [42.876, -8.558]]
+    ]},
+    { c: "Win a waiver", v: "Free tuition through a competition or an automatic waiver, on courses that already fit your rules. Apply to several at once.", ll: [50.0, 10.0], z: 4, p: [
+      ["Vilnius University", "Any full-time master's (e.g. Data Science, 1.5 years)", "Vilnius", "1.5 years", "€0 if you win (5 full waivers)", "English", "Full tuition waiver, any country", "yes", "Apply by 1 Apr 2027; entrance score + short interview", "https://studyin.lt/scholarships/", [54.683, 25.287]],
+      ["Kaunas University of Technology (KTU)", "MSc Data Science & AI, and others", "Kaunas", "1.5 years (90 credits)", "Full or partial waiver, automatic", "English", "Every international applicant is considered by entry score", "yes", "Waiver size depends on your grades", "https://admissions.ktu.edu/master/", [54.904, 23.958]],
+      ["Universidad Carlos III de Madrid (UC3M)", "Master in Big Data Analytics", "Madrid · Puerta de Toledo", "1 year", "€0 if you win (4 full grants)", "English", "Merit grants", "yes", "Round 1 closes 31 Jan 2027", "https://www.uc3m.es/master/big-data-analytics", [40.407, -3.712]],
+      ["Government of Ireland (HEA) · GOI-IES", "Any 1-year taught master's at an Irish university", "Ireland (your choice)", "1 year", "Full fee waiver + €10,000 stipend", "English", "60 awards a year, non-EEA", "yes", "Very competitive; the 2026 window was 29 Jan – 12 Mar; the 2027 call is not published yet", "https://www.tcd.ie/study/international/scholarships/postgraduate/goi/", null],
+      ["Erasmus Mundus · GeoTech", "MSc in Geospatial Technologies", "Castellón (UJI) + Lisbon (NOVA) + Münster", "18 months (90 ECTS)", "Full scholarship: tuition + €1,400 / month", "English", "EU-funded joint master's", "partly", "Geo-data focus; very competitive; one semester is in Germany", "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en", [39.994, -0.069]],
+      ["Erasmus Mundus · EMMIE", "Erasmus Mundus Master in Impact Entrepreneurship", "Several countries", "18 months (90 ECTS)", "Full scholarship if selected", "English", "EU-funded joint master's", "partly", "Business, not IT; only 7 one-year and 3 18-month programmes exist in the official catalogue", "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en", null]
+    ]},
+    { c: "Ireland", v: "No Irish master's is free for non-EU students. The Free Fees Initiative covers EU undergraduates only, and the free Springboard+ courses need you to live in Ireland with a PPS number and residence. The only full rides are the Government of Ireland scholarship (60 a year, fee + €10,000) and UCD's Global Excellence Scholarship (100% or 50% of tuition, open to India, graduate applicants from South Asia apply by 28 Feb 2027). Everything else is a €2,000–7,500 discount, so a normal Irish total stays ≈ ₹22–28 lakh. After graduating, Stamp 1G gives 12 months (renewable to 24) to work.", ll: [53.3, -7.9], z: 7, p: [
+      ["Government of Ireland (HEA) · GOI-IES", "Any eligible 1-year taught master's", "Any Irish university", "1 year", "Full fee waiver + €10,000 stipend", "English", "60 national awards a year", "yes", "Needs an offer first; the 2026 window was 29 Jan – 12 Mar; the 2027 call is not out yet; results around mid-June", "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/governmentofirelandscholarships/", null],
+      ["University College Dublin (UCD) · Global Excellence Scholarship", "Eligible 1-year taught MSc (e.g. Computer Science, Business Analytics)", "Dublin · Belfield", "1 year", "€0 with the 100% award, half fee with the 50% award", "English", "Merit scholarship, India eligible", "yes", "Limited awards; needs an offer; South Asia graduate deadline 28 Feb 2027; Reddit: the written answers matter more than marks", "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships/", [53.307, -6.222]],
+      ["Griffith College · Global Excellence Scholarship", "Postgraduate taught programmes (e.g. computing)", "Dublin · South Circular Road", "1 year", "50% of the non-EU tuition", "English", "Private college scholarship", "partly", "Opens Jan 2027; closes 31 May 2027 for visa-required countries; private college, check the fee", "https://www.griffith.ie/global/study-at-griffith/excellence-scholarships", [53.33, -6.278]],
+      ["University of Galway · Global Scholarships", "MSc Computer Science (Data Analytics), others", "Galway", "1 year (90 ECTS)", "Merit discount, some up to 50%", "English", "Merit scholarship (280 awarded last year)", "partly", "Amount decided per student", "https://www.universityofgalway.ie/global-galway/globalscholarships/", [53.278, -9.06]],
+      ["Maynooth University · International awards", "Postgraduate taught programmes", "Maynooth (Co. Kildare)", "1 year", "€7,500 off (2 awards) · €5,000 off (1 for South Asia) · €2,000 automatic", "English", "Merit scholarships", "no", "Both its Computer Science (Software Eng.) and Data Science MSc ask for a 4-year degree, so a 3-year BCA likely won't qualify (CS fee €18,000)", "https://www.maynoothuniversity.ie/international/scholarships", [53.381, -6.599]],
+      ["National College of Ireland (NCI)", "MSc in Data Analytics", "Dublin · IFSC", "1 year", "€17,000 minus up to €5,000 automatic merit award", "English", "Automatic merit scholarship", "partly", "Assessed on your degree marks, no form needed", "https://www.ncirl.ie/international-scholarships", [53.349, -6.243]],
+      ["Dublin City University (DCU)", "MSc in Computing", "Dublin · Glasnevin", "1 year", "€4,400 off the non-EU fee", "English", "Engineering & Computing faculty scholarship", "partly", "Automatic consideration; you can't stack DCU awards", "https://www.dcu.ie/global/dcu-international-scholarships-non-eu-students-2027-28", [53.385, -6.257]],
+      ["Munster Technological University (MTU)", "MSc Artificial Intelligence", "Cork · Bishopstown", "1 year", "€12,000 after the automatic €3,000 discount", "English", "Automatic non-EU scholarship", "partly", "MTU says it offers no full scholarships", "https://www.mtu.ie/scholarships/", [51.885, -8.533]],
+      ["Trinity College Dublin · Global Excellence Postgraduate", "Postgraduate taught programmes", "Dublin · College Green", "1 year", "€2,000–5,000 one-off discount", "English", "Merit scholarship", "partly", "Trinity fees are high; the 2026 deadline for other regions was 15 June", "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php", [53.344, -6.254]],
+      ["University College Cork (UCC)", "Taught MSc (e.g. Business Analytics €22,300)", "Cork", "1 year", "Merit discount set in your offer letter", "English", "Automatic college merit scholarships", "partly", "Value varies; only with a full (unconditional) offer", "https://www.ucc.ie/en/scholarships/internationaltable/", [51.893, -8.492]],
+      ["University of Limerick", "Science & Engineering taught MSc", "Limerick", "1 year", "€2,000 merit discount", "English", "Faculty merit scholarship", "partly", "The India-only UL scholarships are for Kemmy Business School courses", "https://www.ul.ie/study/postgraduate/international-students/scholarships", [52.674, -8.572]],
+      ["Atlantic Technological University (ATU)", "On-campus taught master's", "Galway · Dublin Road", "1 year", "€3,000 off (India's GDP band)", "English", "Global Entry Scholarship", "partly", "ATU's Big Data master's is online-only (no visa); pick an on-campus course", "https://www.atu.ie/study/fees-and-funding/scholarships/non-eu-scholarships", [53.278, -9.01]],
+      ["Teagasc · Walsh Scholars", "Fully funded research master's (agri-food, data)", "Teagasc centres + partner universities", "Research master's (often 2 years)", "Fees + stipend paid", "English", "Funded research project", "partly", "Research, not taught; few places (about 20 a year incl. PhDs)", "https://www.teagasc.ie/about/research-innovation/the-walsh-scholars-programme/walsh-scholars-opportunities/", null],
+      ["Springboard+ / Human Capital Initiative", "Free or 90%-funded ICT and data courses", "Ireland", "Up to 1 year", "Free", "English", "State-funded upskilling", "no", "Only for people living in Ireland with a PPS number and residence; not for new students from India", "https://www.citizensinformation.ie/en/education/third-level-education/applying-to-college/springboard/", null]
+    ]},
+    { c: "Czechia", v: "Every public university is free in Czech, for any nationality. You need B2 Czech, usually after a 1-year prep course (≈ CZK 87,000). Most master's are 2 years; English versions cost €3,000–4,000 a year. After graduating you get a 9-month job-search permit. Free means about 3 years in total, which breaks your 1.5-year rule. Note: Czech government scholarships for 2027/28 do not include India.", ll: [49.8, 15.6], z: 7, p: [
+      ["Czech Technical University (CTU) · FIT", "Czech-taught master in Informatics", "Prague · Dejvice", "1.5–2 years (CTU master's run 1.5, 2 or 3 years)", "Free in Czech", "Czech (B2)", "Czech-taught = free by law", "no", "Plus a 1-year Czech course first", "https://www.cvut.cz/en/accredited-master-study-programmes-and-fields-of-study", [50.104, 14.392]],
+      ["Charles University · MFF", "Czech-taught Computer Science master", "Prague · Malá Strana / Karlín", "2 years", "Free in Czech (English: €40–30,620 / yr by programme)", "Czech", "Czech-taught = free", "no", "2 years + prep year", "https://cuni.cz/UKEN-372.html", [50.088, 14.403]],
+      ["Brno University of Technology · FIT", "Master of Information Technology", "Brno · Božetěchova", "2 years", "Free in Czech · English €3,000 / yr", "Czech or English", "Czech-taught = free", "no", "Very cheap life: dorm ≈ €120 / month, total ≈ €300–600 / month", "https://www.fit.vut.cz/applicants/degree-programme-en/.en", [49.226, 16.597]],
+      ["Masaryk University · Faculty of Informatics", "Czech-taught informatics master", "Brno · Botanická", "2 years", "Free in Czech", "Czech", "Czech-taught = free", "no", "MUNI runs its own 1-year Czech prep course", "https://www.muni.cz/en/admissions/bachelors-and-masters-studies/language-courses/czech-language-courses", [49.21, 16.599]],
+      ["VSB – Technical University of Ostrava", "Master's in Computer Science", "Ostrava · Poruba", "2 years", "Free in Czech · English CZK 50,000 / semester (≈ €4,000 / yr)", "Czech or English", "Czech-taught = free", "no", "2 years", "https://www.vsb.cz/en/study/admissions/tuition-fees/", [49.831, 18.161]]
+    ]},
+    { c: "Poland", v: "Polish-taught degrees at public universities are free for foreigners who hold a C1 Polish certificate (or the Karta Polaka). Many master's are 3 semesters, but usually only for 3.5-year engineering graduates; a 3-year BCA normally gets the 4-semester version. Graduates get a 9-month job-search permit and need no work permit. NAWA's Banach programme covers 36 Polish Aid countries (check India), and reaching C1 takes most people about 2 years.", ll: [52.0, 19.4], z: 6, p: [
+      ["Warsaw University of Technology · MiNI", "Data Science (Inżynieria i analiza danych)", "Warsaw · Koszykowa", "3 semesters only for engineering graduates; otherwise 4", "Paid in English (check the fee)", "English", "Public university", "partly", "The 3-semester route needs a CS/data engineering degree", "https://ww2.mini.pw.edu.pl/studia/magisterskie/inzynieria-i-analiza-danych/", [52.222, 21.007]],
+      ["Warsaw University of Technology · EiTI", "Computer Science (Informatyka) in English", "Warsaw · Nowowiejska", "4 semesters", "PLN 9,120 / semester (≈ €2,150)", "English", "Low public fee", "no", "2 years", "https://www.pw.edu.pl/studia/studia-ii-stopnia/informatyka-computer-science", [52.219, 21.011]],
+      ["Gdańsk University of Technology", "MSc Informatics (HPC & Computational Intelligence)", "Gdańsk · Wrzeszcz", "1.5–2 years (3–4 semesters)", "Non-EU fee (check)", "English", "Public university", "partly", "Confirm whether a BCA gets 3 or 4 semesters", "https://pg.edu.pl/en/admission/master-studies/study-programs-english/master-science-informatics", [54.371, 18.619]],
+      ["AGH University of Kraków", "Polish-taught Computer Science master", "Kraków", "1.5–2 years", "Free with C1 Polish", "Polish (C1)", "Article 324 exemption", "no", "C1 Polish takes years", "https://study.gov.pl/tuition-fees", [50.065, 19.923]],
+      ["University of Warsaw · MIMUW", "Polish-taught Informatics master", "Warsaw · Ochota", "2 years", "Free with C1 Polish", "Polish (C1)", "Article 324 exemption", "no", "C1 Polish + 2 years", "https://study.gov.pl/tuition-fees", [52.212, 20.982]]
+    ]},
+    { c: "Austria", v: "Not free, but close: public universities charge non-EU students a fixed €726.72 a semester plus €26.20 student union fee, about €2,900 for a whole master's. Waivers are only for least-developed countries (India is not one). Every master's is 2 years, and a 3-year BCA may need extra exams.", ll: [47.6, 13.6], z: 7, p: [
+      ["TU Wien", "MSc Data Science", "Vienna · Karlsplatz", "2 years (120 ECTS)", "≈ €2,900 total", "English", "Fixed low public fee", "no", "2 years", "https://www.studyinaustria.at/en/plan-your-studies/tuition-fees", [48.199, 16.37]],
+      ["University of Vienna", "MSc Data Science", "Vienna · Alsergrund", "2 years", "≈ €2,900 total", "English", "Fixed low public fee", "no", "2 years", "https://www.studyinaustria.at/en/plan-your-studies/tuition-fees", [48.213, 16.36]],
+      ["Johannes Kepler University Linz", "MSc Artificial Intelligence", "Linz", "2 years", "≈ €2,900 total", "English", "Fixed low public fee", "no", "2 years", "https://www.studyinaustria.at/en/plan-your-studies/tuition-fees", [48.337, 14.319]],
+      ["Graz University of Technology", "MSc Computer Science", "Graz · Inffeldgasse", "2 years", "≈ €2,900 total", "English", "Fixed low public fee", "no", "2 years", "https://www.studyinaustria.at/en/plan-your-studies/tuition-fees", [47.058, 15.46]],
+      ["University of Innsbruck", "MSc Computer Science", "Innsbruck · Technik campus", "2 years", "≈ €2,900 total", "English", "Fixed low public fee", "no", "2 years", "https://www.studyinaustria.at/en/plan-your-studies/tuition-fees", [47.264, 11.344]]
+    ]},
+    { c: "Hungary (SH)", v: "Stipendium Hungaricum is fully funded and open to Indians (about 200 seats; India nominates through the Ministry of Education / UGC): free tuition, HUF 43,700 a month (≈ €110), a dorm place or housing money, and insurance. The 2027/28 deadline is expected mid-January 2027. Every computer science master's is 4 semesters, so it breaks your 1.5-year rule. One Reddit report says UGC did not process Indian applications in 2024-25.", ll: [47.2, 19.4], z: 7, p: [
+      ["Eötvös Loránd University (ELTE)", "MSc Computer Science", "Budapest · Lágymányos", "4 semesters (120 ECTS)", "€0 with the scholarship", "English", "Stipendium Hungaricum", "no", "Hard entrance exam; needs 60 ECTS of informatics/maths", "https://apply.stipendiumhungaricum.hu/courses/course/441-msc-computer-science-budapest", [47.473, 19.062]],
+      ["University of Szeged", "Computer Science MSc", "Szeged", "4 semesters", "€0 with SH (self-funded €4,100 / semester)", "English", "Stipendium Hungaricum", "no", "2 years", "https://u-szeged.hu/english/study-programmes/computer-science-msc", [46.247, 20.145]],
+      ["University of Debrecen", "MSc Computer Science", "Debrecen", "2 years (check)", "€0 with SH", "English", "Stipendium Hungaricum", "no", "Largest SH university (2,000+ scholars)", "https://edu.unideb.hu/p/stipendium-hungaricum-scholarship-20272028", [47.553, 21.621]],
+      ["Budapest University of Technology (BME)", "MSc Computer Engineering", "Budapest · Műegyetem", "2 years (check)", "€0 with SH", "English", "Stipendium Hungaricum", "no", "2 years", "https://stipendiumhungaricum.hu/studyfinder/", [47.481, 19.056]],
+      ["University of Pécs", "MSc Computer Science Engineering", "Pécs", "Foundation semester + 2 years", "€0 with SH", "English", "Stipendium Hungaricum", "no", "Extra foundation semester", "https://apply.stipendiumhungaricum.hu/courses/course/792-msc-computer-science-engineering", [46.076, 18.206]]
+    ]},
+    { c: "Italy (DSU)", v: "Italy's regional DSU grants are open to non-EU students: a full tuition waiver plus up to about €7,000–7,500 a year in cash, based on family income (ISEE parificato). That is real free money, but the master's that qualify (laurea magistrale) last 2 years. The 1-year 'master universitario' courses do not get DSU or MAECI grants.", ll: [43.5, 11.5], z: 6, p: [
+      ["University of Bologna", "MSc Artificial Intelligence", "Bologna", "2 years", "€0 + up to €7,171 / yr if ER.GO eligible", "English", "ER.GO regional grant", "no", "2 years; income documents from India needed", "https://www.er-go.it/international-students/focus-on-scholarship", [44.496, 11.353]],
+      ["Sapienza University of Rome", "MSc Data Science", "Rome", "2 years", "€0 + up to €7,557 / yr if DiSCo eligible", "English", "DiSCo Lazio grant", "no", "2 years", "https://laziodisco.it/?lang=en", [41.903, 12.514]],
+      ["Politecnico di Torino", "MSc Data Science and Engineering", "Turin", "2 years", "€0 + grant if EDISU eligible", "English", "EDISU Piemonte grant", "no", "2 years", "https://www.edisu.piemonte.it/en/scholarships-and-grants/financial-benefits/scholarship-and-grants", [45.063, 7.662]],
+      ["Politecnico di Milano", "MSc Computer Science and Engineering", "Milan · Leonardo", "2 years", "Fee set by ISEE; merit grants", "English", "Income-based fee + DSU", "no", "2 years; Milan is expensive", "https://www.polimi.it/en", [45.478, 9.227]],
+      ["University of Padova", "MSc Data Science", "Padua", "2 years", "Up to 76 university scholarships + regional grant", "English", "University + regional grants", "no", "2 years; first call for 2027/28 opened 15 Sep 2026", "https://www.unipd.it/en/scholarships", [45.407, 11.877]]
+    ]},
+    { c: "France", v: "France raised non-EU fees about 16-fold for 2026-27: €3,950 a year for a public master's, and universities may now waive them for at most about 30% of non-EU students. Master's are M1 + M2 (2 years); a 3-year BCA rarely gets direct entry to M2. Eiffel (€1,200 a month) and Charpak for Indians (€860 a month) are real scholarships, but for 2-year courses.", ll: [46.6, 2.5], z: 6, p: [
+      ["Université Paris-Saclay", "Master's in Artificial Intelligence / Data Science", "Paris region · Saclay plateau", "2 years (M1 + M2)", "€7,900 (€3,950 / yr)", "English", "National public fee; possible waiver", "no", "2 years", "https://www.campusfrance.org/en/tuition-fees-France", [48.71, 2.17]],
+      ["Université Grenoble Alpes", "MSc Informatics (MoSIG)", "Grenoble · Saint-Martin-d'Hères", "2 years", "€7,900", "English", "National public fee", "no", "2 years", "https://www.campusfrance.org/en/tuition-fees-France", [45.193, 5.768]],
+      ["Université Côte d'Azur", "MSc Data Science and Artificial Intelligence", "Sophia Antipolis", "2 years", "€7,900", "English", "National public fee", "no", "2 years", "https://univ-cotedazur.eu/msc/msc-data-science-and-artificial-intelligence", [43.616, 7.072]],
+      ["Sorbonne Université", "Master's in Computer Science", "Paris · Jussieu", "2 years", "€7,900", "French / English", "National public fee", "no", "2 years; mostly French", "https://www.campusfrance.org/en/tuition-fees-France", [48.847, 2.357]],
+      ["Campus France India · Charpak", "Charpak Master's scholarship (any public master's)", "France", "1–2 years", "€860 / month + fee waiver", "English or French", "French government scholarship for Indians", "partly", "Fits only if you get direct M2 entry, which usually needs a 4-year degree", "https://www.campusfrance.org/en/tuition-fees-France", null]
+    ]},
+    { c: "Slovakia", v: "Public universities are free in Slovak for everyone. Comenius University charges €1,800 a year for English master's that have a Slovak twin, and nothing for English programmes that have none. EUBA advertises tuition-free English master's (at least the first year). Every master's is 2 years.", ll: [48.7, 19.6], z: 7, p: [
+      ["Comenius University · FMFI", "English-taught master's (e.g. Computer Science)", "Bratislava · Mlynská dolina", "2 years", "€1,800 / yr; €0 if no Slovak equivalent", "English", "Slovak fee law", "no", "2 years", "https://fmph.uniba.sk/en/admissions/fee-schedule/", [48.152, 17.07]],
+      ["University of Economics in Bratislava (EUBA)", "English master's (economics, business, finance)", "Bratislava · Petržalka", "2 years", "€0, at least in year 1", "English", "University offer", "no", "2 years; business, not IT", "https://euba.sk/en/activities/news/2981-study-in-slovakia-for-free-english-taught-bachelor-s-master-", [48.121, 17.124]],
+      ["Slovak University of Technology · FIIT", "Slovak-taught informatics master", "Bratislava", "2 years", "Free in Slovak", "Slovak", "Slovak-taught = free", "no", "Needs Slovak", "https://www.studyu.org/en/blog-free-university-education-slovakia", [48.153, 17.072]],
+      ["Technical University of Košice", "Slovak-taught informatics master", "Košice", "2 years", "Free in Slovak", "Slovak", "Slovak-taught = free", "no", "Needs Slovak", "https://www.studyu.org/en/blog-free-university-education-slovakia", [48.731, 21.245]],
+      ["Slovak Government Scholarship", "Bachelor's, master's or PhD at a public university", "Slovakia", "Full course", "Tuition-free + monthly grant", "Slovak (mostly)", "Government scholarship for listed countries", "no", "Only for countries on its list (check India in the online wizard)", "https://www.vladnestipendia.sk/en/", null]
+    ]}
+  ];
+  var RULED_FREE = [
+    ["Iceland", "From autumn 2027 the University of Iceland and Akureyri charge non-EU tuition (amount set per programme). Master's are 2 years anyway."],
+    ["Norway", "Ended free tuition for non-EU students in 2023. Public universities now charge, e.g. UiS NOK 60–85k a year."],
+    ["Sweden – SI scholarship", "The Swedish Institute's Global Professionals scholarship lists 34 countries for 2027/28. India is not one of them."],
+    ["Finland", "Non-EU fees €8,000–20,000 a year; waivers are partial (UEF up to 30%). No national grants; master's are 2 years."],
+    ["Estonia", "English master's charge non-EU students €6,000–7,200 a year. Tartu stopped giving non-EU waivers from 2026/27."],
+    ["Slovenia", "Free only for EU and Western Balkan citizens. Indians pay (e.g. €4,700 a year at Ljubljana's School of Economics)."],
+    ["Lithuania – state scholarship", "The 2026 call for master's scholarships did not include India (India was only on the short-term call). The VU and KTU waivers are still open to you."],
+    ["Latvia – state scholarship", "€500 a month, but only for citizens of about 39 partner countries. India is not on the list."],
+    ["Czech government scholarship", "2027/28 is limited to 13 countries (e.g. Bangladesh, Cambodia, Georgia, Ukraine). India is not included."],
+    ["Luxembourg", "Low fees at uni.lu, but master's are 2 years, students may work only 15 h/week, and Reddit graduates say French or German is needed for jobs."],
+    ["Belgium – Flanders", "The 100% fee waiver (tariff B) is only for least-developed countries. India pays the full non-EU fee."],
+    ["Ireland – free courses", "The Free Fees Initiative is for EU undergraduates only. Springboard+ and HCI free courses need Irish residence and a PPS number. So the only free route for you is a full scholarship (GOI-IES or UCD 100%)."],
+    ["Romania", "The government scholarship is real (free tuition + stipend), but teaching is in Romanian after a 1-year language year."]
+  ];
+  var FREE_SRC = [
+    ["NKUA DSIT: 3 semesters, €900 / semester, English", "https://dsit.di.uoa.gr/applications/"],
+    ["UniWA AI & Deep Learning fees", "https://aidl.uniwa.gr/tuition-fees/"],
+    ["University of Crete DAMSL (non-EU €3,500)", "https://mscs.uoc.gr/damsl/"],
+    ["IHU MSc Data Science (€3,700)", "https://st.ihu.gr/studies/postgraduate/datascience"],
+    ["Study in Greece – master's portal", "https://studyingreece.edu.gr/masters/"],
+    ["Junta de Andalucía – 99% credit bonus rules", "https://www.juntadeandalucia.es/organismos/universidadindustriaenergiaeinnovacion/areas/universidad/talento/paginas/guia-99.html"],
+    ["Andalusian price decree 98/2023 (art. 3, non-EU)", "https://www.juntadeandalucia.es/boja/2023/84/74"],
+    ["University of Seville – same prices for foreigners", "https://cat.us.es/matricula/precios-de-la-matricula"],
+    ["UGR master's fees (€13.68 / credit)", "https://www.ugr.es/en/study/masters-degrees/fees"],
+    ["UPC master's fee table", "https://www.upc.edu/en/masters/fees-grants/fees"],
+    ["Study in Czechia – learn Czech, study free", "https://studyin.gov.cz/plan-your-studies/learn-czech-study-tuition-free"],
+    ["Czech government scholarships 2027/28 (countries)", "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries"],
+    ["Study in Austria – tuition fees", "https://www.studyinaustria.at/en/plan-your-studies/tuition-fees"],
+    ["Campus France – 2026-27 fees and waivers", "https://www.campusfrance.org/en/tuition-fees-France"],
+    ["Stipendium Hungaricum – University of Debrecen call", "https://edu.unideb.hu/p/stipendium-hungaricum-scholarship-20272028"],
+    ["Study in Lithuania – scholarships list", "https://studyin.lt/scholarships/"],
+    ["Latvia – eligible countries (VIAA)", "https://www.viaa.gov.lv/en/latvian-state-scholarships"],
+    ["Swedish Institute – Global Professionals", "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/"],
+    ["University of Iceland – fees from 2027-28", "https://english.hi.is/study/apply/university-fees"],
+    ["University of Ljubljana – who pays tuition", "https://www.uni-lj.si/en/study/tuition-fees-and-other-study-contributions"],
+    ["University of Tartu – cost of tuition", "https://ut.ee/en/content/cost-tuition"],
+    ["Erasmus Mundus catalogue (filter by duration)", "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"],
+    ["Government of Ireland scholarship (TCD page)", "https://www.tcd.ie/study/international/scholarships/postgraduate/goi/"],
+    ["ER.GO (Emilia-Romagna) scholarship", "https://www.er-go.it/international-students/focus-on-scholarship"],
+    ["UCD Global Excellence Scholarships (100% / 50%)", "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships/"],
+    ["UCD page on GOI-IES (60 awards, fee + €10,000)", "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/governmentofirelandscholarships/"],
+    ["Maynooth international scholarships", "https://www.maynoothuniversity.ie/international/scholarships"],
+    ["DCU scholarships for non-EU students 2027-28", "https://www.dcu.ie/global/dcu-international-scholarships-non-eu-students-2027-28"],
+    ["Springboard+ eligibility (Citizens Information)", "https://www.citizensinformation.ie/en/education/third-level-education/applying-to-college/springboard/"]
+  ];
+  var ROUTES = [
+    ["Route 1 · cheapest in English", "Near-free in English, ≤ 1.5 years", [["NKUA Athens", "Data Science & IT, €2,700"], ["UniWA Athens", "AI & Deep Learning, €3,000"], ["Crete", "Data Analysis & ML, €3,500"], ["IHU Thessaloniki", "Data Science, €3,700"], ["UPC Barcelona", "AI, €2,700 (already in your plan)"]]],
+    ["Route 2 · learn the language", "Free or ≈ €821 if taught in the local language", [["Andalusia (Spanish B2)", "Seville, Granada, Málaga: ≈ €821 a year"], ["Czech (B2)", "CTU, Charles, Brno: free, but 1 prep year + 2 years"], ["Polish (C1)", "AGH, Warsaw: free, usually 2 years"], ["Slovak", "STU, Košice: free, 2 years"]]],
+    ["Route 3 · win the money", "Scholarships and waivers that fit ≤ 1.5 years", [["Vilnius University", "5 full waivers · by 1 Apr 2027"], ["KTU Kaunas", "automatic waiver by entry score"], ["UC3M Madrid", "4 full grants · by 31 Jan 2027"], ["UCD Dublin", "100% or 50% tuition · by 28 Feb 2027"], ["Government of Ireland", "60 awards: fee + €10,000"], ["Erasmus Mundus GeoTech", "18 months, €1,400 a month"]]]
+  ];
+
+  /* routes */
+  var rw = document.getElementById("freeRoutes");
+  ROUTES.forEach(function (r) {
+    rw.appendChild(el("div", { class: "route" }, [el("div", { class: "rk", text: r[0] }), el("h4", { text: r[1] }), el("ul", {}, r[2].map(function (x) { return el("li", {}, [el("b", { text: x[0] }), " — " + x[1]]); }))]));
+  });
+
+  /* chart: whole-course tuition for courses that fit (single series, sorted) */
+  var BARS = [
+    ["Andalusia public master's", "Seville · Granada · Málaga", 880, "1 year · Spanish-taught", true],
+    ["NKUA · Data Science & IT", "Athens", 2700, "3 semesters · English", false],
+    ["UPC · Artificial Intelligence", "Barcelona", 2700, "1.5 years · English", false],
+    ["UniWA · AI & Deep Learning", "Athens", 3000, "3 semesters · English", false],
+    ["Crete · Data Analysis & ML", "Heraklion", 3500, "3 semesters · English", false],
+    ["IHU · Data Science", "Thessaloniki", 3700, "18 months · English", false],
+    ["AUEB · Business Analytics", "Athens", 7200, "1 year · English", false],
+    ["UC3M · Big Data Analytics", "Madrid", 7200, "1 year · English (4 full grants)", false]
+  ];
+  var MAXV = 8000, fc = document.getElementById("freeChart"), tip = document.getElementById("tip");
+  var grid = el("div", { class: "chart-grid" });
+  BARS.forEach(function (b) {
+    var track = el("div", { class: "track" });
+    [2000, 4000, 6000].forEach(function (t) { track.appendChild(el("div", { class: "gridline", style: "left:" + (t / MAXV * 100) + "%", "aria-hidden": "true" })); });
+    var bar = el("div", { class: "rbar" + (b[4] ? " dim" : ""), style: "left:0;width:max(14px," + (b[2] / MAXV * 100).toFixed(2) + "%)", tabindex: "0", "aria-label": b[0] + ": €" + b[2].toLocaleString("en-GB") + " total, " + b[3] });
+    function show(e) {
+      tip.textContent = "";
+      tip.appendChild(el("div", { class: "tv", text: "€" + b[2].toLocaleString("en-GB") }));
+      tip.appendChild(el("div", { class: "tl", text: b[0] + " · " + b[1] }));
+      tip.appendChild(el("div", { class: "tl", text: b[3] + " · whole course, non-EU" }));
+      var r = bar.getBoundingClientRect(), x = e && e.clientX ? e.clientX : r.right, y = e && e.clientY ? e.clientY : r.top;
+      tip.style.left = Math.min(x + 14, window.innerWidth - 260) + "px"; tip.style.top = (y + 14) + "px"; tip.style.opacity = "1";
+    }
+    function hide() { tip.style.opacity = "0"; }
+    bar.addEventListener("mousemove", show); bar.addEventListener("focus", show);
+    bar.addEventListener("mouseleave", hide); bar.addEventListener("blur", hide);
+    track.appendChild(bar);
+    grid.appendChild(el("div", { class: "c-label" }, [el("div", { class: "n", text: b[0] }), el("div", { class: "m", text: b[1] + " · " + b[3] })]));
+    grid.appendChild(track);
+    grid.appendChild(el("div", { class: "c-val", text: "€" + b[2].toLocaleString("en-GB") }));
+  });
+  fc.appendChild(grid);
+  var ticks = el("div", { class: "ticks" });
+  [0, 2000, 4000, 6000, 8000].forEach(function (t) { ticks.appendChild(el("span", { class: "tick", style: "left:" + (t / MAXV * 100) + "%", text: t ? "€" + (t / 1000) + "k" : "€0" })); });
+  fc.appendChild(el("div", { class: "axis" }, [el("div"), ticks, el("div")]));
+  fc.appendChild(el("p", { class: "note", text: "Hollow bar = Spanish-taught (you would need B2 Spanish). Total cost with living, Athens example: €2,700 + about €800 × 18 months + €2,000 one-off ≈ €19,100 ≈ ₹19.7 lakh." }));
+
+  /* picker + table */
+  var pick = document.getElementById("fpick"), tbody = document.querySelector("#ftable tbody"), sum = document.getElementById("fsum");
+  function render(i) {
+    var d = FREE[i];
+    pick.querySelectorAll(".fbtn").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    var fits = d.p.filter(function (r) { return r[7] === "yes"; }).length;
+    sum.textContent = "";
+    sum.appendChild(el("div", {}, [el("b", { text: d.c + ": " }), d.v]));
+    sum.appendChild(el("div", { class: "note", text: d.p.length + " options · " + fits + " fit all your rules" }));
+    tbody.textContent = "";
+    d.p.forEach(function (r) {
+      tbody.appendChild(el("tr", {}, [el("td", { text: r[0] }), el("td", {}, [el("a", { href: r[9], target: "_blank", rel: "noopener", text: r[1] + " ↗" })]), el("td", { text: r[2] }), el("td", { text: r[3] }), el("td", { text: r[4] }), el("td", { text: r[5] }), el("td", { text: r[6] }), el("td", {}, [el("span", { class: "fit " + r[7], text: FIT[r[7]] })]), el("td", { text: r[8] })]));
+    });
+    if (window.__euMap && window.L) window.__euMap.flyTo(d.ll, d.z, { duration: 0.9 });
+  }
+  window.__FREE = FREE; window.__showFree = render;
+  FREE.forEach(function (d, i) {
+    var n = d.p.filter(function (r) { return r[7] === "yes"; }).length;
+    var b = el("button", { class: "fbtn", type: "button", role: "tab", "aria-pressed": "false" }, [d.c + (n ? " · " + n + " ✓" : "")]);
+    b.addEventListener("click", function () { render(i); });
+    pick.appendChild(b);
+  });
+  /* first render without moving the map */
+  (function () { var keep = window.__euMap; window.__euMap = null; render(0); window.__euMap = keep; })();
+
+  /* ruled out + sources */
+  var rl = document.getElementById("freeRuled");
+  RULED_FREE.forEach(function (r) { rl.appendChild(el("div", { class: "rcard" }, [el("div", { class: "rt", text: r[0] }), el("p", { text: r[1] })])); });
+  var fs = document.getElementById("freeSrc");
+  FREE_SRC.forEach(function (s) { fs.appendChild(el("li", {}, [el("a", { href: s[1], target: "_blank", rel: "noopener", text: s[0] })])); });
+
+  /* map layer: small dark dots, added once the map exists */
+  var tries = 0;
+  (function addDots() {
+    if (!window.__euMap || !window.L) { if (++tries < 40) setTimeout(addDots, 250); return; }
+    var cs = getComputedStyle(document.documentElement);
+    var ink = cs.getPropertyValue("--ink-2").trim() || "#52514e", surf = cs.getPropertyValue("--surface").trim() || "#fff";
+    var seen = {};
+    FREE.forEach(function (d) {
+      d.p.forEach(function (r) {
+        if (!r[10]) return;
+        var key = r[10].join(","); if (seen[key]) return; seen[key] = 1;
+        var box = el("div", { class: "pop" }, [el("h4", { text: r[0] }), el("div", { class: "u", text: r[2] + " · free / near-free list" }), el("div", { text: r[1] + " — " + r[3] }), el("div", { text: r[4] }), el("div", { class: "note", text: FIT[r[7]] + " · " + r[8] })]);
+        L.circleMarker(r[10], { radius: 4.5, weight: 2, color: surf, fillColor: ink, fillOpacity: 1 }).addTo(window.__euMap).bindPopup(box).bindTooltip(r[0] + " · " + r[1], { direction: "top" });
+      });
+    });
+    var lg = document.getElementById("mapLegend");
+    if (lg && !document.getElementById("freeKey")) lg.appendChild(el("span", { class: "key", id: "freeKey" }, [el("span", { class: "dot", style: "--k:" + ink, "aria-hidden": "true" }), "Free / near-free list (filled grey)"]));
+  })();
+});
+</script>
+
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+
+  var COUNTRY = {
+    es: { name: "Spain", cssVar: "--c-es" },
+    lt: { name: "Lithuania", cssVar: "--c-lt" },
+    de: { name: "Germany", cssVar: "--c-de" },
+    ie: { name: "Ireland", cssVar: "--c-ie" }
+  };
+  function cvar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === "text") n.textContent = attrs[k];
+      else if (k === "class") n.className = attrs[k];
+      else if (k === "style") n.setAttribute("style", attrs[k]);
+      else n.setAttribute(k, attrs[k]);
+    });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function keyDot(cc, hollow) { var d = el("span", { class: "dot" + (hollow ? " hollow" : ""), "aria-hidden": "true" }); d.style.setProperty("--k", "var(" + COUNTRY[cc].cssVar + ")"); return d; }
+
+  var PROGRAMS = [
+    {
+      id: "uc3m", cc: "es", rank: "#1 pick", main: true,
+      course: "Master in Big Data Analytics", uni: "Universidad Carlos III de Madrid (UC3M)",
+      city: "Madrid, Spain", area: "Puerta de Toledo campus, central Madrid", coords: [40.4066, -3.7116],
+      length: "1 year", lengthSub: "60 ECTS", tuition: "≈ €7,200", tuitionSub: "€120 / ECTS non-EU", total: [20, 22], totalText: "₹20–22 L",
+      language: "English · 40 places",
+      apply: "Round 1: 1 Dec 2026 – 31 Jan 2027 (decisions from 26 Feb). Round 2 to 31 Mar, round 3 to 31 May. Courses can close early once full.",
+      entry: "Bachelor's degree; degrees from outside Europe are checked by UC3M. Quantitative course (maths, statistics, programming).",
+      money: "Up to 4 full-tuition grants for this master's (2026/27 call).",
+      after: "Work 30 h/week while studying. 12 months to find a job, then switch to a work permit with any contract at minimum wage or the sector rate.",
+      catchText: "Tough and maths-heavy. Spain's job market is tight: junior data analysts average €23–28k.",
+      quote: "UC3M is well known for being a tough uni, so stay on top of it.", quoteSrc: "r/studyAbroad",
+      link: "https://www.uc3m.es/master/big-data-analytics"
+    },
+    {
+      id: "upc-ai", cc: "es", rank: "#1 alt", main: true,
+      course: "Master's in Artificial Intelligence (MAI)", uni: "Universitat Politècnica de Catalunya (UPC · BarcelonaTech)",
+      city: "Barcelona, Spain", area: "Barcelona School of Informatics (FIB), Campus Nord, Les Corts", coords: [41.3894, 2.1134],
+      length: "1.5 years", lengthSub: "90 ECTS", tuition: "≈ €2,700", tuitionSub: "whole course, non-EU", total: [23, 25], totalText: "₹23–25 L",
+      language: "English · 50 places",
+      apply: "Pre-enrolment opens in spring 2027. Check UPC's master's calendar.",
+      entry: "Informatics-type bachelor's. UPC checks that a non-European degree is equivalent and gives access to master's study at home (a BCA leads to MCA/MSc in India).",
+      money: "Tuition is already tiny (€45/credit for non-EU).",
+      after: "Same Spanish rules: 30 h/week, 12-month job search, easy switch. Barcelona has the most English-speaking tech jobs in Spain.",
+      catchText: "Selective and technical. Barcelona rent is high, which pushes the total near the top of your budget.",
+      quote: "Administration is a disaster… You need some technical knowledge to succeed.", quoteSrc: "r/Barcelona (a graduate)",
+      link: "https://www.upc.edu/en/masters/artificial-intelligence"
+    },
+    {
+      id: "upc-cyber", cc: "es", rank: "1-year option", main: true,
+      course: "Master's in Cybersecurity", uni: "Universitat Politècnica de Catalunya (UPC)",
+      city: "Barcelona, Spain", area: "Campus Nord (ETSETB + FIB), Les Corts", coords: [41.3876, 2.1162],
+      length: "1 year", lengthSub: "60 ECTS", tuition: "≈ €2,700", tuitionSub: "whole course, non-EU", total: [17, 19], totalText: "₹17–19 L",
+      language: "English",
+      apply: "Pre-enrolment opens in spring 2027.",
+      entry: "Recommended background is telecom/networking. A BCA needs the master's committee to approve it, so ask first.",
+      money: "Tuition is already tiny.",
+      after: "Spanish rules: 30 h/week, 12-month job search, easy switch.",
+      catchText: "Not a data course, and the entry fit for a BCA is uncertain.",
+      quote: "With English it's very easy in Barcelona, but anywhere else in Spain it's hard.", quoteSrc: "r/cscareerquestionsEU",
+      link: "https://www.upc.edu/en/masters/cybersecurity"
+    },
+    {
+      id: "ugr", cc: "es", rank: "Cheapest", main: true,
+      course: "Master's in Data Science and Computer Engineering", uni: "Universidad de Granada (UGR)",
+      city: "Granada, Spain", area: "Granada, Andalusia (smaller, cheaper city)", coords: [37.1973, -3.6244],
+      length: "1 year", lengthSub: "60 ECTS", tuition: "≈ €821", tuitionSub: "€13.68 / ECTS, same for non-EU", total: [12, 14], totalText: "₹12–14 L",
+      language: "Mainly Spanish → needs Spanish B2",
+      apply: "Through Andalusia's shared master's pre-registration. Check the UGR master's calendar.",
+      entry: "Bachelor's degree plus Spanish B2.",
+      money: "Andalusia charges international students the same public price. Prices are frozen into 2026-27.",
+      after: "Spanish rules: 30 h/week, 12-month job search, easy switch.",
+      catchText: "The cheapest real master's found anywhere, but Spanish-taught. Realistic only if you start Spanish now.",
+      quote: "Without Spanish, you can only apply for programs in English, so your pool might be small.", quoteSrc: "r/GoingToSpain",
+      link: "https://www.ugr.es/en/study/masters-degree/masters-degree-data-science-and-computer-engineering"
+    },
+    {
+      id: "vu-ds", cc: "lt", rank: "#2 pick", main: true,
+      course: "MSc Data Science", uni: "Vilnius University (VU), Faculty of Mathematics and Informatics",
+      city: "Vilnius, Lithuania", area: "Naugarduko g. 24 (central, Naujamiestis) and Didlaukio g. 47", coords: [54.6783, 25.2729],
+      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€6,000 / yr", tuitionSub: "≈ €9,000 total", total: [17, 18], totalText: "₹17–18 L",
+      language: "English",
+      apply: "1 Dec 2026 – 1 May 2027. Tick the full fee-waiver box by 1 Apr 2027.",
+      entry: "Indian applicants need 70%+ on the online maths test (OMPT-E), then a dataset task and an interview. IELTS 6.5, or an English-medium letter. No more than 5 years since your bachelor's.",
+      money: "5 full tuition waivers for non-EU master's students. With one, the total is ≈ ₹8 lakh.",
+      after: "Work up to 40 h/week. 12 months to find a job. When the yearly quota runs out, a work permit needs at least €2,411–2,894/month; the Blue Card skips the quota.",
+      catchText: "Lithuania is tightening its rules, and the job market is small. Basic Lithuanian helps.",
+      quote: "They will take almost everyone who wants to study and pay… you're gonna learn A LOT.", quoteSrc: "r/lithuania",
+      link: "https://apply.vu.lt/courses/course/36-data-science"
+    },
+    {
+      id: "ktu", cc: "lt", rank: "#2 alt", main: true,
+      course: "MSc Data Science and Artificial Intelligence", uni: "Kaunas University of Technology (KTU)",
+      city: "Kaunas, Lithuania", area: "Studentų g. 50 campus · ~100 km from Vilnius · cheaper city", coords: [54.9043, 23.9580],
+      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€5,641 / yr", tuitionSub: "≈ €8,460 total", total: [16, 17], totalText: "₹16–17 L",
+      language: "English",
+      apply: "Deadline 1 Jun 2027. Each country has a cap on applications, so apply early.",
+      entry: "60%+ marks, at least 30 credits of maths in your BCA, IELTS 6.0, 2 references.",
+      money: "Full or partial tuition waivers, considered automatically. Results by mid-July.",
+      after: "Same Lithuanian rules: 40 h/week, 12-month job search.",
+      catchText: "Check your transcript: the 30 maths credits decide whether you can apply.",
+      quote: "There are actually many students from India studying at KTU… The environment is safe.", quoteSrc: "r/lithuania",
+      link: "https://apply.ktu.edu/courses/course/214-msc-data-science-and-artificial-intelligence"
+    },
+    {
+      id: "vu-smis", cc: "lt", rank: "No maths test", main: true,
+      course: "Strategic Management of Information Systems", uni: "Vilnius University, Faculty of Economics and Business Administration",
+      city: "Vilnius, Lithuania", area: "Saulėtekio al. 9, Building II (Saulėtekis campus)", coords: [54.7231, 25.3373],
+      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€5,460 / yr", tuitionSub: "≈ €8,190 total", total: [16, 17], totalText: "₹16–17 L",
+      language: "English",
+      apply: "1 Dec 2026 – 1 May 2027.",
+      entry: "20 credits of economics/business, OR 3+ years of work experience with an employer letter (you'll have that by mid-2027). 60%+ marks, interview. No maths test for India.",
+      money: "Eligible for VU's 5 full waivers (by 1 Apr 2027).",
+      after: "Lithuanian rules, as above.",
+      catchText: "A business + IT degree (Master in Business Management): good for analyst roles, less technical.",
+      quote: "When it comes to jobs, education is rarely looked at, experience is valued more.", quoteSrc: "r/lithuania",
+      link: "https://apply.vu.lt/courses/course/214-strategic-management-information-systems"
+    },
+    {
+      id: "kiel", cc: "de", rank: "#3 · needs German", main: true,
+      course: "MSc Computer Science", uni: "Kiel University of Applied Sciences (HAW Kiel), Faculty of Computer Science and Electrical Engineering",
+      city: "Kiel, Germany", area: "Grenzstraße 3, 24149 Kiel · ~90 km north of Hamburg", coords: [54.3317, 10.1820],
+      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €398 / semester fee", total: [20, 22], totalText: "₹20–22 L",
+      language: "English",
+      apply: "May – 15 Jul 2027 (winter start) or Nov – 15 Jan (summer start).",
+      entry: "Closely related bachelor's with German grade 2.5 or better (your ~89% ≈ 1.5). 180 credits accepted. Non-European degrees need the GRE (55th percentile+ in quant). English B2. APS certificate (≈ ₹18,000).",
+      money: "No tuition. Deutschlandstipendium (€300/month) can be applied for after you enrol. DAAD master's scholarships are NOT open to Indians for 2027/28.",
+      after: "≈ 20 h/week student jobs. 18 months to find a job. Blue Card from 1 Jan 2027: €48,108 for recent graduates. You need a blocked account of €11,904 per year.",
+      catchText: "Only 231 English-speaking data jobs in all of Germany (12 in Hamburg), and most are senior. German, often C1, is usually needed.",
+      quote: "What do I need to land a job as Data Analyst in Germany? German. That's the number one thing you're missing.", quoteSrc: "r/germany",
+      link: "https://www.haw-kiel.de/en/degree-courses/courses/computer-science/"
+    },
+    {
+      id: "mtu", cc: "ie", rank: "Over budget", main: true,
+      course: "MSc Artificial Intelligence / MSc Data Science & Analytics", uni: "Munster Technological University (MTU)",
+      city: "Cork, Ireland", area: "Bishopstown campus, Cork", coords: [51.8849, -8.5333],
+      length: "1 year", lengthSub: "Level 9", tuition: "€12,000", tuitionSub: "€15,000 − €3,000 auto scholarship", total: [26, 28], totalText: "₹26–28 L",
+      language: "English",
+      apply: "Non-EU deadline 31 May for September entry.",
+      entry: "Level 8 / honours-equivalent bachelor's.",
+      money: "Automatic €3,000 scholarship. The Government of Ireland scholarship (€10,000 plus all fees) would make it affordable.",
+      after: "20 h/week. 12 + 12 months to find a job (the second year is not automatic). Critical Skills permit: €36,848 for graduates.",
+      catchText: "Over budget without a scholarship, and Ireland has a housing crisis.",
+      quote: "Housing, housing, housing. Honestly there's nowhere to live.", quoteSrc: "r/StudyInIreland",
+      link: "https://www.mtu.ie/international/non-eu/fees/"
+    },
+    {
+      id: "ucd-cs", cc: "ie", rank: "Free if you win", main: true,
+      course: "MSc Computer Science (Negotiated Learning)", uni: "University College Dublin (UCD)",
+      city: "Dublin, Ireland", area: "Belfield campus, Dublin 4 (south Dublin)", coords: [53.3067, -6.221],
+      length: "1 year", lengthSub: "90 credits", tuition: "€0 with 100%", tuitionSub: "€33,055 fee · €0 with the 100% award · €16,528 with the 50% award (total then ≈ ₹34–37 L)", total: [17, 20], totalText: "₹17–20 L",
+      language: "English",
+      apply: "Apply to UCD for the MSc first, then for the Global Excellence Scholarship by 28 Feb 2027 (graduate applicants from South Asia). Results come about 7 weeks later.",
+      entry: "Upper second-class (2.1) or equivalent in computer science or a related ICT degree. Check that UCD accepts your 3-year BCA and how it converts Indian marks.",
+      money: "UCD Global Excellence Scholarship: 100% or 50% of tuition, and India is eligible. You can also try the Government of Ireland scholarship (fee + €10,000), if this course is on its eligible list.",
+      after: "20 h/week in term (40 h in breaks). Stamp 1G gives 12 months to find a job after a level 9 master's, renewable to 24. Critical Skills permit from €36,848 for recent graduates.",
+      catchText: "Only a limited number of 100% awards. With the 50% award the total jumps to ≈ ₹34–37 L, far over budget, so only accept the place if you win the 100% award.",
+      quote: "My friend who got the 50% scholarship just said that the answers to the questions need to be really thoughtful.", quoteSrc: "r/UCD",
+      link: "https://hub.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=PROG&MAJR=T150"
+    },
+    {
+      id: "dcu-msc", cc: "ie", rank: "Free with GOI-IES", main: true,
+      course: "MSc in Computing (AI, Data Analytics, NLP or Cybersecurity)", uni: "Dublin City University (DCU)",
+      city: "Dublin, Ireland", area: "Glasnevin campus, Dublin 9 (north Dublin)", coords: [53.3856, -6.2565],
+      length: "1 year", lengthSub: "Level 9", tuition: "€0 with GOI-IES", tuitionSub: "Without it: €25,000 − €4,400 scholarship = €20,600, total ≈ ₹39–41 L", total: [7, 10], totalText: "₹7–10 L (GOI-IES)",
+      language: "English",
+      apply: "September and January intakes. The Government of Ireland scholarship 2027 call is not out yet (2026 ran 29 Jan – 12 Mar) and needs a DCU offer first.",
+      entry: "2.1 or higher in Computer Science, Computing or Computer Applications. A BCA is named directly.",
+      money: "Automatic €4,400 Engineering & Computing scholarship. Government of Ireland scholarship (60 awards nationally) = full fee waiver + €10,000.",
+      after: "20 h/week in term. Stamp 1G: 12 + 12 months to find work. Dublin has Ireland's biggest tech job market.",
+      catchText: "The ₹7–10 L only happens if you win one of 60 national GOI-IES awards. Without it this is ≈ ₹39–41 L.",
+      quote: "I did some research on previous years and it seems like most results come circa June 15.", quoteSrc: "r/gradadmissions (GOI-IES applicant)",
+      link: "https://www.dcu.ie/courses/postgraduate/school-computing/msc-computing"
+    },
+    {
+      id: "griffith", cc: "ie", rank: "50% scholarship", main: true,
+      course: "MSc in Computing Science / MSc in Big Data Management and Analytics", uni: "Griffith College Dublin",
+      city: "Dublin, Ireland", area: "South Circular Road, Dublin 8", coords: [53.331, -6.278],
+      length: "1 year", lengthSub: "Level 9 (QQI)", tuition: "€9,075", tuitionSub: "€16,000 − 50% scholarship + €1,075 fees · without it ≈ €14,650", total: [27, 29], totalText: "₹27–29 L",
+      language: "English (Duolingo accepted)",
+      apply: "Intakes February 2027 and September 2027. Scholarship applications open January 2027 and close 31 May 2027 for visa-required countries.",
+      entry: "2.2 Level 8 honours degree in computing or the international equivalent; work experience counts.",
+      money: "Griffith Global Excellence Scholarship = 50% of tuition. Otherwise a €2,000 bursary + €1,000–2,000 merit award.",
+      after: "Same Irish rules: 20 h/week, Stamp 1G 12 + 12 months.",
+      catchText: "Private college (degree validated by QQI). Even with the 50% award it is ≈ ₹27–29 L, a little over your budget.",
+      quote: "The major issue is the housing crisis in both the Netherlands and Ireland.", quoteSrc: "r/Indians_StudyAbroad",
+      link: "https://www.griffith.ie/faculties/computing/courses/msc-big-data-management-and-analytics"
+    },
+    {
+      id: "nci", cc: "ie", rank: "Auto discount", main: true,
+      course: "MSc in Data Analytics", uni: "National College of Ireland (NCI)",
+      city: "Dublin, Ireland", area: "IFSC, Mayor Street, Dublin 1 (city centre)", coords: [53.3487, -6.2433],
+      length: "1 year", lengthSub: "Level 9", tuition: "from €12,000", tuitionSub: "€17,000 − up to €5,000 automatic merit award", total: [30, 32], totalText: "₹30–32 L",
+      language: "English (IELTS 6.0)",
+      apply: "Intakes January 2027 (starts 18 Jan) and September 2027. The merit award is applied automatically.",
+      entry: "2.2 Level 8 honours degree in a related subject; a work-experience route (RPEL) also exists.",
+      money: "Automatic Academic Merit Scholarship of up to €5,000, based on your degree marks.",
+      after: "Same Irish rules: 20 h/week, Stamp 1G 12 + 12 months.",
+      catchText: "Even with the full €5,000 off, Dublin rent puts the total ≈ ₹30–32 L.",
+      quote: "Ireland is not cheap even for locals.", quoteSrc: "r/ireland",
+      link: "https://www.ncirl.ie/Courses/NCI-Course-Details/course/MSCDAD"
+    }
+  ];
+
+  window.__PROGRAMS = PROGRAMS;
+  var EXTRA_PLACES = [
+    { cc: "es", title: "UPC · Technology & Engineering Management", city: "Terrassa (~25 km from Barcelona)", note: "1.5 yrs · ≈ €4,050 · 20 places · English", coords: [41.5627, 2.0225], link: "https://www.upc.edu/en/masters/technology-and-engineering-management" },
+    { cc: "es", title: "UPC · ML & Cybersecurity for Internet-Connected Systems", city: "Manresa (~60 km from Barcelona)", note: "1.5 yrs · ≈ €4,050 · 30 places · English", coords: [41.7353, 1.8277], link: "https://www.upc.edu/en/masters/machine-learning-and-cybersecurity-for-internet-connected-systems" },
+    { cc: "es", title: "UC3M · Master in Statistics for Data Science", city: "Madrid (Getafe campus)", note: "1 yr · 60 ECTS · English", coords: [40.3168, -3.7268], link: "https://www.uc3m.es/master/statistics-data-science" }
+  ];
+
+  /* ---------- verdict ---------- */
+  var V = [
+    { cc: "es", rank: "#1 recommendation", title: "Spain", text: "UC3M Madrid or UPC Barcelona. A true 1-year course, the easiest switch from student to work permit, and Barcelona is English-friendly.", meta: "₹17–25 L · 1–1.5 yrs · learn Spanish alongside" },
+    { cc: "lt", rank: "#2 safe backup", title: "Lithuania", text: "Vilnius University or KTU, living rent-free with your brother. You can work 40 h/week while studying.", meta: "₹16–18 L (≈ ₹8 L with a VU waiver) · 1.5 yrs" },
+    { cc: "de", rank: "#3 only with German", title: "Germany", text: "Kiel UAS: zero tuition and 18 months to find a job, but English-only data jobs are scarce.", meta: "₹20–22 L · 1.5 yrs · GRE + APS needed" }
+  ];
+  var vc = document.getElementById("verdictCards");
+  V.forEach(function (v) {
+    var c = el("div", { class: "vcard" }, [
+      el("div", { class: "vrank", text: v.rank }),
+      el("div", { class: "vtitle" }, [keyDot(v.cc), v.title]),
+      el("p", { text: v.text }),
+      el("div", { class: "vmeta", text: v.meta })
+    ]);
+    c.style.setProperty("--key", "var(" + COUNTRY[v.cc].cssVar + ")");
+    vc.appendChild(c);
+  });
+
+  /* ---------- legends ---------- */
+  function buildLegend(target, codes) {
+    codes.forEach(function (cc) { target.appendChild(el("span", { class: "key" }, [keyDot(cc), COUNTRY[cc].name])); });
+  }
+  buildLegend(document.getElementById("mapLegend"), ["es", "lt", "de", "ie"]);
+  document.getElementById("mapLegend").appendChild(el("span", { class: "key" }, [keyDot("es", true), "Other campus, same university"]));
+  document.getElementById("mapLegend").appendChild(el("span", { class: "key" }, [el("span", { class: "dot hollow", style: "--k:var(--ink-3)", "aria-hidden": "true" }), "Every other university in the 20-country list"]));
+  buildLegend(document.getElementById("costLegend"), ["es", "lt", "de", "ie"]);
+
+  /* ---------- map ---------- */
+  var map = null, tileLayer = null, labelLayer = null, markers = {};
+  var pinIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+  function isDark() {
+    return document.documentElement.getAttribute("data-theme") !== "light";
+  }
+  var ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
+  function tileUrl() { return ESRI + (isDark() ? "World_Dark_Gray_Base" : "World_Light_Gray_Base") + "/MapServer/tile/{z}/{y}/{x}"; }
+  function labelUrl() { return ESRI + (isDark() ? "World_Dark_Gray_Reference" : "World_Light_Gray_Reference") + "/MapServer/tile/{z}/{y}/{x}"; }
+  function popupNode(p) {
+    var dl = el("dl");
+    [["Course", p.course], ["Area", p.area], ["Length", p.length + " (" + p.lengthSub + ")"], ["Tuition", p.tuition], ["Total", p.totalText + " (est.)"], ["Language", p.language]].forEach(function (r) {
+      dl.appendChild(el("dt", { text: r[0] })); dl.appendChild(el("dd", { text: r[1] }));
+    });
+    return el("div", { class: "pop" }, [el("h4", { text: p.uni }), el("div", { class: "u", text: p.city }), dl]);
+  }
+  function initMap() {
+    if (typeof L === "undefined") {
+      document.getElementById("map").style.display = "none";
+      document.getElementById("mapFallback").style.display = "block";
+      return;
+    }
+    map = L.map("map", { scrollWheelZoom: true, wheelPxPerZoomLevel: 90, wheelDebounceTime: 30, zoomSnap: 0.25, zoomDelta: 0.5, minZoom: 3 }).setView([48.5, 8], 4);
+    tileLayer = L.tileLayer(tileUrl(), { maxZoom: 16, attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors" }).addTo(map);
+    map.createPane("labels");
+    map.getPane("labels").style.zIndex = 350;
+    map.getPane("labels").style.pointerEvents = "none";
+    labelLayer = L.tileLayer(labelUrl(), { maxZoom: 16, pane: "labels" }).addTo(map);
+    var surface = cvar("--surface");
+    PROGRAMS.forEach(function (p) {
+      var m = L.circleMarker(p.coords, { radius: 9, weight: 2, color: surface, fillColor: cvar(COUNTRY[p.cc].cssVar), fillOpacity: 1 })
+        .addTo(map).bindPopup(popupNode(p)).bindTooltip(p.uni.split(" (")[0] + " · " + p.course, { direction: "top", offset: [0, -8] });
+      m.on("click", function () { setCurrent(p.id); });
+      markers[p.id] = m;
+    });
+    EXTRA_PLACES.forEach(function (x, i) {
+      var m = L.circleMarker(x.coords, { radius: 6, weight: 2.5, color: cvar(COUNTRY[x.cc].cssVar), fillColor: surface, fillOpacity: 1 })
+        .addTo(map)
+        .bindPopup(el("div", { class: "pop" }, [el("h4", { text: x.title }), el("div", { class: "u", text: x.city }), el("div", { text: x.note })]))
+        .bindTooltip(x.title, { direction: "top", offset: [0, -6] });
+      markers["x" + i] = m;
+    });
+    var all = PROGRAMS.map(function (p) { return p.coords; }).concat(EXTRA_PLACES.map(function (x) { return x.coords; }));
+    map.fitBounds(all, { padding: [30, 30] });
+    window.__euMap = map;
+    var hint = document.getElementById("mapHint"), reset = document.getElementById("mapReset"), moved = false;
+    reset.addEventListener("click", function () { map.flyToBounds(all, { padding: [30, 30], duration: 0.8 }); });
+    function touched() {
+      reset.hidden = false;
+      if (!moved) { moved = true; setTimeout(function () { hint.classList.add("off"); }, 700); }
+    }
+    ["wheel", "pointerdown", "touchstart"].forEach(function (ev) { map.getContainer().addEventListener(ev, touched, { passive: true }); });
+  }
+  function refreshMapColors() {
+    if (!map) return;
+    var surface = cvar("--surface");
+    tileLayer.setUrl(tileUrl());
+    labelLayer.setUrl(labelUrl());
+    PROGRAMS.forEach(function (p) { markers[p.id].setStyle({ color: surface, fillColor: cvar(COUNTRY[p.cc].cssVar) }); });
+    EXTRA_PLACES.forEach(function (x, i) { markers["x" + i].setStyle({ color: cvar(COUNTRY[x.cc].cssVar), fillColor: surface }); });
+  }
+  window.__focusOnMap = function (id) { focusOnMap(id); };
+  function setCurrent(id) {
+    document.querySelectorAll(".loc").forEach(function (b) { b.setAttribute("aria-current", b.dataset.id === id ? "true" : "false"); });
+  }
+  function focusOnMap(id) {
+    if (!map || !markers[id]) return;
+    document.getElementById("map-sec").scrollIntoView({ behavior: "smooth" });
+    map.flyTo(markers[id].getLatLng(), 13, { duration: 1.1 });
+    setTimeout(function () { markers[id].openPopup(); }, 1150);
+    setCurrent(id);
+  }
+  var locList = document.getElementById("locList");
+  PROGRAMS.forEach(function (p) {
+    var b = el("button", { class: "loc", type: "button", "data-id": p.id, "aria-current": "false" }, [
+      keyDot(p.cc),
+      el("div", {}, [el("div", { class: "t", text: p.city }), el("div", { class: "s", text: p.uni.split(",")[0] + " · " + p.course }), el("div", { class: "a", text: p.area })])
+    ]);
+    b.addEventListener("click", function () { focusOnMap(p.id); });
+    locList.appendChild(b);
+  });
+  EXTRA_PLACES.forEach(function (x, i) {
+    var b = el("button", { class: "loc", type: "button", "data-id": "x" + i, "aria-current": "false" }, [
+      keyDot(x.cc, true),
+      el("div", {}, [el("div", { class: "t", text: x.city }), el("div", { class: "s", text: x.title }), el("div", { class: "a", text: x.note })])
+    ]);
+    b.addEventListener("click", function () { focusOnMap("x" + i); });
+    locList.appendChild(b);
+  });
+
+  /* ---------- cards ---------- */
+  var cardsBox = document.getElementById("cards");
+  function fact(label, value, small) { return el("div", { class: "fact" }, [el("div", { class: "l", text: label }), el("div", { class: "v" }, [value, small ? el("small", { text: " " + small }) : null])]); }
+  function renderCards(filter) {
+    cardsBox.textContent = "";
+    PROGRAMS.filter(function (p) { return filter === "all" || p.cc === filter; }).forEach(function (p) {
+      var area = el("div", { class: "area" });
+      area.insertAdjacentHTML("afterbegin", pinIcon);
+      area.appendChild(el("div", {}, [el("div", { class: "city", text: p.city }), el("div", { class: "addr", text: p.area })]));
+      var rows = el("dl", { class: "rows" });
+      [["Language", p.language], ["Apply", p.apply], ["Entry", p.entry], ["Free money", p.money], ["After", p.after]].forEach(function (r) {
+        rows.appendChild(el("dt", { text: r[0] })); rows.appendChild(el("dd", { text: r[1] }));
+      });
+      var mapBtn = el("button", { class: "btn", type: "button", text: "Show on map" });
+      mapBtn.addEventListener("click", function () { focusOnMap(p.id); });
+      var card = el("article", { class: "card", "aria-label": p.course + " at " + p.uni }, [
+        el("div", { class: "card-head" }, [el("span", { class: "country" }, [keyDot(p.cc), COUNTRY[p.cc].name]), el("span", { class: "rank", text: p.rank })]),
+        el("div", {}, [el("h3", { text: p.course }), el("div", { class: "uni", text: p.uni })]),
+        area,
+        el("div", { class: "facts" }, [fact("Length", p.length, p.lengthSub), fact("Tuition", p.tuition, ""), fact("Total (est.)", p.totalText, "")]),
+        el("div", { class: "note", style: "margin-top:-4px", text: p.tuitionSub }),
+        rows,
+        el("div", { class: "catch" }, [el("b", { text: "Watch out: " }), p.catchText]),
+        el("blockquote", {}, ["“" + p.quote + "”", el("cite", { text: "— " + p.quoteSrc })]),
+        el("div", { class: "card-foot" }, [mapBtn, el("a", { class: "btn", href: p.link, target: "_blank", rel: "noopener", text: "Official page ↗" })])
+      ]);
+      card.style.setProperty("--key", "var(" + COUNTRY[p.cc].cssVar + ")");
+      cardsBox.appendChild(card);
+    });
+  }
+  var filters = document.getElementById("filters");
+  [["all", "All countries"], ["es", "Spain"], ["lt", "Lithuania"], ["de", "Germany"], ["ie", "Ireland"]].forEach(function (f, i) {
+    var b = el("button", { class: "fbtn", type: "button", "aria-pressed": i === 0 ? "true" : "false" }, [f[0] !== "all" ? keyDot(f[0]) : null, f[1]]);
+    b.addEventListener("click", function () {
+      filters.querySelectorAll(".fbtn").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true"); renderCards(f[0]);
+    });
+    filters.appendChild(b);
+  });
+  renderCards("all");
+
+  /* ---------- cost range chart ---------- */
+  var MAX = 35, BUDGET = [15, 25];
+  var chart = document.getElementById("costChart"), tip = document.getElementById("tip");
+  var sorted = PROGRAMS.slice().sort(function (a, b) { return a.total[0] - b.total[0] || a.total[1] - b.total[1]; });
+  function pct(v) { return (v / MAX * 100) + "%"; }
+  function showTip(e, p) {
+    tip.textContent = "";
+    var line = el("span", { class: "tl" }, [el("i"), COUNTRY[p.cc].name + " · " + p.length]);
+    line.style.setProperty("--key", "var(" + COUNTRY[p.cc].cssVar + ")");
+    tip.appendChild(el("div", { class: "tv", text: p.totalText + " total" }));
+    tip.appendChild(el("div", { text: p.uni.split(",")[0] + " — " + p.course }));
+    tip.appendChild(line);
+    tip.style.opacity = "1";
+    var x = e.clientX, y = e.clientY;
+    if (x === undefined) { var r = e.target.getBoundingClientRect(); x = r.right; y = r.top; }
+    tip.style.left = Math.min(x + 14, window.innerWidth - 300) + "px";
+    tip.style.top = (y + 14) + "px";
+  }
+  function hideTip() { tip.style.opacity = "0"; }
+  sorted.forEach(function (p, i) {
+    var track = el("div", { class: "track" });
+    track.appendChild(el("div", { class: "band", style: "left:" + pct(BUDGET[0]) + ";width:" + pct(BUDGET[1] - BUDGET[0]) }));
+    [5, 10, 15, 20, 25, 30, 35].forEach(function (t) { track.appendChild(el("div", { class: "gridline", style: "left:" + pct(t) })); });
+    if (i === 0) track.appendChild(el("div", { class: "band-label", style: "left:" + pct((BUDGET[0] + BUDGET[1]) / 2), text: "Your budget ₹15–25 L" }));
+    var bar = el("div", { class: "rbar" + (p.total[1] > BUDGET[1] ? " dim" : ""), tabindex: "0", role: "img", "aria-label": p.course + ", " + p.uni + ": " + p.totalText + " total", style: "left:" + pct(p.total[0]) + ";width:max(14px, " + pct(p.total[1] - p.total[0]) + ")" });
+    bar.style.setProperty("--key", "var(" + COUNTRY[p.cc].cssVar + ")");
+    bar.addEventListener("pointermove", function (e) { showTip(e, p); });
+    bar.addEventListener("pointerleave", hideTip);
+    bar.addEventListener("focus", function (e) { showTip(e, p); });
+    bar.addEventListener("blur", hideTip);
+    track.appendChild(bar);
+    chart.appendChild(el("div", { class: "c-label" }, [el("div", { class: "n", text: p.uni.split(" (")[0].split(",")[0] }), el("div", { class: "m", text: p.course + " · " + p.length })]));
+    chart.appendChild(track);
+    chart.appendChild(el("div", { class: "c-val", text: p.totalText }));
+  });
+  var ticks = document.getElementById("costTicks");
+  [0, 5, 10, 15, 20, 25, 30, 35].forEach(function (t) { ticks.appendChild(el("span", { class: "tick", style: "left:" + pct(t), text: "₹" + t + " L" })); });
+  var ctb = document.querySelector("#costTable tbody");
+  sorted.forEach(function (p) {
+    ctb.appendChild(el("tr", {}, [el("td", { text: p.uni.split(",")[0] + " — " + p.course }), el("td", { text: COUNTRY[p.cc].name }), el("td", { text: p.length }), el("td", { text: p.tuition + " (" + p.tuitionSub + ")" }), el("td", { class: "num", text: p.totalText })]));
+  });
+
+  /* ---------- country table ---------- */
+  var CT = {
+    head: [["", ""], ["es", "Spain"], ["lt", "Lithuania"], ["de", "Germany"], ["ie", "Ireland"]],
+    rows: [
+      ["Course length found", "1 – 1.5 years", "1.5 years", "1.5 years (3 semesters)", "1 year"],
+      ["Tuition", "€821 – €7,200 whole course", "€5,460 – €6,000 / year", "€0 (+ ≈ €398 / semester)", "€12,000 after scholarship"],
+      ["Work while studying", "30 h / week", "up to 40 h / week (master's)", "≈ 20 h / week (140 full days a year)", "20 h / week in term, 40 in holidays"],
+      ["Time to find a job after", "12 months", "12 months", "18 months", "12 + 12 months (2nd not automatic)"],
+      ["Getting a work permit", "Any contract at minimum wage (€1,221 × 14) or the sector rate", "≥ €2,411 – €2,894 / month once the quota is used up; Blue Card skips the quota", "A job that matches your degree; Blue Card €48,108 for recent grads (2027)", "Critical Skills permit €36,848 (graduate rate)"],
+      ["EU Blue Card floor", "€31,416 / yr (qualified within the last 3 years)", "€2,894 / month (shortage jobs)", "€48,108.60 / yr recent graduates", "Ireland does not use the Blue Card"],
+      ["Language for jobs", "Spanish helps; Barcelona is English-friendly", "Basic Lithuanian; IT firms work in English", "German, often C1, for data jobs", "English"],
+      ["Junior data pay seen", "€23 – 28k avg; ~€40k in Madrid startups", "≈ €3,000 / month median in analyst ads", "Only 231 English data jobs nationwide", "—"],
+      ["Watch out", "High unemployment; tough competition", "Rules tightening; 2027 quota cut to 24,400 proposed", "German economy weak; hiring freezes", "Housing crisis; over budget"]
+    ]
+  };
+  var tbl = document.getElementById("countryTable");
+  var thead = el("thead"), htr = el("tr");
+  CT.head.forEach(function (h) { htr.appendChild(el("th", { scope: "col" }, h[0] ? [el("span", { class: "th-key" }, [keyDot(h[0]), h[1]])] : [])); });
+  thead.appendChild(htr); tbl.appendChild(thead);
+  var tbody = el("tbody");
+  CT.rows.forEach(function (r) { var tr = el("tr", {}, [el("th", { scope: "row", text: r[0] })]); r.slice(1).forEach(function (c) { tr.appendChild(el("td", { text: c })); }); tbody.appendChild(tr); });
+  tbl.appendChild(tbody);
+
+  /* ---------- timeline ---------- */
+  var TL = [
+    { d: "1 Dec 2026", s: "Tue", what: "Applications open", w: "UC3M round 1 and Vilnius University open. Erasmus Mundus scholarship deadlines start (most fall 1 Dec – 15 Jan).", tags: [["es", "UC3M"], ["lt", "VU"]] },
+    { d: "15 Jan 2027", s: "Fri", what: "Erasmus Mundus · Kiel summer intake", w: "Most Erasmus Mundus deadlines (€1,400/month + free tuition; only 11 short programmes). Kiel deadline for a summer-term start.", tags: [["de", "Kiel (summer)"]] },
+    { d: "31 Jan 2027", s: "Sun", what: "UC3M round 1 closes", w: "Decisions from 26 Feb. Apply here first: courses close when full.", tags: [["es", "UC3M"]] },
+    { d: "Late Jan – mid Mar 2027", s: "expected", what: "Government of Ireland scholarship", w: "€10,000 plus all fees, 60 awards worldwide. Needs an Irish offer (e.g. MTU).", tags: [["ie", "Ireland"]] },
+    { d: "31 Mar 2027", s: "Wed", what: "UC3M round 2 closes", w: "Decisions from 30 Apr.", tags: [["es", "UC3M"]] },
+    { d: "1 Apr 2027", s: "Thu", what: "VU full fee-waiver deadline", w: "Tick the waiver box in your VU application (5 × 100% tuition).", tags: [["lt", "VU"]] },
+    { d: "1 May 2027", s: "Sat", what: "VU deadlines", w: "Data Science and Strategic Management of Information Systems.", tags: [["lt", "VU"]] },
+    { d: "31 May 2027", s: "Mon", what: "UC3M round 3 · MTU non-EU", w: "Last UC3M round (decisions from 25 Jun). MTU Cork's non-EU deadline.", tags: [["es", "UC3M"], ["ie", "MTU"]] },
+    { d: "1 Jun 2027", s: "Tue", what: "KTU deadline", w: "Waiver results by mid-July. Country caps, so apply early.", tags: [["lt", "KTU"]] },
+    { d: "15 Jul 2027", s: "Thu", what: "Kiel winter intake deadline", w: "Needs the GRE score and APS certificate ready.", tags: [["de", "Kiel"]] },
+    { d: "Sept – Oct 2027", s: "start", what: "Classes begin", w: "VU and KTU start 1 Sept. Spanish and German universities start Sept/Oct.", tags: [["es", "Spain"], ["lt", "Lithuania"], ["de", "Germany"]] }
+  ];
+  var tlBox = document.getElementById("timeline");
+  TL.forEach(function (t) {
+    var tagBox = el("div", { class: "tags" });
+    t.tags.forEach(function (g) { tagBox.appendChild(el("span", { class: "tag" }, [keyDot(g[0]), g[1]])); });
+    var rail = el("div", { class: "tl-rail" }, [keyDot(t.tags[0][0])]);
+    tlBox.appendChild(el("div", { class: "tl-item" }, [
+      el("div", { class: "tl-date" }, [t.d, el("small", { text: t.s })]), rail,
+      el("div", { class: "tl-what" }, [el("div", { style: "font-weight:600", text: t.what }), el("div", { class: "w", text: t.w }), tagBox])
+    ]));
+  });
+
+  /* ---------- money ---------- */
+  var MONEY = [
+    ["Erasmus Mundus Joint Masters", "€1,400 / month + free tuition + insurance", "Yes, but only 11 of 218 programmes are ≤ 18 months", "Most 1 Dec 2026 – 15 Jan 2027", "Very competitive; you study in 2+ countries"],
+    ["UC3M tuition grants", "Full tuition (up to 4 for Big Data Analytics)", "Yes (1 year)", "With your application", "Merit-based"],
+    ["Vilnius University waivers", "100% tuition (5 places)", "Yes (1.5 years)", "1 Apr 2027", "Tick the box; interview"],
+    ["KTU waivers", "Full or partial tuition", "Yes (1.5 years)", "Automatic · results mid-July", "Apply by 1 Jun"],
+    ["MTU Cork scholarship", "€3,000 off tuition", "Yes (1 year)", "Automatic", "Still over budget"],
+    ["Government of Ireland (GOI-IES)", "€10,000 + all fees", "Yes (1 year)", "Expected late Jan – mid Mar 2027", "60 awards worldwide"],
+    ["Deutschlandstipendium", "€300 / month", "Yes (Germany)", "After you enrol", "Merit-based"],
+    ["DAAD master's (all disciplines)", "€992 / month", "No: not open to Indian applicants for 2027/28", "—", "Removed from the plan"],
+    ["Stipendium Hungaricum", "Free tuition + stipend + housing", "No: Hungarian IT master's are 4 semesters", "~Nov 2026 – Jan 2027", "Breaks the 1.5-year rule"],
+    ["Italy MAECI / Invest Your Talent", "≈ €9,000 + tuition waiver", "No: Italian master's are 2 years", "Spring 2027", "Breaks the 1.5-year rule"]
+  ];
+  var mt = document.getElementById("moneyTable");
+  var mh = el("thead", {}, [el("tr", {}, ["Scheme", "What you get", "Fits ≤ 1.5 years?", "Deadline", "Note"].map(function (h) { return el("th", { scope: "col", text: h }); }))]);
+  mt.appendChild(mh);
+  var mb = el("tbody");
+  MONEY.forEach(function (r) { var tr = el("tr", {}, [el("th", { scope: "row", text: r[0] })]); r.slice(1).forEach(function (c) { tr.appendChild(el("td", { text: c })); }); mb.appendChild(tr); });
+  mt.appendChild(mb);
+
+  /* ---------- ruled out ---------- */
+  var RULED = [
+    ["Netherlands", "Nuffic, the official Dutch evaluator, rates a BCA as only “3 years of HBO”, so it isn't accepted for master's."],
+    ["Belgium (KU Leuven)", "Usually wants a 4-year Indian degree."],
+    ["France", "Master's take 2 years; non-EU tuition is €3,950/yr from Sept 2026. 1-year private MSc costs €10–25k."],
+    ["Poland", "University of Silesia's 1.5-year CS master's is for engineering (BEng) graduates only; most others are 2 years."],
+    ["Hungary · Austria · Italy", "Master's take 2 years (Austria ≈ €727/semester, but 4 semesters)."],
+    ["Slovenia · Croatia · Estonia", "2-year master's. Tartu ended tuition waivers for new non-EU students in 2026/27."],
+    ["Portugal", "The job-seeker visa was narrowed by the 2025–2026 foreigners laws."],
+    ["Malta", "Only 9 months to find a job after graduating, once. Low salaries."],
+    ["Czechia", "Free only for courses taught in Czech."],
+    ["Ireland (without a scholarship)", "≈ ₹26–28 lakh for 1 year, plus a housing crisis."],
+    ["UK", "Over the ₹25 lakh budget for 1 year."]
+  ];
+  var xIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>';
+  var rl = document.getElementById("ruledList");
+  RULED.forEach(function (r) {
+    var t = el("div", { class: "rt" }); t.insertAdjacentHTML("afterbegin", xIcon); t.appendChild(document.createTextNode(r[0]));
+    rl.appendChild(el("div", { class: "rcard" }, [t, el("p", { text: r[1] })]));
+  });
+
+  /* ---------- checklist ---------- */
+  var TODO = [
+    ["Book IELTS Academic (target 6.5)", "This week"],
+    ["Start Spanish A1 (add German A1 only if you keep Kiel)", "This week"],
+    ["Count the IT and maths credits on your BCA transcript (KTU needs 30 maths credits)", "This week"],
+    ["Ask your college for an English-medium-of-instruction letter", "Dec 2026"],
+    ["Get your degree and transcript apostilled (takes weeks)", "Dec – Jan"],
+    ["Apply to 1–3 short Erasmus Mundus programmes, if any fits your field", "by 15 Jan 2027"],
+    ["Apply to UC3M – Master in Big Data Analytics (round 1)", "by 31 Jan 2027"],
+    ["Apply to UPC – Artificial Intelligence / Cybersecurity", "spring 2027"],
+    ["Prepare for VU's online maths test (OMPT-E, 70%+)", "Jan – Mar 2027"],
+    ["Apply to Vilnius University and tick the fee-waiver box", "by 1 Apr 2027"],
+    ["Apply to KTU – Data Science & AI", "by 1 Jun 2027"],
+    ["Germany only: GRE (quant 55th percentile+), APS certificate, then apply to Kiel", "by 15 Jul 2027"],
+    ["Compare offers and scholarships, pick one, apply for the visa", "Jun – Jul 2027"]
+  ];
+  var KEY = "europe-plan-checklist-v1";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { saved = {}; }
+  var cl = document.getElementById("checklist"), bar = document.getElementById("progressBar");
+  function updateProgress() { var n = cl.querySelectorAll("input:checked").length; bar.style.width = (n / TODO.length * 100) + "%"; }
+  TODO.forEach(function (t, i) {
+    var cb = el("input", { type: "checkbox", id: "todo" + i }); cb.checked = !!saved[i];
+    cb.addEventListener("change", function () { saved[i] = cb.checked; try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {} updateProgress(); });
+    cl.appendChild(el("label", { for: "todo" + i }, [cb, el("span", { text: t[0] }), el("span", { class: "when", text: t[1] })]));
+  });
+  updateProgress();
+
+  /* ---------- sources ---------- */
+  var SRC = [
+    ["UC3M – Big Data Analytics & admission rounds", "https://www.uc3m.es/postgraduate/admission/process"],
+    ["UPC – master's fees (€45/credit non-EU)", "https://www.upc.edu/en/masters/fees-grants/fees"],
+    ["UGR – master's fees", "https://www.ugr.es/en/study/masters-degrees/fees"],
+    ["Vilnius University – Data Science", "https://apply.vu.lt/courses/course/36-data-science"],
+    ["KTU – Data Science & AI", "https://apply.ktu.edu/courses/course/214-msc-data-science-and-artificial-intelligence"],
+    ["HAW Kiel – MSc Computer Science", "https://www.haw-kiel.de/en/degree-courses/courses/computer-science/"],
+    ["DAAD – international programmes database", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/"],
+    ["MTU – non-EU fees & scholarships", "https://www.mtu.ie/international/non-eu/fees/"],
+    ["KPMG – Spain Blue Card thresholds 2026", "https://kpmg.com/xx/en/our-insights/gms-flash-alert/2026/flash-alert-2026-054.html"],
+    ["PlanForGermany – Blue Card 2027", "https://planforgermany.com/blue-card-germany-2027/"],
+    ["GradGermany – tuition fees by state 2026", "https://www.gradgermany.com/blog/germany-tuition-fees-by-state-2026"],
+    ["GradGermany – DAAD 2027/28 checklist for India", "https://www.gradgermany.com/blog/daad-scholarship-2027-28-deadline-checklist"],
+    ["English Jobs in Germany – data jobs count", "https://www.englishjobsingermany.com/guides/data-analyst-jobs-germany-english-speakers"],
+    ["HR Services LT – Lithuania quota & salary floors", "https://hrservices.lt/guides/immigration-rules-lithuania"],
+    ["LRT – Lithuania 2027 quota proposal", "https://www.lrt.lt/en/news-in-english/19/3119388/lithuania-plans-to-cut-foreign-worker-quota-to-24-400-in-2027"],
+    ["LUSH.lt – student rules tracker", "https://www.lush.lt/law-tracker"],
+    ["Opportunity Nest – Erasmus Mundus catalogue 2027", "https://www.opportunitynest.org/guides/erasmus-mundus-catalogue/"],
+    ["Nuffic – Indian diplomas compared", "https://www.nuffic.nl/en/education-systems/india/level-of-diplomas"],
+    ["SchengenVisaInfo – Spain 12-month job search", "https://www.schengenvisainfo.com/news/spains-job-seeker-visa-now-valid-for-up-to-12-months/"],
+    ["Werklist – Spain student-to-work switch", "https://werklist.com/blog/spain-student-stay-to-work-permit-modification"]
+  ];
+  var srcBox = document.getElementById("sources");
+  SRC.forEach(function (s) { srcBox.appendChild(el("li", {}, [el("a", { href: s[1], target: "_blank", rel: "noopener", text: s[0] })])); });
+
+  /* ---------- theme ---------- */
+  var themeBtn = document.getElementById("themeBtn");
+  var mode = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  function applyTheme() {
+    document.documentElement.setAttribute("data-theme", mode);
+    themeBtn.setAttribute("aria-label", mode === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    var tc = document.querySelector('meta[name="theme-color"]'); if (tc) tc.setAttribute("content", mode === "dark" ? "#080808" : "#ffffff");
+    refreshMapColors();
+  }
+  themeBtn.addEventListener("click", function () {
+    mode = mode === "dark" ? "light" : "dark";
+    try { localStorage.setItem("europe-plan-theme", mode); } catch (e) {}
+    applyTheme();
+  });
+
+  initMap();
+  applyTheme();
+});
+</script>
+
+<script>
+/* Builder-style shell: header search, side-menu scrollspy, mobile drawer, reveal-on-scroll */
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) { if (k === "text") n.textContent = attrs[k]; else if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  var CC = { es: "--c-es", lt: "--c-lt", de: "--c-de", ie: "--c-ie" };
+  var CNAME = { es: "Spain", lt: "Lithuania", de: "Germany", ie: "Ireland" };
+
+  /* ---------- drawer (below 1024px) ---------- */
+  var snav = document.getElementById("snav"), navBtn = document.getElementById("navBtn"), scrim = document.getElementById("scrim");
+  function setDrawer(open) {
+    snav.classList.toggle("open", open);
+    scrim.hidden = !open;
+    navBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    navBtn.setAttribute("aria-label", open ? "Close the section menu" : "Open the section menu");
+  }
+  navBtn.addEventListener("click", function () { setDrawer(!snav.classList.contains("open")); });
+  scrim.addEventListener("click", function () { setDrawer(false); });
+  snav.addEventListener("click", function (e) { if (e.target.closest("a")) setDrawer(false); });
+
+  /* ---------- scrollspy for the side menu ---------- */
+  var links = Array.prototype.slice.call(snav.querySelectorAll("a[href^='#']"));
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+  var spyTargets = Object.keys(byId).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  function mark(id) { links.forEach(function (a) { a.setAttribute("aria-current", a === byId[id] ? "true" : "false"); }); }
+  if ("IntersectionObserver" in window) {
+    var visible = {};
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
+      for (var i = 0; i < spyTargets.length; i++) { if (visible[spyTargets[i].id]) { mark(spyTargets[i].id); return; } }
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    spyTargets.forEach(function (s) { spy.observe(s); });
+  }
+  mark("verdict");
+
+  /* ---------- reveal sections as they scroll in (Builder content-show) ---------- */
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce && "IntersectionObserver" in window) {
+    var secs = document.querySelectorAll("main.main > section");
+    var rv = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); rv.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    secs.forEach(function (s) { if (s.getBoundingClientRect().top > window.innerHeight) { s.classList.add("rv"); rv.observe(s); } });
+  }
+
+  /* ---------- header search across every list on the page ---------- */
+  var q = document.getElementById("q"), box = document.getElementById("qres");
+  var index = null, hits = [], sel = -1;
+  function norm(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function build() {
+    index = [];
+    (window.__PROGRAMS || []).forEach(function (p) {
+      index.push({ t: p.uni.split(" (")[0], s: p.course + " · " + p.city, w: "Main pick", k: "var(" + CC[p.cc] + ")", hay: norm([p.uni, p.course, p.city, p.area, CNAME[p.cc]].join(" ")), go: function () { window.__focusOnMap && window.__focusOnMap(p.id); } });
+    });
+    (window.__ALL || []).forEach(function (d, i) {
+      d.p.forEach(function (r, j) {
+        index.push({ t: r[0], s: r[1] + " · " + r[2], w: d.c, k: "var(--ink-3)", hay: norm([r[0], r[1], r[2], d.c].join(" ")), go: function () { jump("all", "ctable", function () { window.__showAll(i); }, j); } });
+      });
+    });
+    (window.__FREE || []).forEach(function (d, i) {
+      d.p.forEach(function (r, j) {
+        index.push({ t: r[0], s: r[1] + " · " + r[2], w: "Free · " + d.c, k: "var(--ink-2)", hay: norm([r[0], r[1], r[2], d.c, r[6]].join(" ")), go: function () { jump("free", "ftable", function () { window.__showFree(i); }, j); } });
+      });
+    });
+  }
+  function jump(secId, tableId, show, row) {
+    show();
+    var sec = document.getElementById(secId);
+    sec.classList.add("in");
+    var tr = document.querySelectorAll("#" + tableId + " tbody tr")[row];
+    (tr || sec).scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: tr ? "center" : "start" });
+    if (tr) { tr.classList.remove("flash"); void tr.offsetWidth; tr.classList.add("flash"); }
+  }
+  function close() { box.hidden = true; q.setAttribute("aria-expanded", "false"); sel = -1; }
+  function hl(text, terms) {
+    var frag = document.createDocumentFragment(), low = norm(text), i = 0;
+    var spans = [];
+    terms.forEach(function (tm) { var k = low.indexOf(tm); if (tm && k >= 0) spans.push([k, k + tm.length]); });
+    spans.sort(function (a, b) { return a[0] - b[0]; });
+    spans.forEach(function (sp) {
+      if (sp[0] < i) return;
+      frag.appendChild(document.createTextNode(text.slice(i, sp[0])));
+      frag.appendChild(el("mark", { text: text.slice(sp[0], sp[1]) }));
+      i = sp[1];
+    });
+    frag.appendChild(document.createTextNode(text.slice(i)));
+    return frag;
+  }
+  function paint() {
+    box.textContent = "";
+    if (!hits.length) { box.appendChild(el("div", { class: "qe", text: "No university, course or city matches that." })); }
+    var terms = norm(q.value).split(/\s+/).filter(Boolean);
+    hits.forEach(function (h, n) {
+      var t = el("span", { class: "qt" }); t.appendChild(hl(h.t, terms));
+      var s = el("span", { class: "qs" }); s.appendChild(hl(h.s, terms));
+      var b = el("button", { type: "button", role: "option", id: "qo" + n, "aria-selected": n === sel ? "true" : "false" }, [el("span", { class: "dot", style: "--k:" + h.k, "aria-hidden": "true" }), t, el("span", { class: "qw", text: h.w }), s]);
+      b.addEventListener("mousedown", function (e) { e.preventDefault(); });
+      b.addEventListener("click", function () { pick(n); });
+      box.appendChild(b);
+    });
+    box.hidden = false;
+    q.setAttribute("aria-expanded", "true");
+    if (sel >= 0) { q.setAttribute("aria-activedescendant", "qo" + sel); var cur = document.getElementById("qo" + sel); if (cur) cur.scrollIntoView({ block: "nearest" }); }
+    else q.removeAttribute("aria-activedescendant");
+  }
+  function search() {
+    if (!index) build();
+    var terms = norm(q.value).split(/\s+/).filter(Boolean);
+    if (!terms.length) { close(); return; }
+    var seen = {};
+    hits = index.filter(function (h) { return terms.every(function (tm) { return h.hay.indexOf(tm) >= 0; }); })
+      .filter(function (h) { var k = h.t + "|" + h.s + "|" + h.w; if (seen[k]) return false; seen[k] = 1; return true; })
+      .slice(0, 14);
+    sel = hits.length ? 0 : -1;
+    paint();
+  }
+  function pick(n) { var h = hits[n]; if (!h) return; close(); q.blur(); h.go(); }
+  q.addEventListener("input", search);
+  q.addEventListener("focus", function () { if (q.value.trim()) search(); });
+  q.addEventListener("blur", function () { setTimeout(close, 120); });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowDown" && hits.length) { e.preventDefault(); sel = (sel + 1) % hits.length; paint(); }
+    else if (e.key === "ArrowUp" && hits.length) { e.preventDefault(); sel = (sel - 1 + hits.length) % hits.length; paint(); }
+    else if (e.key === "Enter") { e.preventDefault(); pick(sel < 0 ? 0 : sel); }
+    else if (e.key === "Escape") { close(); q.blur(); }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "/" && document.activeElement !== q && !/INPUT|TEXTAREA|SELECT/.test((document.activeElement || {}).tagName || "")) { e.preventDefault(); q.focus(); }
+    if (e.key === "Escape" && snav.classList.contains("open")) setDrawer(false);
+  });
+});
+</script>
+</body>
+</html>
