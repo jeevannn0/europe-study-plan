@@ -336,7 +336,7 @@ main.main { max-width: 1160px; margin: 0 auto; padding: 0 48px 24px; }
 header.hero { padding: 48px 0 8px; }
 .kick { margin: 0; font-size: 12px; line-height: 16px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
 h1.code { margin: 12px 0 18px; font: 400 clamp(26px, 3.2vw, 40px)/1.25 var(--font-mono); letter-spacing: -0.8px; color: var(--ink-1); }
-h1.code .tx { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; max-width: 0; animation: type-in 1.1s steps(34, end) .2s forwards; }
+h1.code .tx { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; max-width: 0; animation: type-in .8s steps(21, end) .2s forwards; }
 .kw { color: var(--signal); }
 .hc { display: inline-block; width: .55em; height: .95em; margin-left: 4px; vertical-align: -0.08em; background: var(--signal); animation: blink 1.05s steps(1) 1.4s infinite; }
 .lede { font-size: 17px; line-height: 27px; color: var(--ink-2); max-width: 780px; margin: 0; }
@@ -445,7 +445,7 @@ footer.foot a { color: var(--ink-2); }
 .ctag.near { border-color: var(--volt-2); color: var(--ok-ink); }
 .ctag.paid { color: var(--ink-3); }
 :root[data-theme="light"] .ctag.near { border-color: #00a35c; color: #0d732f; }
-.filters { flex-direction: column; align-items: flex-start; gap: 10px; }
+#filters { flex-direction: column; align-items: flex-start; gap: 10px; }
 .fgroup { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .fglabel { min-width: 64px; font: 500 11.5px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
 .fbtn .fn { margin-left: 2px; font: 11.5px/16px var(--font-mono); color: var(--ink-3); }
@@ -458,7 +458,7 @@ footer.foot a { color: var(--ink-2); }
 /* motion (Builder: content-show, settle-down, type-in, caret blink) */
 .rv { opacity: 0; transform: translateY(.5rem); }
 .rv.in { opacity: 1; transform: none; transition: opacity .45s var(--ease-out-quint), transform .45s var(--ease-out-quint); }
-@keyframes type-in { to { max-width: 37ch; } }
+@keyframes type-in { to { max-width: 22ch; } }
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes settle { 0% { opacity: 0; transform: translateY(-6px); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
 @keyframes flash { 0%, 30% { background: var(--signal-soft); } to { background: transparent; } }
@@ -546,7 +546,7 @@ footer.foot a { color: var(--ink-2); }
 <main class="main" id="main">
   <header class="hero" id="verdict">
     <p class="kick">EUROPE://PLAN · master's 2027 · start Sept 2027</p>
-    <h1 class="code" aria-label="europe.plan(max_years = 1.5, budget = 25 lakh)"><span class="tx" aria-hidden="true"><span class="kw">europe</span>.plan(max=<span class="kw">1.5y</span>, budget=<span class="kw">₹25L</span>)</span><i class="hc" aria-hidden="true"></i></h1>
+    <h1 class="code" aria-label="europe.plan(max_years = 1.5)"><span class="tx" aria-hidden="true"><span class="kw">europe</span>.plan(max=<span class="kw">1.5y</span>)</span><i class="hc" aria-hidden="true"></i></h1>
     <p class="lede"><b>Spain first. Lithuania as the safe backup. Germany only with German.</b> Every realistic English-taught master's in Europe that fits your rules: a 3-year BCA, no course longer than 1.5 years, and a total budget of ₹15–25 lakh.</p>
     <div class="cta"><a class="btn btn-p" href="#courses" target="_self">Browse courses</a><a class="lnk" href="#map-sec" target="_self">Open the map <span class="arw" aria-hidden="true">→</span></a><a class="lnk" href="#free" target="_self">Free &amp; near-free <span class="arw" aria-hidden="true">→</span></a></div>
     <dl class="kpis">
