@@ -442,6 +442,24 @@ tr.flash { animation: flash 2.2s ease-out; }
 footer.foot { max-width: 1160px; margin: 56px auto 0; padding: 32px 48px 64px; border-top: 1px solid var(--ring); color: var(--ink-3); font-size: 13px; }
 footer.foot a { color: var(--ink-2); }
 
+
+/* cost tags + grouped filters */
+.card-head .tags { display: inline-flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.ctag { display: inline-flex; align-items: center; padding: 2px 8px; border: 1px solid var(--ring-2); font: 600 11px/16px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; color: var(--ink-2); }
+.ctag.free { background: var(--volt); border-color: var(--volt); color: var(--volt-ink); }
+.ctag.near { border-color: var(--volt-2); color: var(--ok-ink); }
+.ctag.paid { color: var(--ink-3); }
+:root[data-theme="light"] .ctag.near { border-color: #00a35c; color: #0d732f; }
+.filters { flex-direction: column; align-items: flex-start; gap: 10px; }
+.fgroup { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.fglabel { min-width: 64px; font: 500 11.5px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.fbtn .fn { margin-left: 2px; font: 11.5px/16px var(--font-mono); color: var(--ink-3); }
+.fbtn[aria-pressed="true"] .fn { color: inherit; opacity: .7; }
+.csw { display: inline-block; width: 10px; height: 10px; border: 1px solid var(--ring-2); }
+.csw.free { background: var(--volt); border-color: var(--volt); }
+.csw.near { border: 2px solid var(--volt-2); }
+.csw.paid { background: var(--surface-3); }
+.fcount { font: 12px/18px var(--font-mono); color: var(--ink-3); }
 /* motion (Builder: content-show, settle-down, type-in, caret blink) */
 .rv { opacity: 0; transform: translateY(.5rem); }
 .rv.in { opacity: 1; transform: none; transition: opacity .45s var(--ease-out-quint), transform .45s var(--ease-out-quint); }
@@ -538,10 +556,10 @@ footer.foot a { color: var(--ink-2); }
     <p class="lede"><b>Spain first. Lithuania as the safe backup. Germany only with German.</b> Every realistic English-taught master's in Europe that fits your rules: a 3-year BCA, no course longer than 1.5 years, and a total budget of ₹15–25 lakh.</p>
     <div class="cta"><a class="btn btn-p" href="#courses" target="_self">Browse courses</a><a class="lnk" href="#map-sec" target="_self">Open the map <span class="arw" aria-hidden="true">→</span></a><a class="lnk" href="#free" target="_self">Free &amp; near-free <span class="arw" aria-hidden="true">→</span></a></div>
     <dl class="kpis">
-      <div class="kpi"><dt>Courses compared</dt><dd>180</dd></div>
+      <div class="kpi"><dt>Courses compared</dt><dd>188</dd></div>
       <div class="kpi"><dt>Countries</dt><dd>20</dd></div>
-      <div class="kpi"><dt>Web searches</dt><dd>1,255</dd></div>
-      <div class="kpi"><dt>Reddit threads</dt><dd>322</dd></div>
+      <div class="kpi"><dt>Web searches</dt><dd>1,300</dd></div>
+      <div class="kpi"><dt>Reddit threads</dt><dd>329</dd></div>
     </dl>
     <div class="chips">
       <span class="chip"><b>BCA</b> 3-year · ~89%</span>
@@ -579,8 +597,8 @@ footer.foot a { color: var(--ink-2); }
 
   <section id="courses" aria-labelledby="h-courses">
     <h2 id="h-courses">The courses, in detail</h2>
-    <p class="sub">Tuition, fees and deadlines are taken from the universities' own pages. Living costs are estimates, marked “≈”.</p>
-    <div class="filters" id="filters" role="group" aria-label="Filter by country"></div>
+    <p class="sub">Tuition, fees and deadlines are taken from the universities' own pages. Living costs are estimates, marked “≈”. <b>Free tuition</b> = no tuition fee at all (you still pay a small semester fee and living costs). <b>Near-free</b> = under about €3,000 for the whole course. <b>Not free</b> = a normal fee, though some of these have waivers you can win.</p>
+    <div class="filters" id="filters"></div>
     <div class="cards" id="cards"></div>
   </section>
 
@@ -620,8 +638,8 @@ footer.foot a { color: var(--ink-2); }
   </section>
 
   <section id="free" aria-labelledby="h-free">
-    <h2 id="h-free">Free &amp; near-free universities (Germany left out)</h2>
-    <p class="sub">A separate deep pass only on free tuition: 251 web searches (45 of them on Ireland), 67 Reddit threads (369 comments), 152 official or guide pages and the official Erasmus Mundus catalogue. Fees are for the whole course for an Indian (non-EU) student.</p>
+    <h2 id="h-free">Free &amp; near-free universities</h2>
+    <p class="sub">A separate deep pass only on free tuition: 296 web searches (45 on Ireland, 45 on Spain, Lithuania and Germany), 74 Reddit threads, about 200 official or guide pages, the official Erasmus Mundus catalogue and DAAD's full list of 1,604 English master's in Germany. Fees are for the whole course for an Indian (non-EU) student.</p>
     <div class="panel answer">
       <h3>The honest answer</h3>
       <ol class="alist">
@@ -686,10 +704,10 @@ footer.foot a { color: var(--ink-2); }
   <section aria-labelledby="h-research">
     <h2 id="h-research">How much research is behind this</h2>
     <div class="stats">
-      <div class="stat"><div class="sl">Web searches (≥ 50 per country + free-uni pass)</div><div class="sv">1,255</div></div>
-      <div class="stat"><div class="sl">Reddit threads read</div><div class="sv">322</div></div>
-      <div class="stat"><div class="sl">Reddit comments</div><div class="sv">1,765</div></div>
-      <div class="stat"><div class="sl">Courses compared (incl. free list)</div><div class="sv">180</div></div>
+      <div class="stat"><div class="sl">Web searches (≥ 50 per country + free-uni pass)</div><div class="sv">1,300</div></div>
+      <div class="stat"><div class="sl">Reddit threads read</div><div class="sv">329</div></div>
+      <div class="stat"><div class="sl">Reddit comments</div><div class="sv">1,797</div></div>
+      <div class="stat"><div class="sl">Courses compared (incl. free list)</div><div class="sv">188</div></div>
     </div>
   </section>
 </main>
@@ -953,6 +971,24 @@ document.addEventListener("DOMContentLoaded", function () {
       ["Universitat Politècnica de Catalunya (UPC)", "Master's in Artificial Intelligence", "Barcelona · Campus Nord", "1.5 years (90 ECTS)", "€2,700 (course page; UPC's fee table says up to €4,600)", "English", "Low public fee", "yes", "Already in your main plan; selective", "https://www.upc.edu/en/masters/artificial-intelligence", [41.389, 2.113]],
       ["Universidad de Alicante", "Master's in Artificial Intelligence", "Alicante · San Vicente del Raspeig", "1 year (60 ECTS)", "€2,120 at the EU rate (€35.34 / credit); non-EU non-resident rate is higher", "English (B2)", "Low public fee", "partly", "Blended learning; 25 places; check the non-EU price", "https://web.ua.es/en/masteres/inteligencia-artificial/", [38.385, -0.514]],
       ["Universidade de Santiago de Compostela (USC)", "Master's in Artificial Intelligence", "Santiago de Compostela", "90 ECTS spread over 2 years", "≈ €1,254 at the Galician rate; non-EU price set by the rector", "English", "Low public fee", "no", "Runs over 2 academic years; 20 seats", "https://www.usc.gal/en/studies/masters/engineering-and-architecture/masters-degree-artificial-intelligence", [42.876, -8.558]]
+    ]},
+    { c: "Germany", v: "Germany is the only big country with truly free tuition for Indians at public universities (except Baden-Württemberg's €1,500 a semester and some Bavarian universities). You pay only a €150–400 semester fee. The catch is length: most English master's are 4 semesters, and most 3-semester ones want a 3.5-year (210 ECTS) bachelor's. From DAAD's 1,604 English master's, these 3-semester IT courses are free and open to a 180-ECTS BCA. You need a €11,904 blocked account and, realistically, German for jobs.", ll: [51.3, 10.2], z: 6, p: [
+      ["Kiel University of Applied Sciences", "MSc Computer Science", "Kiel", "3 semesters", "€0 (≈ €398 / semester fee)", "English", "Public, no tuition", "yes", "180 ECTS accepted; GRE quant ≥ 55% for non-Bologna degrees", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/9058/", [54.3317, 10.182]],
+      ["Kiel University of Applied Sciences", "MSc Data Science", "Kiel", "3 semesters", "€0 (≈ €398 / semester fee)", "English", "Public, no tuition", "yes", "180 ECTS accepted; 30 ECTS maths/CS; GRE ≥ 65% in all parts for non-Bologna degrees", "https://www.haw-kiel.de/en/degree-courses/courses/data-science/", [54.3331, 10.1838]],
+      ["Rhine-Waal University of Applied Sciences", "MSc Information Engineering and Computer Science", "Kamp-Lintfort", "3 semesters", "€0 (≈ €300 / semester fee)", "English (B2)", "Public, no tuition", "yes", "Mark ≤ 2.3 plus TestAS, GATE or GRE; deadlines 15 Jul / 15 Jan", "https://www.hochschule-rhein-waal.de/en/information-engineering-and-computer-science-msc", [51.5004, 6.5459]],
+      ["Hof University of Applied Sciences", "MSc Applied Research in Computer Science", "Hof (Bavaria)", "3 semesters", "€0 (≈ €150 / semester fee)", "English", "Public, no tuition", "partly", "Needs a thesis/project report, 18 weeks of internship or work, and an oral exam", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/6236/", [50.3256, 11.9406]],
+      ["HWR Berlin", "MSc Business Intelligence and Process Management", "Berlin", "3 semesters", "€0 (≈ €350 / semester fee)", "English", "Public, no tuition", "partly", "210 ECTS; with 180 you add 30 credits (e.g. the semester-3 internship)", "https://www.hwr-berlin.de/en/study/degree-programmes/application-detail/detail/13-business-intelligence-and-process-management", [52.4857, 13.3393]],
+      ["Hof University of Applied Sciences", "MSc Artificial Intelligence and Robotics", "Hof", "3 semesters", "€0", "English", "Public, no tuition", "partly", "210 ECTS, but an extra module is offered for under 210; summer start only (apply 5–30 Nov)", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/8518/", [50.3262, 11.942]],
+      ["Neu-Ulm University of Applied Sciences", "MSc Artificial Intelligence and Data Analytics", "Neu-Ulm", "3 semesters (4 with 180 ECTS)", "€0", "English", "Public, no tuition", "no", "A 180-ECTS degree gets the 4-semester version", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/4734/", [48.392, 10.011]],
+      ["Technical University of Applied Sciences Würzburg-Schweinfurt", "MSc Artificial Intelligence", "Würzburg", "3 semesters", "€0", "English", "Public, no tuition", "no", "Requires 210 ECTS and a grade of 2.0", "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/7852/", [49.776, 9.938]],
+      ["University of Applied Sciences Erfurt", "MSc Software Engineering", "Erfurt", "3 semesters", "€0 (≈ €316 / semester fee)", "English", "Public, no tuition", "no", "Built on a 7-semester (210 ECTS) bachelor's", "https://ai.fh-erfurt.de/en/study/master-software-engineering/study-information", [50.985, 11.041]]
+    ]},
+    { c: "Lithuania", v: "There is no free master's in Lithuania for non-EU students: state-funded places go only to EU citizens, permanent residents and people of Lithuanian origin, and the 2026 state master's scholarship did not include India. The only ways to pay nothing are waivers: Vilnius University's 5 full waivers, KTU's automatic full or partial waiver, and VILNIUS TECH's 100% or 50% master's scholarships (but its IT master's are 2 years). Your brother's flat makes the cheapest courses ≈ ₹15–17 lakh in total.", ll: [55.2, 24.0], z: 7, p: [
+      ["Vilnius University", "Data Science (or any full-time master's)", "Vilnius", "1.5 years", "€6,000 / yr, or €0 with a waiver", "English", "5 full waivers for non-EU students", "yes", "Apply by 1 Apr 2027; entrance score + interview", "https://www.vu.lt/en/studies/master-studies/data-science", [54.683, 25.287]],
+      ["Kaunas University of Technology (KTU)", "MSc Data Science and Artificial Intelligence", "Kaunas", "1.5 years (90 ECTS)", "€5,641 / yr; full or partial first-year waiver", "English", "Automatic waiver by entry score", "yes", "Deadline 1 Jun 2027; waiver continues with good grades", "https://apply.ktu.edu/courses/course/214-msc-data-science-and-artificial-intelligence", [54.904, 23.958]],
+      ["Mykolas Romeris University (MRU)", "Master in Cybersecurity Management", "Vilnius", "1.5 years (90 ECTS)", "≈ €4,784 / yr", "English", "Lowest fee found", "partly", "Management degree; deadline 24 Jul 2027", "https://apply.mruni.eu/courses/course/145-master-cybersecurity-management", [54.7298, 25.2632]],
+      ["VILNIUS TECH", "Master's scholarship (100% or 50%)", "Vilnius", "IT master's are 2 years", "€6,450 / yr, or €0 with the scholarship", "English", "Tuition-free and partial master's scholarships", "no", "Deadline was 20 Apr in 2026; its IT master's take 2 years", "https://apply.vilniustech.lt/courses/course/108-master-scholarship", [54.722, 25.337]],
+      ["Vytautas Magnus University (VMU)", "Applied Informatics", "Kaunas", "2 years (120 ECTS)", "€6,000 / yr; 15–25% waivers only", "English", "Small automatic waivers", "no", "2 years; deadline 1 May 2027", "https://vytautasmagnus.dreamapply.com/courses/course/27-master-degree-applied-informatics", [54.899, 23.911]]
     ]},
     { c: "Win a waiver", v: "Free tuition through a competition or an automatic waiver, on courses that already fit your rules. Apply to several at once.", ll: [50.0, 10.0], z: 4, p: [
       ["Vilnius University", "Any full-time master's (e.g. Data Science, 1.5 years)", "Vilnius", "1.5 years", "€0 if you win (5 full waivers)", "English", "Full tuition waiver, any country", "yes", "Apply by 1 Apr 2027; entrance score + short interview", "https://studyin.lt/scholarships/", [54.683, 25.287]],
@@ -1384,8 +1420,125 @@ document.addEventListener("DOMContentLoaded", function () {
       quote: "Ireland is not cheap even for locals.", quoteSrc: "r/ireland",
       link: "https://www.ncirl.ie/Courses/NCI-Course-Details/course/MSCDAD"
     }
+,
+    {
+      id: "kiel-ds", cc: "de", rank: "Free · 180 ok", main: true, cost: "free",
+      course: "MSc Data Science", uni: "Kiel University of Applied Sciences (HAW Kiel)",
+      city: "Kiel, Germany", area: "Sokratesplatz campus, Kiel-Dietrichsdorf · ~90 km north of Hamburg", coords: [54.3331, 10.1838],
+      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €398 / semester fee (includes the transport ticket)", total: [20, 22], totalText: "₹20–22 L",
+      language: "English",
+      apply: "1 May – 15 Jul 2027 for a winter start, or 1 Nov 2026 – 15 Jan 2027 for a summer start.",
+      entry: "Bachelor's with a German grade of 2.5 or better (your ~89% ≈ 1.5) and 30 ECTS of maths/statistics + computer science (at least 10 each). 180 ECTS accepted; missing skills are made up. Degrees from outside the Bologna area also need a GRE with at least 65% in every part.",
+      money: "No tuition. Deutschlandstipendium (€300/month) can be applied for after you enrol. You still need a blocked account of €11,904 a year.",
+      after: "≈ 20 h/week student jobs. 18 months to find a job. Blue Card from 1 Jan 2027: €48,108 for recent graduates.",
+      catchText: "Same campus as the Kiel CS card. The GRE is required for an Indian degree, and data jobs in Germany mostly want German.",
+      quote: "In Germany Fachhochschulen are overall a lot more in touch with the job market than traditional universities.", quoteSrc: "r/kiel (HAW Kiel student)",
+      link: "https://www.haw-kiel.de/en/degree-courses/courses/data-science/"
+    },
+    {
+      id: "hsrw", cc: "de", rank: "Free", main: true, cost: "free",
+      course: "MSc Information Engineering and Computer Science", uni: "Rhine-Waal University of Applied Sciences (HSRW)",
+      city: "Kamp-Lintfort, Germany", area: "Kamp-Lintfort campus · ~35 km from Düsseldorf, near the Dutch border", coords: [51.5004, 6.5459],
+      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €300 / semester enrolment fee (with Germany-wide transport ticket)", total: [18, 21], totalText: "₹18–21 L",
+      language: "English (B2)",
+      apply: "Until 15 Jul 2027 for a winter start, or until 15 Jan 2027 for a summer start.",
+      entry: "Bachelor's with practical computer science plus basics of computer engineering, maths and natural sciences; overall mark 2.3 or better. Also a TestAS (100+), GATE, or GRE (Q 160, V 145, AW 4.5). No 210-ECTS rule is listed.",
+      money: "No tuition. Deutschlandstipendium (€300/month) after enrolment. Blocked account €11,904 a year.",
+      after: "Non-EU students may work 140 full or 280 half days a year. 18 months to find a job after graduating.",
+      catchText: "A BCA has little engineering or physics, so prove those basics in the 1,000-word essay. Small town; most jobs need German.",
+      quote: "They seem to think getting in is all it takes, while that is by far the easiest part.", quoteSrc: "r/germany (about Rhine-Waal)",
+      link: "https://www.hochschule-rhein-waal.de/en/information-engineering-and-computer-science-msc"
+    },
+    {
+      id: "hof-arcs", cc: "de", rank: "Free · research", main: true, cost: "free",
+      course: "MSc Applied Research in Computer Science", uni: "Hof University of Applied Sciences",
+      city: "Hof, Germany", area: "Alfons-Goppel-Platz campus, Hof (northern Bavaria)", coords: [50.3256, 11.9406],
+      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €150 / semester administrative fee",
+      total: [18, 21], totalText: "₹18–21 L",
+      language: "English (IELTS 6.5)",
+      apply: "15 Apr – 31 May 2027 for a winter start, or 5 – 30 Nov 2026 for a summer start.",
+      entry: "Bachelor's in computer science or comparable, with above-average grades in OOP, software engineering, networks and databases. Send your bachelor's thesis or project report, proof of 18+ weeks of internship or work, a 2-page literature review, and pass an oral exam (online).",
+      money: "No tuition. Blocked account €11,904 a year.",
+      after: "Same German rules: 18 months to find a job after graduating.",
+      catchText: "Research-oriented and selective. Hof is a small town with few jobs nearby.",
+      quote: "Hof is nice enough, but rather small and there is very little there.", quoteSrc: "r/germany",
+      link: "https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/6236/"
+    },
+    {
+      id: "hwr-bi", cc: "de", rank: "Free · Berlin", main: true, cost: "free",
+      course: "MSc Business Intelligence and Process Management", uni: "Berlin School of Economics and Law (HWR Berlin)",
+      city: "Berlin, Germany", area: "Campus Schöneberg, Badensche Straße · central Berlin", coords: [52.4857, 13.3393],
+      length: "1.5 years", lengthSub: "3 semesters (internship in semester 3)", tuition: "€0", tuitionSub: "≈ €350 / semester contribution", total: [21, 23], totalText: "₹21–23 L",
+      language: "English",
+      apply: "15 Mar – 15 May 2027 for applicants with a non-German bachelor's (winter start only).",
+      entry: "Bachelor's in business informatics, applied computer science with a business minor, or similar, with 10 ECTS each of business administration, quantitative methods/databases and informatics. 210 ECTS required: with 180 you add 30 credits, for example through the third-semester internship.",
+      money: "No tuition. Blocked account €11,904 a year. Berlin has the most English-speaking tech jobs in Germany.",
+      after: "Same German rules: 18 months to find a job; Blue Card €48,108 for recent graduates.",
+      catchText: "Check with HWR that the extra 30 credits fit inside the 3 semesters, or it becomes 2 years. Berlin rent is high.",
+      quote: "Rankings don't matter. Go public.", quoteSrc: "r/germany",
+      link: "https://www.hwr-berlin.de/en/study/degree-programmes/application-detail/detail/13-business-intelligence-and-process-management"
+    },
+    {
+      id: "us-ia", cc: "es", rank: "Near-free · €821", main: true, cost: "near",
+      course: "Máster en Lógica, Computación e Inteligencia Artificial", uni: "Universidad de Sevilla (US)",
+      city: "Seville, Spain", area: "ETSI Informática, Reina Mercedes campus", coords: [37.3578, -5.9866],
+      length: "1 year", lengthSub: "60 ECTS", tuition: "€821", tuitionSub: "€13.68 / credit × 60. Seville officially charges foreigners the same price.", total: [13, 15], totalText: "₹13–15 L",
+      language: "Spanish",
+      apply: "Through Andalusia's shared portal (Distrito Único Andaluz). The first round for foreign degrees opens early in the year, so check the 2027 calendar.",
+      entry: "A computing or maths bachelor's. The committee can add up to 30 credits of bridging courses. 30 places and 415 applications in 2025-26, so it is competitive.",
+      money: "The whole master's costs €821. The Andalusian 99% credit bonus only applies from a second year, so it doesn't help a 1-year course.",
+      after: "Spanish rules: 30 h/week while studying, 12 months to find a job, easy switch to a work permit.",
+      catchText: "Taught in Spanish, so aim for B2 Spanish before applying.",
+      quote: "In Andalucía foreign students pay the same as Spanish students to study. A masters course is under 900 euros for a whole year at the University of Sevilla.", quoteSrc: "r/SpainAuxiliares",
+      link: "https://www.us.es/estudiar/que-estudiar/oferta-de-masteres/master-universitario-en-logica-computacion-e-inteligencia"
+    },
+    {
+      id: "us-soft", cc: "es", rank: "Near-free · €821", main: true, cost: "near",
+      course: "Máster en Ingeniería del Software: Cloud, Datos y Gestión TI", uni: "Universidad de Sevilla (US)",
+      city: "Seville, Spain", area: "ETSI Informática, Reina Mercedes campus", coords: [37.3586, -5.9856],
+      length: "1 year", lengthSub: "60 ECTS", tuition: "€821", tuitionSub: "€13.68 / credit × 60, the same for foreigners", total: [13, 15], totalText: "₹13–15 L",
+      language: "Spanish",
+      apply: "Through the Distrito Único Andaluz portal, first round early in 2027.",
+      entry: "A computing bachelor's. 35 places and 294 applications in 2025-26.",
+      money: "€821 for the whole course. Seville also runs a Master's in Advanced Statistics & Data Science at the same price (30 places).",
+      after: "Spanish rules: 30 h/week, 12-month job search, easy switch.",
+      catchText: "Spanish-taught. Very practical (cloud, data, IT management), which suits your work history.",
+      quote: "My classmate (non-Spanish resident, non-EU citizen) paid more than double of what I paid as a Spanish resident.", quoteSrc: "r/SpainAuxiliares (true for some regions; Seville states the same price)",
+      link: "https://www.us.es/estudiar/que-estudiar/oferta-de-masteres/master-universitario-en-ingenieria-del-software-cloud"
+    },
+    {
+      id: "uma-sia", cc: "es", rank: "Near-free · blended", main: true, cost: "near",
+      course: "Máster en Ingeniería del Software e Inteligencia Artificial", uni: "Universidad de Málaga (UMA)",
+      city: "Málaga, Spain", area: "Teatinos campus (ETSI Informática)", coords: [36.7154, -4.4777],
+      length: "1 year", lengthSub: "60 ECTS", tuition: "≈ €821", tuitionSub: "Andalusian public price, €13.68 / credit", total: [14, 16], totalText: "₹14–16 L",
+      language: "Spanish + English",
+      apply: "Through the Distrito Único Andaluz portal.",
+      entry: "A computing bachelor's. 30 places.",
+      money: "≈ €821 for the whole course.",
+      after: "Spanish rules, if you hold a student permit.",
+      catchText: "Blended: two on-campus weeks per term, the rest remote. Ask UMA in writing whether it qualifies for a student visa before applying.",
+      quote: "", quoteSrc: "",
+      link: "https://www.uma.es/master-en-ingenieria-del-software-e-inteligencia-artificial/"
+    },
+    {
+      id: "mru-cyber", cc: "lt", rank: "Lowest LT fee", main: true, cost: "paid",
+      course: "Master in Cybersecurity Management", uni: "Mykolas Romeris University (MRU)",
+      city: "Vilnius, Lithuania", area: "Ateities g. 20, Vilnius (north Vilnius)", coords: [54.7298, 25.2632],
+      length: "1.5 years", lengthSub: "90 ECTS", tuition: "≈ €4,784 / yr", tuitionSub: "≈ €7,200 for the whole course (2027/28 estimate)", total: [15, 16], totalText: "₹15–16 L",
+      language: "English",
+      apply: "Deadline 24 Jul 2027 for a September start.",
+      entry: "Any bachelor's; this is a management degree (Master of Business Management) rather than a technical one.",
+      money: "No full waivers announced. Lithuania has no free master's for non-EU students; state-funded places are for EU citizens and permanent residents only.",
+      after: "Lithuanian rules: 40 h/week while studying, 12-month job search. Live rent-free with your brother.",
+      catchText: "Cheapest English master's in Lithuania that fits 1.5 years, but it is cybersecurity management, not hands-on security.",
+      quote: "", quoteSrc: "",
+      link: "https://apply.mruni.eu/courses/course/145-master-cybersecurity-management"
+    }
   ];
 
+  var COST = { "uc3m": "paid", "upc-ai": "near", "upc-cyber": "near", "ugr": "near", "vu-ds": "paid", "ktu": "paid", "vu-smis": "paid", "kiel": "free", "mtu": "paid", "ucd-cs": "paid", "dcu-msc": "paid", "griffith": "paid", "nci": "paid" };
+  PROGRAMS.forEach(function (p) { p.cost = p.cost || COST[p.id] || "paid"; });
+  var COST_LABEL = { free: "Free tuition", near: "Near-free", paid: "Not free" };
   window.__PROGRAMS = PROGRAMS;
   var EXTRA_PLACES = [
     { cc: "es", title: "UPC · Technology & Engineering Management", city: "Terrassa (~25 km from Barcelona)", note: "1.5 yrs · ≈ €4,050 · 20 places · English", coords: [41.5627, 2.0225], link: "https://www.upc.edu/en/masters/technology-and-engineering-management" },
@@ -1513,9 +1666,14 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ---------- cards ---------- */
   var cardsBox = document.getElementById("cards");
   function fact(label, value, small) { return el("div", { class: "fact" }, [el("div", { class: "l", text: label }), el("div", { class: "v" }, [value, small ? el("small", { text: " " + small }) : null])]); }
-  function renderCards(filter) {
+  var state = { cc: "all", cost: "all" };
+  function renderCards() {
     cardsBox.textContent = "";
-    PROGRAMS.filter(function (p) { return filter === "all" || p.cc === filter; }).forEach(function (p) {
+    var list = PROGRAMS.filter(function (p) { return (state.cc === "all" || p.cc === state.cc) && (state.cost === "all" || p.cost === state.cost); });
+    var cnt = document.getElementById("cardCount");
+    if (cnt) cnt.textContent = list.length + " of " + PROGRAMS.length + " courses";
+    if (!list.length) cardsBox.appendChild(el("p", { class: "note", text: "No course matches both filters. Try another country or cost." }));
+    list.forEach(function (p) {
       var area = el("div", { class: "area" });
       area.insertAdjacentHTML("afterbegin", pinIcon);
       area.appendChild(el("div", {}, [el("div", { class: "city", text: p.city }), el("div", { class: "addr", text: p.area })]));
@@ -1526,14 +1684,14 @@ document.addEventListener("DOMContentLoaded", function () {
       var mapBtn = el("button", { class: "btn", type: "button", text: "Show on map" });
       mapBtn.addEventListener("click", function () { focusOnMap(p.id); });
       var card = el("article", { class: "card", "aria-label": p.course + " at " + p.uni }, [
-        el("div", { class: "card-head" }, [el("span", { class: "country" }, [keyDot(p.cc), COUNTRY[p.cc].name]), el("span", { class: "rank", text: p.rank })]),
+        el("div", { class: "card-head" }, [el("span", { class: "country" }, [keyDot(p.cc), COUNTRY[p.cc].name]), el("span", { class: "tags" }, [el("span", { class: "ctag " + p.cost, text: COST_LABEL[p.cost] }), el("span", { class: "rank", text: p.rank })])]),
         el("div", {}, [el("h3", { text: p.course }), el("div", { class: "uni", text: p.uni })]),
         area,
         el("div", { class: "facts" }, [fact("Length", p.length, p.lengthSub), fact("Tuition", p.tuition, ""), fact("Total (est.)", p.totalText, "")]),
         el("div", { class: "note", style: "margin-top:-4px", text: p.tuitionSub }),
         rows,
         el("div", { class: "catch" }, [el("b", { text: "Watch out: " }), p.catchText]),
-        el("blockquote", {}, ["“" + p.quote + "”", el("cite", { text: "— " + p.quoteSrc })]),
+        p.quote ? el("blockquote", {}, ["“" + p.quote + "”", el("cite", { text: "— " + p.quoteSrc })]) : null,
         el("div", { class: "card-foot" }, [mapBtn, el("a", { class: "btn", href: p.link, target: "_blank", rel: "noopener", text: "Official page ↗" })])
       ]);
       card.style.setProperty("--key", "var(" + COUNTRY[p.cc].cssVar + ")");
@@ -1541,15 +1699,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   var filters = document.getElementById("filters");
-  [["all", "All countries"], ["es", "Spain"], ["lt", "Lithuania"], ["de", "Germany"], ["ie", "Ireland"]].forEach(function (f, i) {
-    var b = el("button", { class: "fbtn", type: "button", "aria-pressed": i === 0 ? "true" : "false" }, [f[0] !== "all" ? keyDot(f[0]) : null, f[1]]);
-    b.addEventListener("click", function () {
-      filters.querySelectorAll(".fbtn").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
-      b.setAttribute("aria-pressed", "true"); renderCards(f[0]);
+  function group(label, key, opts) {
+    var g = el("div", { class: "fgroup", role: "group", "aria-label": label }, [el("span", { class: "fglabel", text: label })]);
+    opts.forEach(function (f, i) {
+      var n = PROGRAMS.filter(function (p) { return f[0] === "all" || p[key] === f[0]; }).length;
+      var kids = [];
+      if (key === "cc" && f[0] !== "all") kids.push(keyDot(f[0]));
+      if (key === "cost" && f[0] !== "all") kids.push(el("span", { class: "csw " + f[0], "aria-hidden": "true" }));
+      kids.push(f[1]); kids.push(el("span", { class: "fn", text: String(n) }));
+      var b = el("button", { class: "fbtn", type: "button", "aria-pressed": i === 0 ? "true" : "false" }, kids);
+      b.addEventListener("click", function () {
+        g.querySelectorAll(".fbtn").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true"); state[key] = f[0]; renderCards();
+      });
+      g.appendChild(b);
     });
-    filters.appendChild(b);
-  });
-  renderCards("all");
+    filters.appendChild(g);
+  }
+  group("Country", "cc", [["all", "All countries"], ["es", "Spain"], ["lt", "Lithuania"], ["de", "Germany"], ["ie", "Ireland"]]);
+  group("Cost", "cost", [["all", "Any cost"], ["free", "Free tuition"], ["near", "Near-free"], ["paid", "Not free"]]);
+  filters.appendChild(el("span", { class: "fcount", id: "cardCount" }));
+  renderCards();
 
   /* ---------- cost range chart ---------- */
   var MAX = 35, BUDGET = [15, 25];
