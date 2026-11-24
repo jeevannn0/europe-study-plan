@@ -455,6 +455,19 @@ footer.foot a { color: var(--ink-2); }
 .csw.near { border: 2px solid var(--volt-2); }
 .csw.paid { background: var(--surface-3); }
 .fcount { font: 12px/18px var(--font-mono); color: var(--ink-3); }
+
+/* after-free-scholarship marks */
+#cost .chart-grid, #cost .axis { grid-template-columns: 230px 1fr 120px; }
+#costChart .track { height: 44px; }
+#costChart .rbar { top: 8px; }
+.abar { position: absolute; top: 27px; height: 9px; border: 2px solid var(--key); background: transparent; cursor: default; }
+.abar::after { content: ""; position: absolute; inset: -8px -6px; }
+.c-val .c-aid { display: block; font-size: 12px; color: var(--ok-ink); white-space: nowrap; }
+.akey { display: inline-block; width: 18px; height: 9px; border: 2px solid var(--ink-2); }
+.aidline { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 2px 0 0; font-size: 13.5px; color: var(--ink-2); }
+.aidline b { color: var(--ink-1); }
+.csum .aidline { margin: 8px 0 2px; }
+td.aidcell { color: var(--ok-ink); white-space: nowrap; }
 /* motion (Builder: content-show, settle-down, type-in, caret blink) */
 .rv { opacity: 0; transform: translateY(.5rem); }
 .rv.in { opacity: 1; transform: none; transition: opacity .45s var(--ease-out-quint), transform .45s var(--ease-out-quint); }
@@ -517,16 +530,18 @@ footer.foot a { color: var(--ink-2); }
     <a href="#verdict" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Verdict</a>
     <a href="#map-sec" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Map</a>
     <a href="#courses" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>Courses</a>
-    <a href="#cost" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Cost</a>
     <a href="#countries" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>Life after</a>
   </div>
-  <div class="sg"><div class="sg-t">Explore</div>
-    <a href="#all" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>All 20 countries</a>
+  <div class="sg"><div class="sg-t">Free money</div>
     <a href="#free" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7S10 2 7 3.5 9 7 12 7zM12 7s2-5 5-3.5S15 7 12 7z"/></svg>Free &amp; near-free</a>
+    <a href="#deadlines" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Deadlines</a>
     <a href="#money" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6M12 3v18"/></svg>Scholarships</a>
   </div>
+  <div class="sg"><div class="sg-t">Compare</div>
+    <a href="#cost" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Cost</a>
+    <a href="#all" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>All 20 countries</a>
+  </div>
   <div class="sg"><div class="sg-t">Act</div>
-    <a href="#deadlines" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Deadlines</a>
     <a href="#todo" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>To-do</a>
   </div>
   <div class="side-box">
@@ -596,39 +611,10 @@ footer.foot a { color: var(--ink-2); }
     <div class="cards" id="cards"></div>
   </section>
 
-  <section id="cost" aria-labelledby="h-cost">
-    <h2 id="h-cost">Total cost against your budget</h2>
-    <p class="sub">Estimated total for the whole course (tuition + living + visa, tests and flights), in ₹ lakh. The shaded band is your ₹15–25 lakh budget.</p>
-    <div class="panel chart">
-      <div class="legend" id="costLegend"></div>
-      <div class="chart-grid" id="costChart" aria-label="Range chart of total cost per course"></div>
-      <div class="axis"><span></span><div class="ticks" id="costTicks"></div><span></span></div>
-      <details class="tableview">
-        <summary>Show as a table</summary>
-        <div class="tbl-wrap"><table id="costTable"><thead><tr><th>Course</th><th>Country</th><th>Length</th><th>Tuition</th><th>Total (₹ lakh)</th></tr></thead><tbody></tbody></table></div>
-      </details>
-      <p class="note">How the totals are estimated: ₹103 per € (₹101.2 mid-market on 23 Nov 2026 plus bank margin). Living costs per month: Lithuania ≈ €350 (rent-free with your brother), Madrid ≈ €1,000 (UC3M says €600–1,200), Barcelona ≈ €1,100, Granada ≈ €850, Kiel ≈ €1,000 with health insurance, Cork ≈ €1,000–1,200, Dublin ≈ €1,300–1,500. Irish cards with a scholarship show the total if you win it. One-time costs (visa, tests, flights, documents) ≈ ₹1.3–1.5 lakh. Vilnius University with a full fee waiver drops to ≈ ₹8 lakh.</p>
-    </div>
-  </section>
-
   <section id="countries" aria-labelledby="h-countries">
     <h2 id="h-countries">Life after the course, country by country</h2>
     <p class="sub">What decides whether you can stay: work hours while you study, time allowed to find a job, and the salary floor for a work permit.</p>
     <div class="panel tbl-wrap"><table id="countryTable"></table></div>
-  </section>
-
-  <section id="all" aria-labelledby="h-all">
-    <h2 id="h-all">Every country: at least 5 universities each</h2>
-    <p class="sub">The same research for every country: about 50 web searches each, Reddit threads and the official course pages. Pick a country to see its universities, cities, course length, non-EU fees and whether each course fits your rules (≤ 1.5 years, English, accepts a 3-year BCA, within ₹15–25 lakh).</p>
-    <div class="fit-key"><span class="fit yes">✓ Fits your rules</span><span class="fit partly">~ Partly fits</span><span class="fit no">✕ Doesn't fit</span></div>
-    <div class="filters" id="cpick" role="tablist" aria-label="Choose a country"></div>
-    <div class="panel">
-      <div class="csum" id="csum"></div>
-      <div class="tbl-wrap"><table id="ctable"><thead><tr><th>University</th><th>Course</th><th>City / area</th><th>Length</th><th>Tuition (non-EU)</th><th>Language</th><th>Fits?</th><th>Why</th></tr></thead><tbody></tbody></table></div>
-    </div>
-    <h3 class="h3">Research done per country</h3>
-    <p class="sub">Web searches, Reddit threads read, and official or guide pages read in full.</p>
-    <div class="panel tbl-wrap"><table id="rtable"><thead><tr><th>Country</th><th>Web searches</th><th></th><th>Reddit threads</th><th>Pages read</th></tr></thead><tbody></tbody></table></div>
   </section>
 
   <section id="free" aria-labelledby="h-free">
@@ -674,6 +660,35 @@ footer.foot a { color: var(--ink-2); }
     <h2 id="h-money">Free tuition, waivers and stipends</h2>
     <p class="sub">Which free money actually fits a ≤1.5-year course, and which does not.</p>
     <div class="panel tbl-wrap"><table id="moneyTable"></table></div>
+  </section>
+
+  <section id="cost" aria-labelledby="h-cost">
+    <h2 id="h-cost">Total cost against your budget</h2>
+    <p class="sub">Estimated total for the whole course (tuition + living + visa, tests and flights), in ₹ lakh. The shaded band is your ₹15–25 lakh budget. Where a free scholarship or waiver exists, a hollow bar underneath shows the total if you win it.</p>
+    <div class="panel chart">
+      <div class="legend" id="costLegend"></div>
+      <div class="chart-grid" id="costChart" aria-label="Range chart of total cost per course"></div>
+      <div class="axis"><span></span><div class="ticks" id="costTicks"></div><span></span></div>
+      <details class="tableview">
+        <summary>Show as a table</summary>
+        <div class="tbl-wrap"><table id="costTable"><thead><tr><th>Course</th><th>Country</th><th>Length</th><th>Tuition</th><th>Total (₹ lakh)</th><th>After free scholarship</th><th>Saving</th></tr></thead><tbody></tbody></table></div>
+      </details>
+      <p class="note">How the totals are estimated: ₹103 per € (₹101.2 mid-market on 23 Nov 2026 plus bank margin). Living costs per month: Lithuania ≈ €350 (rent-free with your brother), Madrid ≈ €1,000 (UC3M says €600–1,200), Barcelona ≈ €1,100, Granada ≈ €850, Kiel ≈ €1,000 with health insurance, Cork ≈ €1,000–1,200, Dublin ≈ €1,300–1,500. Hollow bars and the green “→” totals assume you win the scholarship or waiver named on the course card. One-time costs (visa, tests, flights, documents) ≈ ₹1.3–1.5 lakh. Vilnius University with a full fee waiver drops to ≈ ₹8 lakh.</p>
+    </div>
+  </section>
+
+  <section id="all" aria-labelledby="h-all">
+    <h2 id="h-all">Every country: at least 5 universities each</h2>
+    <p class="sub">The same research for every country: about 50 web searches each, Reddit threads and the official course pages. Pick a country to see its universities, cities, course length, non-EU fees and whether each course fits your rules (≤ 1.5 years, English, accepts a 3-year BCA, within ₹15–25 lakh).</p>
+    <div class="fit-key"><span class="fit yes">✓ Fits your rules</span><span class="fit partly">~ Partly fits</span><span class="fit no">✕ Doesn't fit</span></div>
+    <div class="filters" id="cpick" role="tablist" aria-label="Choose a country"></div>
+    <div class="panel">
+      <div class="csum" id="csum"></div>
+      <div class="tbl-wrap"><table id="ctable"><thead><tr><th>University</th><th>Course</th><th>City / area</th><th>Length</th><th>Tuition (non-EU)</th><th>Language</th><th>Fits?</th><th>Why</th><th>After free scholarship</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <h3 class="h3">Research done per country</h3>
+    <p class="sub">Web searches, Reddit threads read, and official or guide pages read in full.</p>
+    <div class="panel tbl-wrap"><table id="rtable"><thead><tr><th>Country</th><th>Web searches</th><th></th><th>Reddit threads</th><th>Pages read</th></tr></thead><tbody></tbody></table></div>
   </section>
 
   <section id="todo" aria-labelledby="h-todo">
@@ -879,6 +894,25 @@ document.addEventListener("DOMContentLoaded", function () {
   var RESEARCH = {"Ireland":[50,16,13],"Spain":[53,24,18],"Lithuania":[50,22,31],"Germany":[51,38,40],"Hungary":[50,12,7],"Poland":[50,13,8],"Italy":[50,10,5],"France":[50,11,6],"Netherlands":[50,9,5],"Belgium":[50,7,7],"Portugal":[50,6,5],"Austria":[50,8,5],"Estonia":[50,8,3],"Latvia":[50,8,10],"Malta":[50,6,8],"Czechia":[50,7,5],"Slovenia":[50,3,8],"Croatia":[50,2,4],"UK":[50,9,4],"Nordics":[50,4,5]};
 
   var pick = document.getElementById("cpick"), tbody = document.querySelector("#ctable tbody"), sum = document.getElementById("csum");
+  var AIDSUM = {
+    "Ireland": "≈ ₹4–10 L with the Government of Ireland scholarship (60 a year), or ≈ ₹17–20 L with UCD's 100% award.",
+    "Spain": "≈ ₹13–15 L with one of UC3M's 4 full grants. Andalusian public master's already cost ≈ ₹13–15 L with no scholarship.",
+    "Lithuania": "≈ ₹8–9 L with one of Vilnius University's 5 full waivers, ≈ ₹10–11 L with KTU's full first-year waiver.",
+    "Germany": "Tuition is already €0. A Deutschlandstipendium (€300/month) brings Kiel to ≈ ₹16–18 L.",
+    "Latvia": "No free scholarship for Indians: the state scholarship's country list excludes India."
+  };
+  function aidFor(c, r) {
+    var u = r[0], city = r[2];
+    if (c === "Ireland") {
+      if (/online/i.test(city)) return "—";
+      if (/University College Dublin/.test(u)) return "≈ ₹17–20 L with UCD's 100% award";
+      return /Dublin/.test(city) ? "≈ ₹7–10 L with GOI-IES" : "≈ ₹4–6 L with GOI-IES";
+    }
+    if (c === "Spain") return /Carlos III/.test(u) ? "≈ ₹13–15 L with a full UC3M grant" : "—";
+    if (c === "Lithuania") { if (/^Vilnius University/.test(u)) return "≈ ₹8–9 L with a full VU waiver"; if (/KTU|Kaunas University of Technology/.test(u)) return "≈ ₹10–11 L with a full 1st-year waiver"; return "—"; }
+    if (c === "Germany") return "−₹3.7 L with a Deutschlandstipendium";
+    return "—";
+  }
   function render(i) {
     var d = ALL[i];
     pick.querySelectorAll(".fbtn").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
@@ -886,11 +920,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var fits = d.p.filter(function (r) { return r[6] === "yes"; }).length;
     sum.textContent = "";
     sum.appendChild(el("div", {}, [el("b", { text: d.c + ": " }), d.v]));
+    sum.appendChild(el("div", { class: "aidline" }, [el("span", { class: "ctag " + (AIDSUM[d.c] && !/^No /.test(AIDSUM[d.c]) ? "free" : "paid"), text: "After free money" }), el("span", { text: AIDSUM[d.c] || "No free scholarship that fits a course of 1.5 years or less here." })]));
     sum.appendChild(el("div", { class: "note", text: Object.keys(unis).length + " universities · " + d.p.length + " courses · " + fits + " fit all your rules" + (RESEARCH[d.c] ? " · research: " + RESEARCH[d.c][0] + " searches, " + RESEARCH[d.c][1] + " Reddit threads, " + RESEARCH[d.c][2] + " pages" : "") }));
     tbody.textContent = "";
     d.p.forEach(function (r) {
       var a = el("a", { href: r[8], target: "_blank", rel: "noopener", text: r[1] + " ↗" });
-      tbody.appendChild(el("tr", {}, [el("td", { text: r[0] }), el("td", {}, [a]), el("td", { text: r[2] }), el("td", { text: r[3] }), el("td", { text: r[4] }), el("td", { text: r[5] }), el("td", {}, [el("span", { class: "fit " + r[6], text: FIT[r[6]] })]), el("td", { text: r[7] })]));
+      tbody.appendChild(el("tr", {}, [el("td", { text: r[0] }), el("td", {}, [a]), el("td", { text: r[2] }), el("td", { text: r[3] }), el("td", { text: r[4] }), el("td", { text: r[5] }), el("td", {}, [el("span", { class: "fit " + r[6], text: FIT[r[6]] })]), el("td", { text: r[7] }), el("td", { class: "aidcell", text: aidFor(d.c, r) })]));
     });
     if (window.__euMap && window.L) window.__euMap.flyTo(d.ll, d.z, { duration: 0.9 });
   }
@@ -1209,7 +1244,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "uc3m", cc: "es", rank: "#1 pick", main: true,
       course: "Master in Big Data Analytics", uni: "Universidad Carlos III de Madrid (UC3M)",
       city: "Madrid, Spain", area: "Puerta de Toledo campus, central Madrid", coords: [40.4066, -3.7116],
-      length: "1 year", lengthSub: "60 ECTS", tuition: "≈ €7,200", tuitionSub: "€120 / ECTS non-EU", total: [20, 22], totalText: "₹20–22 L",
+      length: "1 year", lengthSub: "60 ECTS", tuition: "≈ €7,200", tuitionSub: "€120 / ECTS non-EU", total: [20, 22], totalText: "₹20–22 L", aid: { total: [13, 15], label: "one of UC3M's 4 full-tuition grants" },
       language: "English · 40 places",
       apply: "Round 1: 1 Dec 2026 – 31 Jan 2027 (decisions from 26 Feb). Round 2 to 31 Mar, round 3 to 31 May. Courses can close early once full.",
       entry: "Bachelor's degree; degrees from outside Europe are checked by UC3M. Quantitative course (maths, statistics, programming).",
@@ -1265,7 +1300,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "vu-ds", cc: "lt", rank: "#2 pick", main: true,
       course: "MSc Data Science", uni: "Vilnius University (VU), Faculty of Mathematics and Informatics",
       city: "Vilnius, Lithuania", area: "Naugarduko g. 24 (central, Naujamiestis) and Didlaukio g. 47", coords: [54.6783, 25.2729],
-      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€6,000 / yr", tuitionSub: "≈ €9,000 total", total: [17, 18], totalText: "₹17–18 L",
+      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€6,000 / yr", tuitionSub: "≈ €9,000 total", total: [17, 18], totalText: "₹17–18 L", aid: { total: [8, 9], label: "one of Vilnius University's 5 full waivers" },
       language: "English",
       apply: "1 Dec 2026 – 1 May 2027. Tick the full fee-waiver box by 1 Apr 2027.",
       entry: "Indian applicants need 70%+ on the online maths test (OMPT-E), then a dataset task and an interview. IELTS 6.5, or an English-medium letter. No more than 5 years since your bachelor's.",
@@ -1279,7 +1314,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "ktu", cc: "lt", rank: "#2 alt", main: true,
       course: "MSc Data Science and Artificial Intelligence", uni: "Kaunas University of Technology (KTU)",
       city: "Kaunas, Lithuania", area: "Studentų g. 50 campus · ~100 km from Vilnius · cheaper city", coords: [54.9043, 23.9580],
-      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€5,641 / yr", tuitionSub: "≈ €8,460 total", total: [16, 17], totalText: "₹16–17 L",
+      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€5,641 / yr", tuitionSub: "≈ €8,460 total", total: [16, 17], totalText: "₹16–17 L", aid: { total: [10, 11], label: "KTU's full first-year waiver (automatic, by grades)" },
       language: "English",
       apply: "Deadline 1 Jun 2027. Each country has a cap on applications, so apply early.",
       entry: "60%+ marks, at least 30 credits of maths in your BCA, IELTS 6.0, 2 references.",
@@ -1293,7 +1328,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "vu-smis", cc: "lt", rank: "No maths test", main: true,
       course: "Strategic Management of Information Systems", uni: "Vilnius University, Faculty of Economics and Business Administration",
       city: "Vilnius, Lithuania", area: "Saulėtekio al. 9, Building II (Saulėtekis campus)", coords: [54.7231, 25.3373],
-      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€5,460 / yr", tuitionSub: "≈ €8,190 total", total: [16, 17], totalText: "₹16–17 L",
+      length: "1.5 years", lengthSub: "90 ECTS", tuition: "€5,460 / yr", tuitionSub: "≈ €8,190 total", total: [16, 17], totalText: "₹16–17 L", aid: { total: [8, 9], label: "one of Vilnius University's 5 full waivers" },
       language: "English",
       apply: "1 Dec 2026 – 1 May 2027.",
       entry: "20 credits of economics/business, OR 3+ years of work experience with an employer letter (you'll have that by mid-2027). 60%+ marks, interview. No maths test for India.",
@@ -1307,7 +1342,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "kiel", cc: "de", rank: "#3 · needs German", main: true,
       course: "MSc Computer Science", uni: "Kiel University of Applied Sciences (HAW Kiel), Faculty of Computer Science and Electrical Engineering",
       city: "Kiel, Germany", area: "Grenzstraße 3, 24149 Kiel · ~90 km north of Hamburg", coords: [54.3317, 10.1820],
-      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €398 / semester fee", total: [20, 22], totalText: "₹20–22 L",
+      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €398 / semester fee", total: [20, 22], totalText: "₹20–22 L", aid: { total: [16, 18], label: "a Deutschlandstipendium (€300/month for a year)" },
       language: "English",
       apply: "May – 15 Jul 2027 (winter start) or Nov – 15 Jan (summer start).",
       entry: "Closely related bachelor's with German grade 2.5 or better (your ~89% ≈ 1.5). 180 credits accepted. Non-European degrees need the GRE (55th percentile+ in quant). English B2. APS certificate (≈ ₹18,000).",
@@ -1321,7 +1356,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "mtu", cc: "ie", rank: "Over budget", main: true,
       course: "MSc Artificial Intelligence / MSc Data Science & Analytics", uni: "Munster Technological University (MTU)",
       city: "Cork, Ireland", area: "Bishopstown campus, Cork", coords: [51.8849, -8.5333],
-      length: "1 year", lengthSub: "Level 9", tuition: "€12,000", tuitionSub: "€15,000 − €3,000 auto scholarship", total: [26, 28], totalText: "₹26–28 L",
+      length: "1 year", lengthSub: "Level 9", tuition: "€12,000", tuitionSub: "€15,000 − €3,000 auto scholarship", total: [26, 28], totalText: "₹26–28 L", aid: { total: [3, 5], label: "the Government of Ireland scholarship (fee + €10,000)" },
       language: "English",
       apply: "Non-EU deadline 31 May for September entry.",
       entry: "Level 8 / honours-equivalent bachelor's.",
@@ -1335,7 +1370,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "ucd-cs", cc: "ie", rank: "Free if you win", main: true,
       course: "MSc Computer Science (Negotiated Learning)", uni: "University College Dublin (UCD)",
       city: "Dublin, Ireland", area: "Belfield campus, Dublin 4 (south Dublin)", coords: [53.3067, -6.221],
-      length: "1 year", lengthSub: "90 credits", tuition: "€0 with 100%", tuitionSub: "€33,055 fee · €0 with the 100% award · €16,528 with the 50% award (total then ≈ ₹34–37 L)", total: [17, 20], totalText: "₹17–20 L",
+      length: "1 year", lengthSub: "90 credits", tuition: "€33,055", tuitionSub: "non-EU fee; €0 with the 100% award, €16,528 with the 50% award (total then ≈ ₹34–37 L)", total: [51, 54], totalText: "₹51–54 L", aid: { total: [17, 20], label: "UCD's 100% Global Excellence award" },
       language: "English",
       apply: "Apply to UCD for the MSc first, then for the Global Excellence Scholarship by 28 Feb 2027 (graduate applicants from South Asia). Results come about 7 weeks later.",
       entry: "Upper second-class (2.1) or equivalent in computer science or a related ICT degree. Check that UCD accepts your 3-year BCA and how it converts Indian marks.",
@@ -1349,7 +1384,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "dcu-msc", cc: "ie", rank: "Free with GOI-IES", main: true,
       course: "MSc in Computing (AI, Data Analytics, NLP or Cybersecurity)", uni: "Dublin City University (DCU)",
       city: "Dublin, Ireland", area: "Glasnevin campus, Dublin 9 (north Dublin)", coords: [53.3856, -6.2565],
-      length: "1 year", lengthSub: "Level 9", tuition: "€0 with GOI-IES", tuitionSub: "Without it: €25,000 − €4,400 scholarship = €20,600, total ≈ ₹39–41 L", total: [7, 10], totalText: "₹7–10 L (GOI-IES)",
+      length: "1 year", lengthSub: "Level 9", tuition: "€20,600", tuitionSub: "€25,000 − €4,400 automatic faculty scholarship; €0 with GOI-IES", total: [39, 41], totalText: "₹39–41 L", aid: { total: [7, 10], label: "the Government of Ireland scholarship (fee + €10,000)" },
       language: "English",
       apply: "September and January intakes. The Government of Ireland scholarship 2027 call is not out yet (2026 ran 29 Jan – 12 Mar) and needs a DCU offer first.",
       entry: "2.1 or higher in Computer Science, Computing or Computer Applications. A BCA is named directly.",
@@ -1363,7 +1398,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "griffith", cc: "ie", rank: "50% scholarship", main: true,
       course: "MSc in Computing Science / MSc in Big Data Management and Analytics", uni: "Griffith College Dublin",
       city: "Dublin, Ireland", area: "South Circular Road, Dublin 8", coords: [53.331, -6.278],
-      length: "1 year", lengthSub: "Level 9 (QQI)", tuition: "€9,075", tuitionSub: "€16,000 − 50% scholarship + €1,075 fees · without it ≈ €14,650", total: [27, 29], totalText: "₹27–29 L",
+      length: "1 year", lengthSub: "Level 9 (QQI)", tuition: "≈ €13,575", tuitionSub: "€16,000 + €1,075 fees − €2,000 bursary − €1,500 merit (Griffith's own example); €9,075 with the 50% award", total: [31, 34], totalText: "₹31–34 L", aid: { total: [27, 29], label: "Griffith's 50% Global Excellence scholarship" },
       language: "English (Duolingo accepted)",
       apply: "Intakes February 2027 and September 2027. Scholarship applications open January 2027 and close 31 May 2027 for visa-required countries.",
       entry: "2.2 Level 8 honours degree in computing or the international equivalent; work experience counts.",
@@ -1392,7 +1427,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "kiel-ds", cc: "de", rank: "Free · 180 ok", main: true, cost: "free",
       course: "MSc Data Science", uni: "Kiel University of Applied Sciences (HAW Kiel)",
       city: "Kiel, Germany", area: "Sokratesplatz campus, Kiel-Dietrichsdorf · ~90 km north of Hamburg", coords: [54.3331, 10.1838],
-      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €398 / semester fee (includes the transport ticket)", total: [20, 22], totalText: "₹20–22 L",
+      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €398 / semester fee (includes the transport ticket)", total: [20, 22], totalText: "₹20–22 L", aid: { total: [16, 18], label: "a Deutschlandstipendium (€300/month for a year)" },
       language: "English",
       apply: "1 May – 15 Jul 2027 for a winter start, or 1 Nov 2026 – 15 Jan 2027 for a summer start.",
       entry: "Bachelor's with a German grade of 2.5 or better (your ~89% ≈ 1.5) and 30 ECTS of maths/statistics + computer science (at least 10 each). 180 ECTS accepted; missing skills are made up. Degrees from outside the Bologna area also need a GRE with at least 65% in every part.",
@@ -1406,7 +1441,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "hsrw", cc: "de", rank: "Free", main: true, cost: "free",
       course: "MSc Information Engineering and Computer Science", uni: "Rhine-Waal University of Applied Sciences (HSRW)",
       city: "Kamp-Lintfort, Germany", area: "Kamp-Lintfort campus · ~35 km from Düsseldorf, near the Dutch border", coords: [51.5004, 6.5459],
-      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €300 / semester enrolment fee (with Germany-wide transport ticket)", total: [18, 21], totalText: "₹18–21 L",
+      length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €300 / semester enrolment fee (with Germany-wide transport ticket)", total: [18, 21], totalText: "₹18–21 L", aid: { total: [14, 17], label: "a Deutschlandstipendium (€300/month for a year)" },
       language: "English (B2)",
       apply: "Until 15 Jul 2027 for a winter start, or until 15 Jan 2027 for a summer start.",
       entry: "Bachelor's with practical computer science plus basics of computer engineering, maths and natural sciences; overall mark 2.3 or better. Also a TestAS (100+), GATE, or GRE (Q 160, V 145, AW 4.5). No 210-ECTS rule is listed.",
@@ -1421,7 +1456,7 @@ document.addEventListener("DOMContentLoaded", function () {
       course: "MSc Applied Research in Computer Science", uni: "Hof University of Applied Sciences",
       city: "Hof, Germany", area: "Alfons-Goppel-Platz campus, Hof (northern Bavaria)", coords: [50.3256, 11.9406],
       length: "1.5 years", lengthSub: "3 semesters", tuition: "€0", tuitionSub: "≈ €150 / semester administrative fee",
-      total: [18, 21], totalText: "₹18–21 L",
+      total: [18, 21], totalText: "₹18–21 L", aid: { total: [14, 17], label: "a Deutschlandstipendium (€300/month for a year)" },
       language: "English (IELTS 6.5)",
       apply: "15 Apr – 31 May 2027 for a winter start, or 5 – 30 Nov 2026 for a summer start.",
       entry: "Bachelor's in computer science or comparable, with above-average grades in OOP, software engineering, networks and databases. Send your bachelor's thesis or project report, proof of 18+ weeks of internship or work, a 2-page literature review, and pass an oral exam (online).",
@@ -1435,7 +1470,7 @@ document.addEventListener("DOMContentLoaded", function () {
       id: "hwr-bi", cc: "de", rank: "Free · Berlin", main: true, cost: "free",
       course: "MSc Business Intelligence and Process Management", uni: "Berlin School of Economics and Law (HWR Berlin)",
       city: "Berlin, Germany", area: "Campus Schöneberg, Badensche Straße · central Berlin", coords: [52.4857, 13.3393],
-      length: "1.5 years", lengthSub: "3 semesters (internship in semester 3)", tuition: "€0", tuitionSub: "≈ €350 / semester contribution", total: [21, 23], totalText: "₹21–23 L",
+      length: "1.5 years", lengthSub: "3 semesters (internship in semester 3)", tuition: "€0", tuitionSub: "≈ €350 / semester contribution", total: [21, 23], totalText: "₹21–23 L", aid: { total: [17, 19], label: "a Deutschlandstipendium (€300/month for a year)" },
       language: "English",
       apply: "15 Mar – 15 May 2027 for applicants with a non-German bachelor's (winter start only).",
       entry: "Bachelor's in business informatics, applied computer science with a business minor, or similar, with 10 ECTS each of business administration, quantitative methods/databases and informatics. 210 ECTS required: with 180 you add 30 credits, for example through the third-semester internship.",
@@ -1539,6 +1574,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("mapLegend").appendChild(el("span", { class: "key" }, [keyDot("es", true), "Other campus, same university"]));
   document.getElementById("mapLegend").appendChild(el("span", { class: "key" }, [el("span", { class: "dot hollow", style: "--k:var(--ink-3)", "aria-hidden": "true" }), "Every other university in the 20-country list"]));
   buildLegend(document.getElementById("costLegend"), ["es", "lt", "de", "ie"]);
+  document.getElementById("costLegend").appendChild(el("span", { class: "key" }, [el("span", { class: "akey", "aria-hidden": "true" }), "Hollow bar = total after a free scholarship or waiver"]));
 
   /* ---------- map ---------- */
   var map = null, tileLayer = null, labelLayer = null, markers = {};
@@ -1656,6 +1692,7 @@ document.addEventListener("DOMContentLoaded", function () {
         area,
         el("div", { class: "facts" }, [fact("Length", p.length, p.lengthSub), fact("Tuition", p.tuition, ""), fact("Total (est.)", p.totalText, "")]),
         el("div", { class: "note", style: "margin-top:-4px", text: p.tuitionSub }),
+        p.aid ? el("div", { class: "aidline" }, [el("span", { class: "ctag free", text: "Free money" }), el("span", {}, ["With " + p.aid.label + ": ", el("b", { text: "₹" + p.aid.total[0] + "–" + p.aid.total[1] + " L" }), " (saves ≈ ₹" + Math.round((p.total[0] + p.total[1] - p.aid.total[0] - p.aid.total[1]) / 2) + " L)"])]) : null,
         rows,
         el("div", { class: "catch" }, [el("b", { text: "Watch out: " }), p.catchText]),
         p.quote ? el("blockquote", {}, ["“" + p.quote + "”", el("cite", { text: "— " + p.quoteSrc })]) : null,
@@ -1689,7 +1726,7 @@ document.addEventListener("DOMContentLoaded", function () {
   renderCards();
 
   /* ---------- cost range chart ---------- */
-  var MAX = 35, BUDGET = [15, 25];
+  var MAX = 55, BUDGET = [15, 25];
   var chart = document.getElementById("costChart"), tip = document.getElementById("tip");
   var sorted = PROGRAMS.slice().sort(function (a, b) { return a.total[0] - b.total[0] || a.total[1] - b.total[1]; });
   function pct(v) { return (v / MAX * 100) + "%"; }
@@ -1700,6 +1737,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tip.appendChild(el("div", { class: "tv", text: p.totalText + " total" }));
     tip.appendChild(el("div", { text: p.uni.split(",")[0] + " — " + p.course }));
     tip.appendChild(line);
+    if (p.aid) tip.appendChild(el("div", { class: "tl", text: "With " + p.aid.label + ": ₹" + p.aid.total[0] + "–" + p.aid.total[1] + " L" }));
     tip.style.opacity = "1";
     var x = e.clientX, y = e.clientY;
     if (x === undefined) { var r = e.target.getBoundingClientRect(); x = r.right; y = r.top; }
@@ -1710,7 +1748,7 @@ document.addEventListener("DOMContentLoaded", function () {
   sorted.forEach(function (p, i) {
     var track = el("div", { class: "track" });
     track.appendChild(el("div", { class: "band", style: "left:" + pct(BUDGET[0]) + ";width:" + pct(BUDGET[1] - BUDGET[0]) }));
-    [5, 10, 15, 20, 25, 30, 35].forEach(function (t) { track.appendChild(el("div", { class: "gridline", style: "left:" + pct(t) })); });
+    [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].forEach(function (t) { track.appendChild(el("div", { class: "gridline", style: "left:" + pct(t) })); });
     if (i === 0) track.appendChild(el("div", { class: "band-label", style: "left:" + pct((BUDGET[0] + BUDGET[1]) / 2), text: "Your budget ₹15–25 L" }));
     var bar = el("div", { class: "rbar" + (p.total[1] > BUDGET[1] ? " dim" : ""), tabindex: "0", role: "img", "aria-label": p.course + ", " + p.uni + ": " + p.totalText + " total", style: "left:" + pct(p.total[0]) + ";width:max(14px, " + pct(p.total[1] - p.total[0]) + ")" });
     bar.style.setProperty("--key", "var(" + COUNTRY[p.cc].cssVar + ")");
@@ -1719,15 +1757,24 @@ document.addEventListener("DOMContentLoaded", function () {
     bar.addEventListener("focus", function (e) { showTip(e, p); });
     bar.addEventListener("blur", hideTip);
     track.appendChild(bar);
+    if (p.aid) {
+      var ab = el("div", { class: "abar", tabindex: "0", role: "img", "aria-label": p.course + " with " + p.aid.label + ": ₹" + p.aid.total[0] + "–" + p.aid.total[1] + " lakh", style: "left:" + pct(p.aid.total[0]) + ";width:max(14px, " + pct(p.aid.total[1] - p.aid.total[0]) + ")" });
+      ab.style.setProperty("--key", "var(" + COUNTRY[p.cc].cssVar + ")");
+      ab.addEventListener("pointermove", function (e) { showTip(e, p); });
+      ab.addEventListener("pointerleave", hideTip);
+      ab.addEventListener("focus", function (e) { showTip(e, p); });
+      ab.addEventListener("blur", hideTip);
+      track.appendChild(ab);
+    }
     chart.appendChild(el("div", { class: "c-label" }, [el("div", { class: "n", text: p.uni.split(" (")[0].split(",")[0] }), el("div", { class: "m", text: p.course + " · " + p.length })]));
     chart.appendChild(track);
-    chart.appendChild(el("div", { class: "c-val", text: p.totalText }));
+    chart.appendChild(el("div", { class: "c-val" }, [p.totalText, p.aid ? el("small", { class: "c-aid", text: "→ ₹" + p.aid.total[0] + "–" + p.aid.total[1] + " L" }) : null]));
   });
   var ticks = document.getElementById("costTicks");
-  [0, 5, 10, 15, 20, 25, 30, 35].forEach(function (t) { ticks.appendChild(el("span", { class: "tick", style: "left:" + pct(t), text: "₹" + t + " L" })); });
+  [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].forEach(function (t) { ticks.appendChild(el("span", { class: "tick", style: "left:" + pct(t), text: "₹" + t + " L" })); });
   var ctb = document.querySelector("#costTable tbody");
   sorted.forEach(function (p) {
-    ctb.appendChild(el("tr", {}, [el("td", { text: p.uni.split(",")[0] + " — " + p.course }), el("td", { text: COUNTRY[p.cc].name }), el("td", { text: p.length }), el("td", { text: p.tuition + " (" + p.tuitionSub + ")" }), el("td", { class: "num", text: p.totalText })]));
+    ctb.appendChild(el("tr", {}, [el("td", { text: p.uni.split(",")[0] + " — " + p.course }), el("td", { text: COUNTRY[p.cc].name }), el("td", { text: p.length }), el("td", { text: p.tuition + " (" + p.tuitionSub + ")" }), el("td", { class: "num", text: p.totalText }), el("td", { text: p.aid ? "₹" + p.aid.total[0] + "–" + p.aid.total[1] + " L with " + p.aid.label : "—" }), el("td", { class: "num", text: p.aid ? "≈ ₹" + Math.round((p.total[0] + p.total[1] - p.aid.total[0] - p.aid.total[1]) / 2) + " L" : "—" })]));
   });
 
   /* ---------- country table ---------- */
@@ -1901,7 +1948,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var links = Array.prototype.slice.call(snav.querySelectorAll("a[href^='#']"));
   var byId = {};
   links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
-  var spyTargets = Object.keys(byId).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var spyTargets = Object.keys(byId).map(function (id) { return document.getElementById(id); }).filter(Boolean)
+    .sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
   function mark(id) { links.forEach(function (a) { a.setAttribute("aria-current", a === byId[id] ? "true" : "false"); }); }
   if ("IntersectionObserver" in window) {
     var visible = {};
