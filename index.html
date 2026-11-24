@@ -189,11 +189,6 @@ td.num { font-variant-numeric: tabular-nums; }
 .tag { font-size: 12px; color: var(--ink-2); background: var(--surface-2); border-radius: 999px; padding: 2px 9px; display: inline-flex; gap: 6px; align-items: center; }
 
 /* ruled out */
-.ruled { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-.rcard { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 14px 16px; }
-.rcard .rt { font-weight: 650; display: flex; align-items: center; gap: 8px; }
-.rcard .rt svg { color: var(--ink-3); flex: none; }
-.rcard p { margin: 4px 0 0; color: var(--ink-2); font-size: 13.5px; }
 
 /* checklist */
 .check { padding: 6px 22px; }
@@ -406,8 +401,8 @@ h2::before { content: ""; flex: none; width: 8px; height: 8px; background: var(-
 .fbtn { min-height: 36px; padding: 6px 14px; border: 1px solid var(--ring-2); background: none; color: var(--ink-1); font: 500 14px/20px var(--font); transition: color var(--dur-fast) ease, border-color var(--dur-fast) ease, background-color var(--dur-fast) ease; }
 .fbtn:hover { border-color: var(--signal); color: var(--signal); }
 .fbtn[aria-pressed="true"] { background: var(--ink-1); color: var(--page); border-color: var(--ink-1); }
-.card, .route, .rcard, .stat { border-color: var(--ring); transition: border-color var(--dur-fast) ease; }
-.card:hover, .route:hover, .rcard:hover { border-color: var(--ring-2); }
+.card, .route, .stat { border-color: var(--ring); transition: border-color var(--dur-fast) ease; }
+.card:hover, .route:hover { border-color: var(--ring-2); }
 .card h3 { font-weight: 600; }
 .rank { padding: 2px 8px; border: 1px solid var(--ring-2); background: none; font-size: 11px; line-height: 16px; letter-spacing: .06em; font-weight: 500; }
 .area { background: var(--surface-2); }
@@ -529,7 +524,6 @@ footer.foot a { color: var(--ink-2); }
     <a href="#all" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>All 20 countries</a>
     <a href="#free" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7S10 2 7 3.5 9 7 12 7zM12 7s2-5 5-3.5S15 7 12 7z"/></svg>Free &amp; near-free</a>
     <a href="#money" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6M12 3v18"/></svg>Scholarships</a>
-    <a href="#ruled" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Ruled out</a>
   </div>
   <div class="sg"><div class="sg-t">Act</div>
     <a href="#deadlines" target="_self"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Deadlines</a>
@@ -666,10 +660,6 @@ footer.foot a { color: var(--ink-2); }
     </div>
     <p class="note">Every course in this list is also on the map above as a small filled grey dot.</p>
 
-    <h3 class="h3">Checked: not free any more, or not open to Indians</h3>
-    <p class="sub">These come up in every "free education in Europe" list. Here is what the official pages say now.</p>
-    <div class="ruled" id="freeRuled"></div>
-
     <h3 class="h3">Official sources for this section</h3>
     <ul class="srcs" id="freeSrc"></ul>
   </section>
@@ -684,12 +674,6 @@ footer.foot a { color: var(--ink-2); }
     <h2 id="h-money">Free tuition, waivers and stipends</h2>
     <p class="sub">Which free money actually fits a ≤1.5-year course, and which does not.</p>
     <div class="panel tbl-wrap"><table id="moneyTable"></table></div>
-  </section>
-
-  <section id="ruled" aria-labelledby="h-ruled">
-    <h2 id="h-ruled">Checked and ruled out</h2>
-    <p class="sub">Each was researched; here is why it does not fit.</p>
-    <div class="ruled" id="ruledList"></div>
   </section>
 
   <section id="todo" aria-labelledby="h-todo">
@@ -1064,21 +1048,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ["Slovak Government Scholarship", "Bachelor's, master's or PhD at a public university", "Slovakia", "Full course", "Tuition-free + monthly grant", "Slovak (mostly)", "Government scholarship for listed countries", "no", "Only for countries on its list (check India in the online wizard)", "https://www.vladnestipendia.sk/en/", null]
     ]}
   ];
-  var RULED_FREE = [
-    ["Iceland", "From autumn 2027 the University of Iceland and Akureyri charge non-EU tuition (amount set per programme). Master's are 2 years anyway."],
-    ["Norway", "Ended free tuition for non-EU students in 2023. Public universities now charge, e.g. UiS NOK 60–85k a year."],
-    ["Sweden – SI scholarship", "The Swedish Institute's Global Professionals scholarship lists 34 countries for 2027/28. India is not one of them."],
-    ["Finland", "Non-EU fees €8,000–20,000 a year; waivers are partial (UEF up to 30%). No national grants; master's are 2 years."],
-    ["Estonia", "English master's charge non-EU students €6,000–7,200 a year. Tartu stopped giving non-EU waivers from 2026/27."],
-    ["Slovenia", "Free only for EU and Western Balkan citizens. Indians pay (e.g. €4,700 a year at Ljubljana's School of Economics)."],
-    ["Lithuania – state scholarship", "The 2026 call for master's scholarships did not include India (India was only on the short-term call). The VU and KTU waivers are still open to you."],
-    ["Latvia – state scholarship", "€500 a month, but only for citizens of about 39 partner countries. India is not on the list."],
-    ["Czech government scholarship", "2027/28 is limited to 13 countries (e.g. Bangladesh, Cambodia, Georgia, Ukraine). India is not included."],
-    ["Luxembourg", "Low fees at uni.lu, but master's are 2 years, students may work only 15 h/week, and Reddit graduates say French or German is needed for jobs."],
-    ["Belgium – Flanders", "The 100% fee waiver (tariff B) is only for least-developed countries. India pays the full non-EU fee."],
-    ["Ireland – free courses", "The Free Fees Initiative is for EU undergraduates only. Springboard+ and HCI free courses need Irish residence and a PPS number. So the only free route for you is a full scholarship (GOI-IES or UCD 100%)."],
-    ["Romania", "The government scholarship is real (free tuition + stipend), but teaching is in Romanian after a 1-year language year."]
-  ];
   var FREE_SRC = [
     ["NKUA DSIT: 3 semesters, €900 / semester, English", "https://dsit.di.uoa.gr/applications/"],
     ["UniWA AI & Deep Learning fees", "https://aidl.uniwa.gr/tuition-fees/"],
@@ -1186,9 +1155,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* first render without moving the map */
   (function () { var keep = window.__euMap; window.__euMap = null; render(0); window.__euMap = keep; })();
 
-  /* ruled out + sources */
-  var rl = document.getElementById("freeRuled");
-  RULED_FREE.forEach(function (r) { rl.appendChild(el("div", { class: "rcard" }, [el("div", { class: "rt", text: r[0] }), el("p", { text: r[1] })])); });
+  /* sources */
   var fs = document.getElementById("freeSrc");
   FREE_SRC.forEach(function (s) { fs.appendChild(el("li", {}, [el("a", { href: s[1], target: "_blank", rel: "noopener", text: s[0] })])); });
 
@@ -1830,27 +1797,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var mb = el("tbody");
   MONEY.forEach(function (r) { var tr = el("tr", {}, [el("th", { scope: "row", text: r[0] })]); r.slice(1).forEach(function (c) { tr.appendChild(el("td", { text: c })); }); mb.appendChild(tr); });
   mt.appendChild(mb);
-
-  /* ---------- ruled out ---------- */
-  var RULED = [
-    ["Netherlands", "Nuffic, the official Dutch evaluator, rates a BCA as only “3 years of HBO”, so it isn't accepted for master's."],
-    ["Belgium (KU Leuven)", "Usually wants a 4-year Indian degree."],
-    ["France", "Master's take 2 years; non-EU tuition is €3,950/yr from Sept 2026. 1-year private MSc costs €10–25k."],
-    ["Poland", "University of Silesia's 1.5-year CS master's is for engineering (BEng) graduates only; most others are 2 years."],
-    ["Hungary · Austria · Italy", "Master's take 2 years (Austria ≈ €727/semester, but 4 semesters)."],
-    ["Slovenia · Croatia · Estonia", "2-year master's. Tartu ended tuition waivers for new non-EU students in 2026/27."],
-    ["Portugal", "The job-seeker visa was narrowed by the 2025–2026 foreigners laws."],
-    ["Malta", "Only 9 months to find a job after graduating, once. Low salaries."],
-    ["Czechia", "Free only for courses taught in Czech."],
-    ["Ireland (without a scholarship)", "≈ ₹26–28 lakh for 1 year, plus a housing crisis."],
-    ["UK", "Over the ₹25 lakh budget for 1 year."]
-  ];
-  var xIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>';
-  var rl = document.getElementById("ruledList");
-  RULED.forEach(function (r) {
-    var t = el("div", { class: "rt" }); t.insertAdjacentHTML("afterbegin", xIcon); t.appendChild(document.createTextNode(r[0]));
-    rl.appendChild(el("div", { class: "rcard" }, [t, el("p", { text: r[1] })]));
-  });
 
   /* ---------- checklist ---------- */
   var TODO = [
